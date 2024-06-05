@@ -18,34 +18,55 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="AppWindow.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsEngine.cpp">
-      <Filter>GameEngine\GraphicsEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>GameEngine\WindowingSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="SwapChain.cpp">
-      <Filter>GameEngine\GraphicsEngine\SwapChain</Filter>
-    </ClCompile>
+    <ClCompile Include="Game\CXCameraEntity.cpp" />
+    <ClCompile Include="Game\CXDisplay.cpp" />
+    <ClCompile Include="Game\CXEntity.cpp" />
+    <ClCompile Include="Game\CXGame.cpp" />
+    <ClCompile Include="Game\CXLightEntity.cpp" />
+    <ClCompile Include="Game\CXMeshEntity.cpp" />
+    <ClCompile Include="Graphics\CXConstantBuffer.cpp" />
+    <ClCompile Include="Graphics\CXGraphicsEngine.cpp" />
+    <ClCompile Include="Graphics\CXIndexBuffer.cpp" />
+    <ClCompile Include="Graphics\CXShader.cpp" />
+    <ClCompile Include="Graphics\CXSwapChain.cpp" />
+    <ClCompile Include="Graphics\CXTexture2D.cpp" />
+    <ClCompile Include="Graphics\CXVertexBuffer.cpp" />
+    <ClCompile Include="Input\CXInputManager.cpp" />
+    <ClCompile Include="Resource\CXMaterial.cpp" />
+    <ClCompile Include="Resource\CXMesh.cpp" />
+    <ClCompile Include="Resource\CXResource.cpp" />
+    <ClCompile Include="Resource\CXResourceManager.cpp" />
+    <ClCompile Include="Resource\CXTexture.cpp" />
+    <ClCompile Include="Window\CXWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppWindow.h">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsEngine.h">
-      <Filter>GameEngine\GraphicsEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>GameEngine\WindowingSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="SwapChain.h">
-      <Filter>GameEngine\GraphicsEngine\SwapChain</Filter>
-    </ClInclude>
+    <ClInclude Include="All.h" />
+    <ClInclude Include="CXPrerequisites.h" />
+    <ClInclude Include="Game\CXCameraEntity.h" />
+    <ClInclude Include="Game\CXDisplay.h" />
+    <ClInclude Include="Game\CXEntity.h" />
+    <ClInclude Include="Game\CXGame.h" />
+    <ClInclude Include="Game\CXLightEntity.h" />
+    <ClInclude Include="Game\CXMeshEntity.h" />
+    <ClInclude Include="Graphics\CXConstantBuffer.h" />
+    <ClInclude Include="Graphics\CXGraphicsEngine.h" />
+    <ClInclude Include="Graphics\CXIndexBuffer.h" />
+    <ClInclude Include="Graphics\CXShader.h" />
+    <ClInclude Include="Graphics\CXSwapChain.h" />
+    <ClInclude Include="Graphics\CXTexture2D.h" />
+    <ClInclude Include="Graphics\CXVertexBuffer.h" />
+    <ClInclude Include="Input\CXInputManager.h" />
+    <ClInclude Include="Math\CXMat4.h" />
+    <ClInclude Include="Math\CXRect.h" />
+    <ClInclude Include="Math\CXVec2.h" />
+    <ClInclude Include="Math\CXVec3.h" />
+    <ClInclude Include="Math\CXVec4.h" />
+    <ClInclude Include="Math\CXVertexMesh.h" />
+    <ClInclude Include="Resource\CXMaterial.h" />
+    <ClInclude Include="Resource\CXMesh.h" />
+    <ClInclude Include="Resource\CXResource.h" />
+    <ClInclude Include="Resource\CXResourceManager.h" />
+    <ClInclude Include="Resource\CXTexture.h" />
+    <ClInclude Include="Window\CXWindow.h" />
   </ItemGroup>
 </Project>
