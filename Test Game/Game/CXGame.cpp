@@ -89,10 +89,10 @@ CXMeshPtr CXGame::createMesh(const wchar_t* path)
 void CXGame::onGraphicsUpdate(f32 deltaTime)
 {
 	m_graphicsEngine->clearColor
-	(m_display->getSwapChain(), CXVec4(0, 0, 0, 1));
+		(m_display->getSwapChain(), CXVec4(0, 0, 0, 1));
 
 	m_graphicsEngine->setViewportSize
-	(m_display->getClientSize().width, m_display->getClientSize().height);
+		(m_display->getClientSize().width, m_display->getClientSize().height);
 	
 	GraphicsData gdata;
 

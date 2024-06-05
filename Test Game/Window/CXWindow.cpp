@@ -98,20 +98,19 @@ CXWindow::CXWindow()
 
 	if (!m_hwnd) throw std::runtime_error("CreateWindowEx failed");
 
-	SetWindowLongPtr((HWND)m_hwnd, GWLP_USERDATA, (LONG_PTR)this);
+	SetWindowLongPtr(static_cast<HWND>(m_hwnd), GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
 
-	ShowWindow((HWND)m_hwnd, SW_SHOW);
-	UpdateWindow((HWND)m_hwnd);
+	ShowWindow(static_cast<HWND>(m_hwnd), SW_SHOW);
+	UpdateWindow(static_cast<HWND>(m_hwnd));
 }
-
 
 CXRect CXWindow::getClientSize()
 {
 	RECT rc = {};
-	::GetClientRect((HWND)this->m_hwnd, &rc);
-	::ClientToScreen((HWND)this->m_hwnd, (LPPOINT)&rc.left);
-	::ClientToScreen((HWND)this->m_hwnd, (LPPOINT)&rc.right);
-	return CXRect(rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+	::GetClientRect(static_cast<HWND>(this->m_hwnd), &rc);
+	::ClientToScreen(static_cast<HWND>(this->m_hwnd), reinterpret_cast<LPPOINT>(&rc.left));
+	::ClientToScreen(static_cast<HWND>(this->m_hwnd), reinterpret_cast<LPPOINT>(&rc.right));
+	return {rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top};
 }
 
 CXRect CXWindow::getScreenSize()
@@ -121,7 +120,7 @@ CXRect CXWindow::getScreenSize()
 	rc.right = ::GetSystemMetrics(SM_CXSCREEN);
 	rc.bottom = ::GetSystemMetrics(SM_CYSCREEN);
 
-	return CXRect(rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+	return {rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top};
 }
 
 void* CXWindow::getHandle()
@@ -131,10 +130,10 @@ void* CXWindow::getHandle()
 
 void CXWindow::setTitle(const wchar_t* title)
 {
-	::SetWindowText((HWND)m_hwnd, title);
+	::SetWindowText(static_cast<HWND>(m_hwnd), title);
 }
 
 CXWindow::~CXWindow()
 {
-	DestroyWindow((HWND)m_hwnd);
+	DestroyWindow(static_cast<HWND>(m_hwnd));
 }

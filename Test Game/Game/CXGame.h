@@ -21,11 +21,13 @@ public:
 	template <typename T>
 	T* createEntity()
 	{
-		static_assert(std::is_base_of<CXEntity, T>::value, "T must derive from CXEntity");
+		static_assert(std::is_base_of_v<CXEntity, T>, "T must derive from CXEntity");
 		auto id = typeid(T).hash_code();
 		auto e = new T();
 		if (createEntityConcrete(e, id))
+		{
 			return e;
+		}
 		return nullptr;
 	}
 	
@@ -72,6 +74,7 @@ private:
 	//m_entitiesToDestroy set handles the entities that have been marked for destroy.
 	std::set<CXEntity*> m_entitiesToDestroy;
 	//-------------------------------------------------------------------------------
+	
 	f32 m_avgDt = 0.0f;
 	unsigned long long m_avgCount = 0;
 	

@@ -8,52 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="868f528e-8372-4207-9e47-bcf2765b1407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.write.1.tlog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.command.1.tlog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.1.tlog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.2.tlog" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.3.tlog" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/FileContentIndex/c09dc5ea-8274-4333-b80d-fd8ee1c9c9b0.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/FileContentIndex/read.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/Browse.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/2a07dd152623c266/APPWINDOW.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/3c40fba91b474e6e/GRAPHICSENGINE.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/3d62a57f9afec7ad/SWAPCHAIN.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/3d6cd9fee6c53865/WINDOW.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/bca3e3e55a09dd20/MAIN.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/cb8b01ae3200c00e/GRAPHICSENGINE.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/Test Game/v17/ipch/AutoPCH/de6c71f3182a7000/MAIN.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.Build.CppClean.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.exe.recipe" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.exe.recipe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.ilk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.log" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/Cl.items.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/Test Game.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/Test Game.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Test Game.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/Test Game.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.10696.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.10696.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/CXGame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/CXGame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Window/CXWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window/CXWindow.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +28,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Test Game/Game/CXGame.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -161,6 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717595951806</updated>
       <workItem from="1717595954070" duration="691000" />
+      <workItem from="1717596664645" duration="1276000" />
     </task>
     <servers />
   </component>
