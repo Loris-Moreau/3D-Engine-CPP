@@ -13,14 +13,14 @@ SwapChain::SwapChain(const SwapChainDesc& desc, GraphicsEngine* system) : m_syst
 	d3d11Desc.BufferDesc.Height = (desc.size.height > 0) ? desc.size.height : 1;
 	d3d11Desc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	d3d11Desc.BufferDesc.RefreshRate.Numerator = 60;
-	d3d11Desc.BufferDesc.RefreshRate.Denominator = 1;
+	d3d11Desc.BufferDesc.RefreshRate.Denominator = 1; 
 	d3d11Desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	d3d11Desc.OutputWindow = static_cast<HWND>(desc.windowHandle);
 	d3d11Desc.SampleDesc.Count = 1;
 	d3d11Desc.SampleDesc.Quality = 0;
 	d3d11Desc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 	d3d11Desc.Windowed = TRUE;
-
+	
 	HRESULT hr = m_system->m_dxgiFactory->CreateSwapChain(device.Get(), &d3d11Desc, &m_swap_chain);
 
 	if (FAILED(hr))
@@ -41,7 +41,7 @@ void SwapChain::resize(const  Rect& size)
 {
 	m_rtv.Reset();
 	m_dsv.Reset();
-
+	
 	m_swap_chain->ResizeBuffers(1, size.width, size.height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
 	reloadBuffers(size.width, size.height);
 }

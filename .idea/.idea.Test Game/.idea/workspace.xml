@@ -8,80 +8,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="868f528e-8372-4207-9e47-bcf2765b1407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Fonts/Bahnschrift.font" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/asteroid.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/asteroid.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/box.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/box.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/house.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/house.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/monitor.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/monitor.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/plane.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/scene.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/spaceship.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/spaceship.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/sphere.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/sphere.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/sphere_hq.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/sponza_basic.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/sponza_basic.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/statue.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/suzanne.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/teapot.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/terrain.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/terrain.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Meshes/torus.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Shaders/MyMaterial.hlsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Shaders/SkyBox.hlsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_arch_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_bricks_a_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_column_a_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_column_b_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_column_c_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_flagpole_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/Sponza/sponza_floor_a_diff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/UI/ammo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/UI/cross.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/UI/health.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/UI/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/asteroid.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/barrel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/brick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/brick_d.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/brick_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/clouds.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/earth_color.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/earth_night.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/earth_spec.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/grass.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/ground.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/height_map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/house_brick.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/house_windows.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/house_wood.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/sand.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/sky.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/spaceship.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/stars_map.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/wall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/waveHeightMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Textures/wood.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/bin/DirectXTK.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/bin/DirectXTKD.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/bin/DirectXTKD.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/bin/MakeSpriteFont.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/include/SimpleMath.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/include/SimpleMath.inl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/include/SpriteBatch.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/DirectXTK/include/SpriteFont.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.Build.CppClean.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.10696.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/TestGame.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/TestGame.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-cvtres.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-cvtres.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-rc.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-rc.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.3.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/All.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/All.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/CXPrerequisites.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXCameraEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/CameraEntity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXCameraEntity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/CameraEntity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXDisplay.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Display.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXDisplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Display.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Entity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXEntity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Entity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXLightEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/LightEntity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXLightEntity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/LightEntity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXMeshEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/MeshEntity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CXMeshEntity.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game/MeshEntity.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXConstantBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/ConstantBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXConstantBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/ConstantBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXGraphicsEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/GraphicsEngine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXGraphicsEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/GraphicsEngine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXIndexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/IndexBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXIndexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/IndexBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXShader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/Shader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXShader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/Shader.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXSwapChain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXSwapChain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXTexture2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/Texture2D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXTexture2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/Texture2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXVertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/VertexBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/CXVertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/VertexBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Input/CXInputManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Input/InputManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Input/CXInputManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Input/InputManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXMat4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/Mat4.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXRect.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/Rect.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXVec2.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/Vec2.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXVec3.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/Vec3.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXVec4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/Vec4.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/CXVertexMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Math/VertexMesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/NewFile1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/NewFile1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXMaterial.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXMaterial.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Material.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Mesh.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXResource.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Resource.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXResource.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Resource.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXResourceManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/ResourceManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXResourceManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/ResourceManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXTexture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Texture.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/CXTexture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource/Texture.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window/CXWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window/CXWindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window/Window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.log" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +90,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um/WinUser.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/Window/Window.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/Window/Window.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/tinyobjloader/include/tiny_obj_loader.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -198,7 +197,7 @@
       <updated>1717595951806</updated>
       <workItem from="1717595954070" duration="691000" />
       <workItem from="1717596664645" duration="1276000" />
-      <workItem from="1729682266706" duration="370000" />
+      <workItem from="1729682266706" duration="2984000" />
     </task>
     <servers />
   </component>
