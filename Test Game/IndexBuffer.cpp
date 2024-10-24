@@ -1,6 +1,6 @@
 #include "IndexBuffer.h"
-#include "RenderSystem.h"
 #include <exception>
+#include "RenderSystem.h"
 
 IndexBuffer::IndexBuffer(void* list_indices, UINT size_list,RenderSystem * system) : m_system(system) , m_buffer(0)
 {
@@ -10,7 +10,7 @@ IndexBuffer::IndexBuffer(void* list_indices, UINT size_list,RenderSystem * syste
 	buff_desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	buff_desc.CPUAccessFlags = 0;
 	buff_desc.MiscFlags = 0;
-
+	
 	D3D11_SUBRESOURCE_DATA init_data = {};
 	init_data.pSysMem = list_indices;
 
@@ -22,15 +22,12 @@ IndexBuffer::IndexBuffer(void* list_indices, UINT size_list,RenderSystem * syste
 	}
 }
 
-
 UINT IndexBuffer::getSizeIndexList()
 {
 	return this->m_size_list;
 }
 
-
 IndexBuffer::~IndexBuffer()
 {
 	m_buffer->Release();
 }
-

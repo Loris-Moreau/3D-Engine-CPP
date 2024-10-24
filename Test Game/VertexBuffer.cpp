@@ -1,10 +1,8 @@
 #include "VertexBuffer.h"
-#include "RenderSystem.h"
 #include <exception>
+#include "RenderSystem.h"
 
-VertexBuffer::VertexBuffer(void* list_vertices,UINT size_vertex,UINT size_list,
-	void*shader_byte_code,size_t size_byte_shader,
-	RenderSystem * system) : m_system(system) ,m_layout(0),m_buffer(0)
+VertexBuffer::VertexBuffer(void* list_vertices,UINT size_vertex,UINT size_list, void*shader_byte_code,size_t size_byte_shader, RenderSystem * system) : m_system(system) ,m_layout(0),m_buffer(0)
 {
 	D3D11_BUFFER_DESC buff_desc = {};
 	buff_desc.Usage = D3D11_USAGE_DEFAULT;
@@ -41,12 +39,10 @@ VertexBuffer::VertexBuffer(void* list_vertices,UINT size_vertex,UINT size_list,
 
 }
 
-
 UINT VertexBuffer::getSizeVertexList()
 {
 	return this->m_size_list;
 }
-
 
 VertexBuffer::~VertexBuffer()
 {

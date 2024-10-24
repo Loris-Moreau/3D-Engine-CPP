@@ -1,6 +1,6 @@
 #include "GraphicsEngine.h"
-#include "RenderSystem.h"
 #include <exception>
+#include "RenderSystem.h"
 
 GraphicsEngine* GraphicsEngine::m_engine = nullptr;
 
@@ -24,7 +24,7 @@ GraphicsEngine::GraphicsEngine()
 	}
 	catch (...) { throw std::exception("MeshManager not created successfully"); }
 
-
+	
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
 	m_render_system->compileVertexShader(L"Shaders\\VertexMeshLayoutShader.hlsl", "vsmain", &shader_byte_code, &size_shader);

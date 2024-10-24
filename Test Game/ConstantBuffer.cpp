@@ -1,7 +1,7 @@
 #include "ConstantBuffer.h"
-#include "RenderSystem.h"
-#include "DeviceContext.h"
 #include <exception>
+#include "DeviceContext.h"
+#include "RenderSystem.h"
 
 ConstantBuffer::ConstantBuffer(void * buffer, UINT size_buffer,RenderSystem * system) : m_system(system)
 {
@@ -21,14 +21,12 @@ ConstantBuffer::ConstantBuffer(void * buffer, UINT size_buffer,RenderSystem * sy
 	}
 }
 
-
-void ConstantBuffer::update(DeviceContextPtr context, void * buffer)
-{
-	context->m_device_context->UpdateSubresource(this->m_buffer, NULL, NULL, buffer, NULL, NULL);
-}
-
-
 ConstantBuffer::~ConstantBuffer()
 {
 	if (m_buffer)m_buffer->Release();
+}
+
+void ConstantBuffer::update(DeviceContextPtr context, void * buffer)
+{
+	context->m_device_context->UpdateSubresource(this->m_buffer, NULL, nullptr, buffer, NULL, NULL);
 }

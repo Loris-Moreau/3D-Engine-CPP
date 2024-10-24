@@ -13,7 +13,6 @@ struct VS_OUTPUT
 	float3 direction_to_camera: TEXCOORD1;
 };
 
-
 cbuffer constant: register(b0)
 {
 	row_major float4x4 m_world;
@@ -23,21 +22,18 @@ cbuffer constant: register(b0)
 	float4 m_camera_position;
 };
 
-
-
 VS_OUTPUT vsmain(VS_INPUT input)
 {
 	VS_OUTPUT output = (VS_OUTPUT)0;
 	
-	//WORLD SPACE
+	// WORLD SPACE
 	output.position = mul(input.position, m_world);
 	output.direction_to_camera = normalize(output.position.xyz - m_camera_position.xyz);
-	//VIEW SPACE
+	// VIEW SPACE
 	output.position = mul(output.position, m_view);
-	//SCREEN SPACE
+	// SCREEN SPACE
 	output.position = mul(output.position, m_proj);
-
-
+	
 	output.texcoord = input.texcoord;
 	output.normal = input.normal;
 	return output;

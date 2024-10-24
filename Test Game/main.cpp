@@ -16,7 +16,8 @@ int main()
 			AppWindow app;
 			while (app.isRun());
 		}
-		catch (...) {
+		catch (...)
+		{
 			InputSystem::release();
 			GraphicsEngine::release();
 			return -1;

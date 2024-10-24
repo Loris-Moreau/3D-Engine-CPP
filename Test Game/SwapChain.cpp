@@ -1,6 +1,6 @@
 #include "SwapChain.h"
-#include "RenderSystem.h"
 #include <exception>
+#include "RenderSystem.h"
 
 SwapChain::SwapChain(HWND hwnd, UINT width, UINT height,RenderSystem * system) : m_system(system)
 {
@@ -22,7 +22,7 @@ SwapChain::SwapChain(HWND hwnd, UINT width, UINT height,RenderSystem * system) :
 	desc.Windowed = TRUE;
 
 	//Create the swap chain for the window indicated by HWND parameter
-	HRESULT hr= m_system->m_dxgi_factory->CreateSwapChain(device, &desc, &m_swap_chain);
+	HRESULT hr = m_system->m_dxgi_factory->CreateSwapChain(device, &desc, &m_swap_chain);
 	
 	if (FAILED(hr))
 	{
@@ -31,7 +31,6 @@ SwapChain::SwapChain(HWND hwnd, UINT width, UINT height,RenderSystem * system) :
 
 	reloadBuffers(width, height);
 }
-
 
 void SwapChain::setFullScreen(bool fullscreen, unsigned int width, unsigned int height)
 {
@@ -53,7 +52,6 @@ bool SwapChain::present(bool vsync)
 	m_swap_chain->Present(vsync, NULL);
 	return true;
 }
-
 
 SwapChain::~SwapChain()
 {
@@ -83,7 +81,7 @@ void SwapChain::reloadBuffers(unsigned int width, unsigned int height)
 	{
 		throw std::exception("SwapChain not created successfully");
 	}
-
+	
 	D3D11_TEXTURE2D_DESC tex_desc = {};
 	tex_desc.Width = width;
 	tex_desc.Height = height;
@@ -96,17 +94,15 @@ void SwapChain::reloadBuffers(unsigned int width, unsigned int height)
 	tex_desc.MiscFlags = 0;
 	tex_desc.ArraySize = 1;
 	tex_desc.CPUAccessFlags = 0;
-
-
+	
 	hr = device->CreateTexture2D(&tex_desc, nullptr, &buffer);
 
 	if (FAILED(hr))
 	{
 		throw std::exception("SwapChain not created successfully");
 	}
-
-
-	hr = device->CreateDepthStencilView(buffer, NULL, &m_dsv);
+	
+	hr = device->CreateDepthStencilView(buffer, nullptr, &m_dsv);
 	buffer->Release();
 
 	if (FAILED(hr))

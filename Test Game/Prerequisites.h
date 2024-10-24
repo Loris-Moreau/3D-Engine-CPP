@@ -1,4 +1,5 @@
 #pragma once
+
 #include <memory>
 
 class SwapChain;
@@ -16,7 +17,6 @@ class Texture;
 class TextureManager;
 class Mesh;
 class MeshManager;
-
 
 typedef std::shared_ptr<SwapChain> SwapChainPtr;
 typedef std::shared_ptr<DeviceContext> DeviceContextPtr;

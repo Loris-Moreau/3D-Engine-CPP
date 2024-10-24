@@ -1,14 +1,14 @@
 #pragma once
+
 #include <memory>
+
 #include "Vector3D.h"
 #include "Vector4D.h"
 
 class Matrix4x4
 {
 public:
-	Matrix4x4()
-	{
-	}
+	Matrix4x4() {}
 
 	void setIdentity()
 	{
@@ -32,7 +32,7 @@ public:
 		m_mat[1][1] = scale.m_y;
 		m_mat[2][2] = scale.m_z;
 	}
-
+	
 	void setRotationX(float x)
 	{
 		m_mat[1][1] = cos(x);
@@ -40,7 +40,7 @@ public:
 		m_mat[2][1] = -sin(x);
 		m_mat[2][2] = cos(x);
 	}
-
+	
 	void setRotationY(float y)
 	{
 		m_mat[0][0] = cos(y);
@@ -48,7 +48,7 @@ public:
 		m_mat[2][0] = sin(y);
 		m_mat[2][2] = cos(y);
 	}
-
+	
 	void setRotationZ(float z)
 	{
 		m_mat[0][0] = cos(z);
@@ -56,23 +56,21 @@ public:
 		m_mat[1][0] = -sin(z);
 		m_mat[1][1] = cos(z);
 	}
-
+	
 	float getDeterminant()
 	{
 		Vector4D minor, v1, v2, v3;
 		float det;
-
+		
 		v1 = Vector4D(this->m_mat[0][0], this->m_mat[1][0], this->m_mat[2][0], this->m_mat[3][0]);
 		v2 = Vector4D(this->m_mat[0][1], this->m_mat[1][1], this->m_mat[2][1], this->m_mat[3][1]);
 		v3 = Vector4D(this->m_mat[0][2], this->m_mat[1][2], this->m_mat[2][2], this->m_mat[3][2]);
-
-
+		
 		minor.cross(v1, v2, v3);
-		det = -(this->m_mat[0][3] * minor.m_x + this->m_mat[1][3] * minor.m_y + this->m_mat[2][3] * minor.m_z +
-			this->m_mat[3][3] * minor.m_w);
+		det = -(this->m_mat[0][3] * minor.m_x + this->m_mat[1][3] * minor.m_y + this->m_mat[2][3] * minor.m_z + this->m_mat[3][3] * minor.m_w);
 		return det;
 	}
-
+	
 	void inverse()
 	{
 		int a, i, j;
@@ -106,8 +104,7 @@ public:
 
 		this->setMatrix(out);
 	}
-
-
+	
 	void operator *=(const Matrix4x4& matrix)
 	{
 		Matrix4x4 out;
@@ -116,7 +113,8 @@ public:
 			for (int j = 0; j < 4; j++)
 			{
 				out.m_mat[i][j] =
-					m_mat[i][0] * matrix.m_mat[0][j] + m_mat[i][1] * matrix.m_mat[1][j] + 
+					m_mat[i][0] * matrix.m_mat[0][j] + m_mat[i][1] * matrix.m_mat[1][j]
+					+ 
 					m_mat[i][2] * matrix.m_mat[2][j] + m_mat[i][3] * matrix.m_mat[3][j];
 			}
 		}
@@ -127,15 +125,17 @@ public:
 	{
 		::memcpy(m_mat, matrix.m_mat, sizeof(float) * 16);
 	}
-
+	
 	Vector3D getZDirection()
 	{
 		return Vector3D(m_mat[2][0], m_mat[2][1], m_mat[2][2]);
 	}
+	
 	Vector3D getXDirection()
 	{
 		return Vector3D(m_mat[0][0], m_mat[0][1], m_mat[0][2]);
 	}
+	
 	Vector3D getTranslation()
 	{
 		return Vector3D(m_mat[3][0], m_mat[3][1], m_mat[3][2]);
@@ -151,8 +151,7 @@ public:
 		m_mat[2][3] = 1.0f;
 		m_mat[3][2] = (-znear*zfar)/ (zfar - znear);
 	}
-
-
+	
 	void setOrthoLH(float width,float height,float near_plane, float far_plane)
 	{
 		setIdentity();
@@ -162,9 +161,7 @@ public:
 		m_mat[3][2] = -(near_plane / (far_plane - near_plane));
 	}
 
-	~Matrix4x4()
-	{
-	}
+	~Matrix4x4() {}
 
 public:
 	float m_mat[4][4] = {};

@@ -1,15 +1,10 @@
 #include "TextureManager.h"
+
 #include "Texture.h"
 
+TextureManager::TextureManager(): ResourceManager() {}
 
-TextureManager::TextureManager(): ResourceManager()
-{
-}
-
-
-TextureManager::~TextureManager()
-{
-}
+TextureManager::~TextureManager() {}
 
 TexturePtr TextureManager::createTextureFromFile(const wchar_t * file_path)
 {

@@ -9,7 +9,6 @@ struct PS_INPUT
 	float3 direction_to_camera: TEXCOORD1;
 };
 
-
 float4 psmain(PS_INPUT input) : SV_TARGET
 {
 	return Texture.Sample(TextureSampler, 1.0 - input.texcoord);

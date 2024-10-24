@@ -3,8 +3,8 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <tiny_obj_loader.h>
 
-#include <locale>
 #include <codecvt>
+#include <locale>
 
 #include "GraphicsEngine.h"
 #include "VertexMesh.h"
@@ -22,13 +22,13 @@ Mesh::Mesh(const wchar_t* full_path): Resource(full_path)
 
 	bool res = tinyobj::LoadObj(&attribs, &shapes, &materials, &warn, &err, inputfile.c_str());
 
+	// Error Handling
 	if (!err.empty()) throw std::exception("Mesh not created successfully");
 
 	if (!res) throw std::exception("Mesh not created successfully");
 
 	if (shapes.size() > 1) throw std::exception("Mesh not created successfully");
-
-
+	
 	std::vector<VertexMesh> list_vertices;
 	std::vector<unsigned int> list_indices;
 
@@ -62,7 +62,6 @@ Mesh::Mesh(const wchar_t* full_path): Resource(full_path)
 
 				list_indices.push_back((unsigned int)index_offset + v);
 			}
-
 			index_offset += num_face_verts;
 		}
 	}
@@ -70,16 +69,11 @@ Mesh::Mesh(const wchar_t* full_path): Resource(full_path)
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
 	GraphicsEngine::get()->getVertexMeshLayoutShaderByteCodeAndSize(&shader_byte_code, &size_shader);
-	m_vertex_buffer = GraphicsEngine::get()->getRenderSystem()->createVertexBuffer(&list_vertices[0], sizeof(VertexMesh),
-		(UINT)list_vertices.size(), shader_byte_code, (UINT)size_shader);
+	m_vertex_buffer = GraphicsEngine::get()->getRenderSystem()->createVertexBuffer(&list_vertices[0], sizeof(VertexMesh), (UINT)list_vertices.size(), shader_byte_code, (UINT)size_shader);
 	m_index_buffer = GraphicsEngine::get()->getRenderSystem()->createIndexBuffer(&list_indices[0], (UINT)list_indices.size());
-
 }
 
-
-Mesh::~Mesh()
-{
-}
+Mesh::~Mesh() {}
 
 const VertexBufferPtr & Mesh::getVertexBuffer()
 {

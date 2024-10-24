@@ -1,10 +1,10 @@
 #include "InputSystem.h"
+
 #include <Windows.h>
+
 InputSystem* InputSystem::m_system = nullptr;
 
-InputSystem::InputSystem()
-{
-}
+InputSystem::InputSystem() {}
 
 
 InputSystem::~InputSystem()
@@ -36,8 +36,7 @@ void InputSystem::update()
 	}
 	m_old_mouse_pos = Point(current_mouse_pos.x, current_mouse_pos.y);
 
-
-
+	
 	if (::GetKeyboardState(m_keys_state))
 	{
 		for (unsigned int i = 0; i < 256; i++)

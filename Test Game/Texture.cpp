@@ -1,5 +1,7 @@
 #include "Texture.h"
+
 #include <DirectXTex.h>
+
 #include "GraphicsEngine.h"
 
 Texture::Texture(const wchar_t* full_path): Resource(full_path)
@@ -9,8 +11,7 @@ Texture::Texture(const wchar_t* full_path): Resource(full_path)
 
 	if (SUCCEEDED(res))
 	{
-		res = DirectX::CreateTexture(GraphicsEngine::get()->getRenderSystem()->m_d3d_device, image_data.GetImages(),
-			image_data.GetImageCount(), image_data.GetMetadata(), &m_texture);
+		res = DirectX::CreateTexture(GraphicsEngine::get()->getRenderSystem()->m_d3d_device, image_data.GetImages(), image_data.GetImageCount(), image_data.GetMetadata(), &m_texture);
 		if (FAILED(res)) throw std::exception("Texture not created successfully");
 
 		D3D11_SHADER_RESOURCE_VIEW_DESC desc = {};
@@ -30,8 +31,7 @@ Texture::Texture(const wchar_t* full_path): Resource(full_path)
 		res = GraphicsEngine::get()->getRenderSystem()->m_d3d_device->CreateSamplerState(&sampler_desc,&m_sampler_state);
 		if (FAILED(res)) throw std::exception("Texture not created successfully");
 
-		res = GraphicsEngine::get()->getRenderSystem()->m_d3d_device->CreateShaderResourceView(m_texture, &desc,
-			&m_shader_res_view);
+		res = GraphicsEngine::get()->getRenderSystem()->m_d3d_device->CreateShaderResourceView(m_texture, &desc, &m_shader_res_view);
 		if (FAILED(res)) throw std::exception("Texture not created successfully");
 	}
 	else
@@ -39,7 +39,6 @@ Texture::Texture(const wchar_t* full_path): Resource(full_path)
 		throw std::exception("Texture not created successfully");
 	}
 }
-
 
 Texture::~Texture()
 {

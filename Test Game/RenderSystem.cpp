@@ -1,11 +1,11 @@
 #include "RenderSystem.h"
-#include "SwapChain.h"
-#include "DeviceContext.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
 #include "ConstantBuffer.h"
-#include "VertexShader.h"
+#include "DeviceContext.h"
+#include "IndexBuffer.h"
 #include "PixelShader.h"
+#include "SwapChain.h"
+#include "VertexBuffer.h"
+#include "VertexShader.h"
 
 #include <d3dcompiler.h>
 #include <exception>
@@ -30,10 +30,11 @@ RenderSystem::RenderSystem()
 
 	for (UINT driver_type_index = 0; driver_type_index < num_driver_types;)
 	{
-		res = D3D11CreateDevice(NULL, driver_types[driver_type_index], NULL, NULL, feature_levels,
-			num_feature_levels, D3D11_SDK_VERSION, &m_d3d_device, &m_feature_level, &m_imm_context);
+		res = D3D11CreateDevice(nullptr, driver_types[driver_type_index], nullptr, NULL, feature_levels, num_feature_levels, D3D11_SDK_VERSION, &m_d3d_device, &m_feature_level, &m_imm_context);
 		if (SUCCEEDED(res))
+		{
 			break;
+		}
 		++driver_type_index;
 	}
 	if (FAILED(res))
@@ -52,7 +53,6 @@ RenderSystem::RenderSystem()
 
 RenderSystem::~RenderSystem()
 {
-
 	if (m_vsblob)m_vsblob->Release();
 	if (m_psblob)m_psblob->Release();
 
@@ -73,6 +73,7 @@ SwapChainPtr RenderSystem::createSwapChain(HWND hwnd, UINT width, UINT height)
 		sc=std::make_shared<SwapChain>(hwnd,width,height,this);
 	}
 	catch (...) {}
+	
 	return sc;
 }
 
@@ -91,6 +92,7 @@ VertexBufferPtr RenderSystem::createVertexBuffer(void* list_vertices, UINT size_
 		vb = std::make_shared<VertexBuffer>(list_vertices, size_vertex, size_list, shader_byte_code, size_byte_shader, this);
 	}
 	catch (...) {}
+	
 	return vb;
 }
 
@@ -102,6 +104,7 @@ IndexBufferPtr RenderSystem::createIndexBuffer(void* list_indices, UINT size_lis
 		ib = std::make_shared<IndexBuffer>(list_indices, size_list, this);
 	}
 	catch (...) {}
+	
 	return ib;
 }
 
@@ -113,6 +116,7 @@ ConstantBufferPtr RenderSystem::createConstantBuffer(void* buffer, UINT size_buf
 		cb = std::make_shared<ConstantBuffer>(buffer, size_buffer, this);
 	}
 	catch (...) {}
+	
 	return cb;
 }
 
@@ -124,6 +128,7 @@ VertexShaderPtr RenderSystem::createVertexShader(const void * shader_byte_code, 
 		vs = std::make_shared<VertexShader>(shader_byte_code, byte_code_size, this);
 	}
 	catch (...) {}
+	
 	return vs;
 }
 
@@ -135,6 +140,7 @@ PixelShaderPtr RenderSystem::createPixelShader(const void * shader_byte_code, si
 		ps = std::make_shared<PixelShader>(shader_byte_code, byte_code_size, this);
 	}
 	catch (...) {}
+	
 	return ps;
 }
 
@@ -176,9 +182,13 @@ void RenderSystem::releaseCompiledShader()
 void RenderSystem::setRasterizerState(bool cull_front)
 {
 	if (cull_front)
+	{
 		m_imm_context->RSSetState(m_cull_front_state);
+	}
 	else
+	{
 		m_imm_context->RSSetState(m_cull_back_state);
+	}
 }
 
 void RenderSystem::initRasterizerState()

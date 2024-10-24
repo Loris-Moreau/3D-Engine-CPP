@@ -1,17 +1,18 @@
 #pragma once
-#include <d3d11.h>
-#include "Prerequisites.h"
 
+#include <d3d11.h>
+
+#include "Prerequisites.h"
 
 class DeviceContext
 {
 public:
 	DeviceContext(ID3D11DeviceContext* device_context, RenderSystem * system);
+	
 	void clearRenderTargetColor(const SwapChainPtr& swap_chain,float red, float green, float blue, float alpha);
 	void setVertexBuffer(const VertexBufferPtr& vertex_buffer);
 	void setIndexBuffer(const IndexBufferPtr& index_buffer);
-
-
+	
 	void drawTriangleList(UINT vertex_count, UINT start_vertex_index);
 	void drawIndexedTriangleList(UINT index_count, UINT start_vertex_index, UINT start_index_location);
 	void drawTriangleStrip(UINT vertex_count, UINT start_vertex_index);
@@ -28,10 +29,10 @@ public:
 	void setConstantBuffer(const PixelShaderPtr& pixel_shader, const ConstantBufferPtr& buffer);
 
 	~DeviceContext();
+	
 private:
 	ID3D11DeviceContext * m_device_context;
 	RenderSystem * m_system = nullptr;
-private:
+	
 	friend class ConstantBuffer;
 };
-

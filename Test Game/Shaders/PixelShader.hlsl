@@ -23,8 +23,10 @@ cbuffer constant: register(b0)
 	row_major float4x4 m_world;
 	row_major float4x4 m_view;
 	row_major float4x4 m_proj;
+	
 	float4 m_light_direction;
 	float4 m_camera_position;
+	
 	float m_time;
 };
 
@@ -35,14 +37,14 @@ float4 psmain(PS_INPUT input) : SV_TARGET
 	float clouds = Clouds.Sample(CloudsSampler, 1.0 - input.texcoord + float2(m_time/100.0,0)).r;
 	float4 earth_night = EarthNight.Sample(EarthNightSampler, 1.0 - input.texcoord);
 
-	//AMBIENT LIGHT
+	// AMBIENT LIGHT
 	float ka = 1.5;
 	float3 ia = float3(0.09, 0.082, 0.082);
 	ia *= (earth_color.rgb);
 
 	float3 ambient_light = ka * ia;
 
-	//DIFFUSE LIGHT
+	// DIFFUSE LIGHT
 	float kd = 0.7;
 	float3 id_day = float3(1.0, 1.0, 1.0);
 	id_day *= (earth_color.rgb + clouds);
@@ -56,7 +58,7 @@ float4 psmain(PS_INPUT input) : SV_TARGET
 
 	float3 diffuse_light = kd * id;
 
-	//SPECULAR LIGHT
+	// SPECULAR LIGHT
 	float ks = earth_spec;
 	float3 is = float3(1.0, 1.0, 1.0);
 	float3 reflected_light = reflect(m_light_direction.xyz, input.normal);
