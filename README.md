@@ -5,3 +5,9 @@
 
 ## How It Works  
 It just does, Don't ask silly questions
+
+
+O & P for the point light radius
+G to unlock mouse
+F to fullscreen
+ZQSD for movement

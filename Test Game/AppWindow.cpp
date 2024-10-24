@@ -204,15 +204,15 @@ void AppWindow::onCreate()
 
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
-	GraphicsEngine::get()->getRenderSystem()->compileVertexShader(L"PointLightVertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+	GraphicsEngine::get()->getRenderSystem()->compileVertexShader(L"Shaders\\PointLightVertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
 	m_vs=GraphicsEngine::get()->getRenderSystem()->createVertexShader(shader_byte_code, size_shader);
 	GraphicsEngine::get()->getRenderSystem()->releaseCompiledShader();
 
-	GraphicsEngine::get()->getRenderSystem()->compilePixelShader(L"PointLightPixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	GraphicsEngine::get()->getRenderSystem()->compilePixelShader(L"Shaders\\PointLightPixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::get()->getRenderSystem()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::get()->getRenderSystem()->releaseCompiledShader();
 
-	GraphicsEngine::get()->getRenderSystem()->compilePixelShader(L"SkyBoxShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	GraphicsEngine::get()->getRenderSystem()->compilePixelShader(L"Shaders\\SkyBoxShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_sky_ps = GraphicsEngine::get()->getRenderSystem()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::get()->getRenderSystem()->releaseCompiledShader();
 
@@ -262,22 +262,22 @@ void AppWindow::onKeyDown(int key)
 
 	if (key == 'Z')
 	{
-		//m_rot_x += 3.14f*m_delta_time;
+		//m_rot_x += 3.14f * m_delta_time;
 		m_forward = 1.0f;
 	}
 	else if (key == 'S')
 	{
-		//m_rot_x -= 3.14f*m_delta_time;
+		//m_rot_x -= 3.14f * m_delta_time;
 		m_forward = -1.0f;
 	}
 	else if (key == 'Q')
 	{
-		//m_rot_y += 3.14f*m_delta_time;
+		//m_rot_y += 3.14f * m_delta_time;
 		m_rightward = -1.0f;
 	}
 	else if (key == 'D')
 	{
-		//m_rot_y -= 3.14f*m_delta_time;
+		//m_rot_y -= 3.14f * m_delta_time;
 		m_rightward = 1.0f;
 	}
 
@@ -318,10 +318,10 @@ void AppWindow::onMouseMove(const Point & mouse_pos)
 	int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
 	int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
 
-	m_rot_x += (mouse_pos.m_y- (height / 2.0f))*m_delta_time*0.1f;
-	m_rot_y += (mouse_pos.m_x - (width / 2.0f))*m_delta_time*0.1f;
+	m_rot_x += ((int)mouse_pos.m_y- ((int)height / 2.0f))*m_delta_time*0.1f;
+	m_rot_y += ((int)mouse_pos.m_x - ((int)width / 2.0f))*m_delta_time*0.1f;
 
-	InputSystem::get()->setCursorPosition(Point((int)(width / 2.0f), (int)(height / 2.0f)));
+	InputSystem::get()->setCursorPosition(Point((width / 2), (height / 2)));
 }
 
 void AppWindow::onLeftMouseDown(const Point & mouse_pos)

@@ -9,55 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="868f528e-8372-4207-9e47-bcf2765b1407" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CameraEntity.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/CameraEntity.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Display.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Display.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Entity.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Entity.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Game.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/Game.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/LightEntity.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/LightEntity.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/MeshEntity.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/MeshEntity.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Game/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/ConstantBuffer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/ConstantBuffer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/GraphicsEngine.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/GraphicsEngine.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/IndexBuffer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/IndexBuffer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/Shader.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/Shader.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/SwapChain.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/Texture2D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/Texture2D.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/VertexBuffer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Graphics/VertexBuffer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Input/InputManager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Input/InputManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/Mat4.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/Rect.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/Vec2.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/Vec3.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/Vec4.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Math/VertexMesh.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Prerequisites.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Material.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Material.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Mesh.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Mesh.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Resource.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Resource.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/ResourceManager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/ResourceManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Texture.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource/Texture.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/AppWindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/PixelShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PixelShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/PointLightPixelShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PointLightPixelShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/PointLightVertexShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PointLightVertexShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/SkyBoxShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/SkyBoxShader.hlsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window/Window.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window/Window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexMeshLayoutShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/VertexMeshLayoutShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/VertexShader.hlsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
@@ -93,29 +53,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "C++ Project.Test Game.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test-23",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;C++ Project.Test Game.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test-23&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\morea\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\morea\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test Game" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -180,6 +140,7 @@
       <workItem from="1717596664645" duration="1276000" />
       <workItem from="1729682266706" duration="2984000" />
       <workItem from="1729694567675" duration="301000" />
+      <workItem from="1729763860315" duration="326000" />
     </task>
     <servers />
   </component>
