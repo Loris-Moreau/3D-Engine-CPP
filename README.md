@@ -14,4 +14,4 @@ It just does, Don't ask silly questions
 - O & P for the point light radius
 
 
-![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/fa8ad8e31af0c356b1c3df8784c8a25b02b871c0/Assets/2024-10-24%2012-04-56.gif "Showcase")
+![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/test-23/Assets/2024-10-24%2012-04-56.gif "Showcase")
