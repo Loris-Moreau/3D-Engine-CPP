@@ -131,7 +131,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://10" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/experimental/filesystem" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/vector" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/xmemory" root0="SKIP_HIGHLIGHTING" />
@@ -199,7 +198,7 @@
       <updated>1711546082469</updated>
       <workItem from="1711546084554" duration="411000" />
       <workItem from="1736789216535" duration="111000" />
-      <workItem from="1736789344623" duration="4854000" />
+      <workItem from="1736789344623" duration="5069000" />
     </task>
     <servers />
   </component>
