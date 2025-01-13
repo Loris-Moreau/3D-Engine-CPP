@@ -1,23 +1,22 @@
 #pragma once
 
 #include <d3d11.h>
-
+#include <wrl.h>
 #include "Prerequisites.h"
 
-class VertexBuffer
+class  VertexBuffer
 {
 public:
-	VertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list, void*shader_byte_code, size_t size_byte_shader, RenderSystem * system);
-	UINT getSizeVertexList();
-	~VertexBuffer();
+	VertexBuffer(const VertexBufferDesc& desc,GraphicsEngine* system);
+	unsigned int getVerticesListSize();
+	unsigned int getVertexSize();
+	void* getBuffer();
+	void* getLayout();
 	
 private:
-	UINT m_size_vertex;
-	UINT m_size_list;
+	VertexBufferDesc m_desc;
 	
-	ID3D11Buffer * m_buffer;
-	ID3D11InputLayout* m_layout;
-	RenderSystem * m_system = nullptr;
-	
-	friend class DeviceContext;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> m_buffer;
+	Microsoft::WRL::ComPtr<ID3D11InputLayout> m_layout;
+	GraphicsEngine* m_system = nullptr;
 };

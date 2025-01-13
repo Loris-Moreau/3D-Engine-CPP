@@ -1,34 +1,29 @@
 #pragma once
 
-#include <Windows.h>
+#include <set>
 
-class Window
+#include "Rect.h"
+
+class  Window
 {
 public:
-	//Initialize the window
 	Window();
-	
-	bool isRun();
-
-	RECT getClientWindowRect();
-	RECT getSizeScreen();
-
-	//EVENTS
-	virtual void onCreate();
-	virtual void onUpdate();
-	virtual void onDestroy();
-	virtual void onFocus();
-	virtual void onKillFocus();
-	virtual void onSize();
-
-	//Release the window
 	~Window();
-	
-private:
-	bool broadcast();
-	
+
+	Rect getClientSize();
+	Rect getScreenSize();
+
+	// Event
+	virtual void onCreate() {}
+	virtual void onUpdate() {}
+	virtual void onDestroy() {}
+	virtual void onFocus() {}
+	virtual void onKillFocus() {}
+	virtual void onSize(const  Rect& size) {}
+
+	void* getHandle();
+	void setTitle(const wchar_t* title);
+
 protected:
-	HWND m_hwnd;
-	bool m_is_run;
-	bool m_is_init = false;
+	void* m_hwnd = nullptr;
 };

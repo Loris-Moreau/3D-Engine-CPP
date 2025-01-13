@@ -1,47 +1,28 @@
 #include "Texture.h"
-
-#include <DirectXTex.h>
-
+#include "ResourceManager.h"
 #include "GraphicsEngine.h"
+#include "Game.h"
+#include "Texture2D.h"
+#include <stdexcept>
+#include "Prerequisites.h"
 
-Texture::Texture(const wchar_t* full_path): Resource(full_path)
+Texture::Texture(const wchar_t* full_path, ResourceManager* manager) : Resource(full_path, manager)
 {
-	DirectX::ScratchImage image_data;
-	HRESULT res = DirectX::LoadFromWICFile(full_path, DirectX::WIC_FLAGS_IGNORE_SRGB, nullptr, image_data);
-
-	if (SUCCEEDED(res))
-	{
-		res = DirectX::CreateTexture(GraphicsEngine::get()->getRenderSystem()->m_d3d_device, image_data.GetImages(), image_data.GetImageCount(), image_data.GetMetadata(), &m_texture);
-		if (FAILED(res)) throw std::exception("Texture not created successfully");
-
-		D3D11_SHADER_RESOURCE_VIEW_DESC desc = {};
-		desc.Format = image_data.GetMetadata().format;
-		desc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-		desc.Texture2D.MipLevels = (UINT)image_data.GetMetadata().mipLevels;
-		desc.Texture2D.MostDetailedMip = 0;
-
-		D3D11_SAMPLER_DESC sampler_desc = {};
-		sampler_desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
-		sampler_desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
-		sampler_desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
-		sampler_desc.Filter = D3D11_FILTER_ANISOTROPIC;
-		sampler_desc.MinLOD = 0.0f;
-		sampler_desc.MaxLOD = (FLOAT)image_data.GetMetadata().mipLevels;
-
-		res = GraphicsEngine::get()->getRenderSystem()->m_d3d_device->CreateSamplerState(&sampler_desc,&m_sampler_state);
-		if (FAILED(res)) throw std::exception("Texture not created successfully");
-
-		res = GraphicsEngine::get()->getRenderSystem()->m_d3d_device->CreateShaderResourceView(m_texture, &desc, &m_shader_res_view);
-		if (FAILED(res)) throw std::exception("Texture not created successfully");
-	}
-	else
-	{
-		throw std::exception("Texture not created successfully");
-	}
+	m_texture = manager->getGame()->getGraphicsEngine()->createTexture2D(full_path);
+	if (!m_texture) WARNING(L"Texture - Dynamic Texture : Creation failed");
 }
 
-Texture::~Texture()
+Texture::Texture(const TextureDesc& desc, ResourceManager* manager): Resource(L"",manager)
 {
-	m_shader_res_view->Release();
-	m_texture->Release();
+	Texture2DDesc desc2d = {};
+	desc2d.size = desc.size;
+	desc2d.type = desc.type;
+
+	m_texture = manager->getGame()->getGraphicsEngine()->createTexture2D(desc2d);
+	if (!m_texture) WARNING(L"Texture - Dynamic Texture : Creation failed");
+}
+
+Texture2DPtr Texture::getTexture2D()
+{
+	return m_texture;
 }

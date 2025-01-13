@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Input\InputManager.h"
+#include "InputManager.h"
 
-#include "Resource\Material.h"
-#include "Resource\Mesh.h"
-#include "Resource\Texture.h"
+#include "Material.h"
+#include "Texture.h"
+#include "Mesh.h"
 
-#include "Game\CameraEntity.h"
-#include "Game\Display.h"
-#include "Game\Entity.h"
-#include "Game\Game.h"
-#include "Game\LightEntity.h"
-#include "Game\MeshEntity.h"
+#include "Entity.h"
+#include "CameraEntity.h"
+#include "Display.h"
+#include "MeshEntity.h"
+#include "LightEntity.h"
+#include "Game.h"

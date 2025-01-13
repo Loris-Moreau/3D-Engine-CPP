@@ -1,29 +1,34 @@
 #pragma once
 
 #include <d3d11.h>
-
+#include <wrl.h>
 #include "Prerequisites.h"
+#include "Rect.h"
 
-class SwapChain
+struct SwapChainDesc
+{
+	void* windowHandle = nullptr;
+	Rect size;
+};
+
+class  SwapChain
 {
 public:
-	//Initialize SwapChain for a window
-	SwapChain(HWND hwnd,UINT width,UINT height,RenderSystem * system);
-	
-	void setFullScreen(bool fullscreen, unsigned int width, unsigned int height);
-	void resize(unsigned int width, unsigned int height);
+	SwapChain(const SwapChainDesc& desc, GraphicsEngine* system);
+	void setFullScreen(bool fullscreen, const  Rect& size);
+	void resize(const  Rect& size);
 	bool present(bool vsync);
 
-	//Release the swap chain
-	~SwapChain();
+	void* getRenderTargetView();
+	void* getDepthStencilView();
 	
 private:
 	void reloadBuffers(unsigned int width, unsigned int height);
+
+public:
+	Microsoft::WRL::ComPtr <IDXGISwapChain> m_swap_chain = nullptr;
+	Microsoft::WRL::ComPtr <ID3D11RenderTargetView> m_rtv = nullptr;
+	Microsoft::WRL::ComPtr <ID3D11DepthStencilView> m_dsv = nullptr;
 	
-	IDXGISwapChain * m_swap_chain = nullptr;
-	ID3D11RenderTargetView* m_rtv = nullptr;
-	ID3D11DepthStencilView * m_dsv = nullptr;
-	RenderSystem * m_system = nullptr;
-	
-	friend class DeviceContext;
+	GraphicsEngine* m_system = nullptr;
 };

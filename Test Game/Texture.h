@@ -1,19 +1,22 @@
 #pragma once
 
-#include <d3d11.h>
-
 #include "Resource.h"
+#include "Rect.h"
 
-class Texture: public Resource
+struct TextureDesc
+{
+	Rect size = {};
+	TextureType type = TextureType::Normal;
+};
+
+class  Texture : public  Resource
 {
 public:
-	Texture(const wchar_t* full_path);
-	~Texture();
+	Texture(const wchar_t* full_path, ResourceManager* manager);
+	Texture(const TextureDesc& desc, ResourceManager* manager);
+	Texture2DPtr getTexture2D();
 	
 private:
-	ID3D11Resource * m_texture = nullptr;
-	ID3D11ShaderResourceView *m_shader_res_view = nullptr;
-	ID3D11SamplerState* m_sampler_state = nullptr;
-	
-	friend class DeviceContext;
+	Texture2DPtr m_texture;
+	friend class  GraphicsEngine;
 };

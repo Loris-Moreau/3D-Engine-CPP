@@ -1,5 +1,15 @@
 #include "Resource.h"
+#include "ResourceManager.h"
 
-Resource::Resource(const wchar_t* full_path): m_full_path(full_path) {}
+Resource::Resource(const wchar_t* full_path, ResourceManager* manager) : m_full_path(full_path), m_resManager(manager)
+{
+}
 
-Resource::~Resource() {}
+Resource::~Resource()
+{
+}
+
+std::wstring Resource::getPath()
+{
+    return m_full_path;
+}

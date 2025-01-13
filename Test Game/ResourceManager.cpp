@@ -1,44 +1,73 @@
 #include "ResourceManager.h"
 
-#if __cplusplus <= 201402L 
-#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
-#include <experimental/filesystem>
-#endif
-
-#if __cplusplus >= 201703L
 #include <filesystem>
-#endif
+#include <__msvc_filebuf.hpp>
+#include <filesystem>
 
-ResourceManager::ResourceManager() {}
+#include "Material.h"
+#include "Mesh.h"
+#include "Texture.h"
+#include "Texture.h"
 
-ResourceManager::~ResourceManager() {}
-
-ResourcePtr ResourceManager::createResourceFromFile(const wchar_t * file_path)
+ResourceManager::ResourceManager(Game* game):m_game(game)
 {
-#if (_MSC_VER >= 1900 && _MSC_VER <= 1916)  || ( _MSC_VER >= 1920 && __cplusplus <= 201402L) 
-	std::wstring full_path = std::experimental::filesystem::absolute(file_path);
-#endif
+}
 
-#if _MSC_VER >= 1920 && __cplusplus > 201402L 
-	std::wstring full_path = std::filesystem::absolute(file_path);
-#endif
+ResourcePtr ResourceManager::createResourceFromFileConcrete(const wchar_t* path)
+{
+	auto it = m_mapResources.find(path);
 
-	
-	auto it = m_map_resources.find(full_path);
+	std::filesystem::path resPath = path;
+	auto ext = resPath.extension();
 
-	if (it != m_map_resources.end())
+	if (it != m_mapResources.end())
 	{
+		if (!ext.compare(L".hlsl") || !ext.compare(L".fx"))
+		{
+			return std::make_shared<Material>(std::static_pointer_cast<Material>(it->second), this);
+		}
 		return it->second;
 	}
 
-	Resource* raw_res = this->createResourceFromFileConcrete(full_path.c_str());
 
-	if (raw_res)
+	if (!std::filesystem::exists(resPath)) return ResourcePtr();
+
+	
+	if (!ext.compare(L".jpg") || !ext.compare(L".png") || !ext.compare(L".bmp") || !ext.compare(L".tga"))
 	{
-		ResourcePtr res(raw_res);
-		m_map_resources[full_path] = res;
-		return res;
+		//texture resource
+		auto ptr = std::make_shared<Texture>(resPath.c_str(), this);
+		if (ptr)
+		{
+			m_mapResources.emplace(path, ptr);
+			return ptr;
+		}
+	}
+	else if (!ext.compare(L".obj"))
+	{
+		//mesh resource
+		auto ptr = std::make_shared<Mesh>(resPath.c_str(), this);
+		if (ptr)
+		{
+			m_mapResources.emplace(path, ptr);
+			return ptr;
+		}
+	}
+	else if (!ext.compare(L".hlsl") || !ext.compare(L".fx"))
+	{
+		//material resource
+		auto ptr = std::make_shared<Material>(resPath.c_str(), this);
+		if (ptr)
+		{
+			m_mapResources.emplace(path, ptr);
+			return ptr;
+		}
 	}
 
-	return nullptr;
+	return ResourcePtr();
+}
+
+Game* ResourceManager::getGame()
+{
+	return m_game;
 }

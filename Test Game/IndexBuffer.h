@@ -1,21 +1,20 @@
 #pragma once
 
 #include <d3d11.h>
+#include <wrl.h>
 
 #include "Prerequisites.h"
 
-class IndexBuffer
+class  IndexBuffer
 {
 public:
-	IndexBuffer(void* list_indices, UINT size_list,RenderSystem * system);
-	UINT getSizeIndexList();
-	~IndexBuffer();
+	IndexBuffer(const IndexBufferDesc& desc, GraphicsEngine* system);
+	unsigned int getIndicesListSize();
+	void* getBuffer();
 	
 private:
-	UINT m_size_list;
+	IndexBufferDesc m_desc;
 	
-	ID3D11Buffer * m_buffer;
-	RenderSystem * m_system = nullptr;
-	
-	friend class DeviceContext;
+	Microsoft::WRL::ComPtr <ID3D11Buffer> m_buffer;
+	GraphicsEngine* m_system = nullptr;
 };

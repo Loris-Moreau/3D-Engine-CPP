@@ -1,171 +1,138 @@
 #include "Window.h"
-
-#include <exception>
-//Window* window=nullptr;
+#include <assert.h>
+#include <Windows.h>
+#include <stdexcept>
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-	switch (msg)
+	try
 	{
+		//GetWindowLong(hwnd,)
+		switch (msg)
+		{
 		case WM_CREATE:
 		{
 			// Event fired when the window is created
-			// collected here..
+			// collected here...
 
 			break;
 		}
 		case WM_SIZE:
 		{
 			// Event fired when the window is resized
-			Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-			if (window)
-			{
-				window->onSize();
-			}
+			auto window = reinterpret_cast<Window*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+			if (window) window->onSize(window->getClientSize());
 			break;
 		}
 		case WM_SETFOCUS:
 		{
 			// Event fired when the window get focus
-			Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-			if (window)
-			{
-				window->onFocus();
-			}
-			
+			auto window = reinterpret_cast<Window*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+			if (window) window->onFocus();
 			break;
 		}
 		case WM_KILLFOCUS:
 		{
 			// Event fired when the window lost focus
-			Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+			auto window = reinterpret_cast<Window*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
 			window->onKillFocus();
-			
 			break;
 		}
 		case WM_DESTROY:
 		{
 			// Event fired when the window is destroyed
-			Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+			auto window = reinterpret_cast<Window*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
 			window->onDestroy();
-			::PostQuitMessage(0);
-			
+			//::PostQuitMessage(0);
 			break;
 		}
-	
+		case WM_MOVE:
+		{
+			// Event fired when the window is destroyed
+			auto window = reinterpret_cast<Window*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+			if (window) window->onSize(window->getClientSize());
+			//::PostQuitMessage(0);
+			break;
+		}
+		case WM_CLOSE:
+		{
+			PostQuitMessage(0);
+			break;
+		}
+
 		default:
 			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+		}
+	}
+	catch (const std::runtime_error& e)
+	{
+		MessageBoxA(hwnd, e.what(), "DirectX Game | Error", MB_ICONERROR | MB_OK);
+		PostQuitMessage(0);
 	}
 
 	return NULL;
 }
 
+
 Window::Window()
 {
-	//Setting up WNDCLASSEX object
-	WNDCLASSEX wc;
-	wc.cbClsExtra = NULL;
+	WNDCLASSEX wc = {};
 	wc.cbSize = sizeof(WNDCLASSEX);
-	wc.cbWndExtra = NULL;
-	wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
-	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-	wc.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
-	wc.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
-	wc.hInstance = nullptr;
-	wc.lpszClassName = "MyWindowClass";
-	wc.lpszMenuName = "";
-	wc.style = NULL;
+	wc.lpszClassName = (LPCSTR)L" 3DWindow";
 	wc.lpfnWndProc = &WndProc;
 
-	if (!::RegisterClassEx(&wc)) // If the registration of class fail, the function will return false
+	ATOM classId = 0;
+	if (!GetClassInfoEx(HINSTANCE(), (LPCSTR)L" 3DWindow", &wc))
 	{
-		throw std::exception("Window not created successfully");
+		classId = RegisterClassEx(&wc);
+		if (!classId) throw std::runtime_error("RegisterClassEx failed");
 	}
-	
-	/*if (!window)
-	window = this;*/
 
-	//Creation of the window
-	m_hwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, "MyWindowClass", "DirectX Application",
-		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768, nullptr, nullptr, nullptr, nullptr);
+	RECT rc = { 0,0,1024,768 };
+	AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
 
-	//if the creation fail return false
-	if (!m_hwnd)
-	{
-		throw std::exception("Window not created successfully");
-	}
-	
-	//show up the window
-	::ShowWindow(m_hwnd, SW_SHOW);
-	::UpdateWindow(m_hwnd);
-	
-	//set this flag to true to indicate that the window is initialized and running
-	m_is_run = true;
+	m_hwnd = CreateWindowEx(NULL, MAKEINTATOM(classId), (LPCSTR)L"", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+		rc.right - rc.left, rc.bottom - rc.top, HWND(), HMENU(), HINSTANCE(), nullptr);
+
+	if (!m_hwnd) throw std::runtime_error("CreateWindowEx failed");
+
+	SetWindowLongPtr((HWND)m_hwnd, GWLP_USERDATA, (LONG_PTR)this);
+
+	ShowWindow((HWND)m_hwnd, SW_SHOW);
+	UpdateWindow((HWND)m_hwnd);
 }
 
-bool Window::broadcast()
+
+Rect Window::getClientSize()
 {
-	MSG msg;
-
-	if (!this->m_is_init)
-	{
-		SetWindowLongPtr(m_hwnd, GWLP_USERDATA, (LONG_PTR)this);
-		this->onCreate();
-		this->m_is_init = true;
-	}
-
-	this->onUpdate();
-
-	while (::PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) > 0)
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-
-	Sleep(1);
-
-	return true;
+	RECT rc = {};
+	::GetClientRect((HWND)this->m_hwnd, &rc);
+	::ClientToScreen((HWND)this->m_hwnd, (LPPOINT)&rc.left);
+	::ClientToScreen((HWND)this->m_hwnd, (LPPOINT)&rc.right);
+	return Rect(rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
 }
 
-bool Window::isRun()
+Rect Window::getScreenSize()
 {
-	if (m_is_run)
-	{
-		broadcast();
-	}
-	return m_is_run;
-}
-
-RECT Window::getClientWindowRect()
-{
-	RECT rc;
-	::GetClientRect(this->m_hwnd, &rc);
-	return rc;
-}
-
-RECT Window::getSizeScreen()
-{
-	RECT rc;
+	RECT rc = {};
 
 	rc.right = ::GetSystemMetrics(SM_CXSCREEN);
 	rc.bottom = ::GetSystemMetrics(SM_CYSCREEN);
 
-	return rc;
+	return Rect(rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
 }
 
-void Window::onCreate() {}
-
-void Window::onUpdate() {}
-
-void Window::onDestroy()
+void* Window::getHandle()
 {
-	m_is_run = false;
+	return m_hwnd;
 }
 
-void Window::onFocus() {}
+void Window::setTitle(const wchar_t* title)
+{
+	::SetWindowText((HWND)m_hwnd, (LPCSTR)title);
+}
 
-void Window::onKillFocus() {}
-
-void Window::onSize() {}
-
-Window::~Window() {}
+Window::~Window()
+{
+	DestroyWindow((HWND)m_hwnd);
+}

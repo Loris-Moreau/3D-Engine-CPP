@@ -1,31 +1,22 @@
-#include "AppWindow.h"
-#include "InputSystem.h"
+#include "Descent_Game/DescentGame.h"
+
+#include <iostream>
+#include <Windows.h>
 
 int main()
 {
+	// Shooter Game
 	try
-	{
-		GraphicsEngine::create();
-		InputSystem::create();
+	{  
+		DescentGame game;
+		game.run();
 	}
-	catch (...) { return -1; }
-
+	catch (const std::exception& e)
 	{
-		try
-		{
-			AppWindow app;
-			while (app.isRun());
-		}
-		catch (...)
-		{
-			InputSystem::release();
-			GraphicsEngine::release();
-			return -1;
-		}
+		std::string s = "Error : ";
+		s += e.what();
+		MessageBoxA(nullptr, s.c_str(), "DirectX Game | Error", MB_ICONERROR | MB_OK);
 	}
-
-	InputSystem::release();
-	GraphicsEngine::release();
 
 	return 0;
 }
