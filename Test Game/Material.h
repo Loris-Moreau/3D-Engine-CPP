@@ -13,7 +13,7 @@ public:
     Material(const wchar_t* full_path, ResourceManager* manager);
     Material(const  MaterialPtr& material, ResourceManager* manager);
 
-    void addTexture(const  TexturePtr& texture);
+    void addTexture(const TexturePtr& texture);
     void removeTexture(unsigned int index);
 
     void setData(void* data, unsigned int size);

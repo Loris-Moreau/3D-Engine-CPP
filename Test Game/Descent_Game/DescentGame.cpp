@@ -8,9 +8,9 @@ void DescentGame::onCreate()
 
 	//Adding SkyBox
 	{
-		auto tex = createTexture(L"Assets/Textures/stars_map.jpg");
-		auto mesh = createMesh(L"Assets/Meshes/sphere.obj");
-		auto mat = createMaterial(L"Assets/Shaders/skybox.hlsl");
+		auto tex = createTexture(L"../Assets/Textures/stars_map.jpg");
+		auto mesh = createMesh(L"../Assets/Meshes/sphere.obj");
+		auto mat = createMaterial(L"../Assets/Shaders/skybox.hlsl");
 		mat->addTexture(tex);
 		mat->setCullMode(CullMode::Front);
 
@@ -38,9 +38,9 @@ void DescentGame::onCreate()
 	{
 		srand((unsigned int)time(nullptr));
 
-		auto tex = createTexture(L"Assets/Textures/asteroid.jpg");
-		auto mesh = createMesh(L"Assets/Meshes/asteroid.obj");
-		auto mat = createMaterial(L"Assets/Shaders/base.hlsl");
+		auto tex = createTexture(L"../Assets/Textures/asteroid.jpg");
+		auto mesh = createMesh(L"../Assets/Meshes/asteroid.obj");
+		auto mat = createMaterial(L"../Assets/Shaders/base.hlsl");
 		mat->addTexture(tex);
 
 		for (unsigned int i = 0; i < 200; i++)

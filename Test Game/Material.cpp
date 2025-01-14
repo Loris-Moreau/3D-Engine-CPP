@@ -17,8 +17,15 @@ Material::Material(const  MaterialPtr& material, ResourceManager* manager) : Res
 }
 
 
-void Material::addTexture(const  TexturePtr& texture)
+void Material::addTexture(const TexturePtr& texture)
 {
+	
+	if (texture == nullptr)
+	{
+		std::cerr << "TexturePtr Invalid | Material::addTexture" << '\n';
+		return;
+	}
+	
 	m_vec_textures.push_back(texture);
 }
 
@@ -48,7 +55,7 @@ void Material::setUserData(void* data, unsigned int size)
 		m_userBuffer->update(data);
 }
 
-void Material::setCullMode(const  CullMode& mode)
+void Material::setCullMode(const CullMode& mode)
 {
 	m_cull_mode = mode;
 }

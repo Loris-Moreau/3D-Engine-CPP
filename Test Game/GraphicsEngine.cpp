@@ -240,8 +240,13 @@ void GraphicsEngine::setShader(const ShaderPtr& shader)
 	m_immContext->PSSetShader((ID3D11PixelShader*)shader->getPixelShader(), nullptr, 0);
 }
 
-void GraphicsEngine::setTexture(const  TexturePtr* texture, unsigned int num_textures)
+void GraphicsEngine::setTexture(const TexturePtr* texture, unsigned int num_textures)
 {
+	if (texture == nullptr)
+	{
+		std::cerr << "TexturePtr | GraphicsEngine::SetTexture" << '\n';
+	}
+	
 	ID3D11ShaderResourceView* list_res[32];
 	ID3D11SamplerState* list_sampler[32];
 	for (unsigned int i = 0; i < num_textures; i++)

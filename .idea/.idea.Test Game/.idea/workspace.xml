@@ -7,115 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b7c4b74-50c5-4716-bfed-9434b8b7d085" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/CameraEntity.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Display.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Display.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Entity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Entity.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Game.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Game.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/InputManager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/InputManager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/LightEntity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/LightEntity.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Material.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Material.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/MeshEntity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/MeshEntity.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Rect.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Shader.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Shader.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Texture2D.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Texture2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="e9584350-07fb-44e6-a516-c99b50369595" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Descent-Cockpit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.Build.CppClean.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/TestGame.lastbuildstate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/All.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/All.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/ConstantBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ConstantBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/ConstantBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ConstantBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/DeviceContext.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/DeviceContext.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/IndexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/IndexBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/IndexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/IndexBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/InputListener.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/InputSystem.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/InputSystem.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Mesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Mesh.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Mesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/MeshManager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/MeshManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/PixelShader.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/PixelShader.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Point.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Prerequisites.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/RenderSystem.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/RenderSystem.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Resource.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/ResourceManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ResourceManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/ResourceManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ResourceManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/SwapChain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/SwapChain.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Texture.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Texture.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/TextureManager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/TextureManager.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Vector2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector2D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Vector4D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector4D.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexBuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/VertexMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexMesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/VertexShader.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/VertexShader.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Material.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Material.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.Build.CppClean.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.exe.recipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/CL.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/Test Game.lastbuildstate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link-cvtres.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link-cvtres.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link-rc.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link-rc.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.command.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.read.2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/link.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/Test Game.tlog/unsuccessfulbuild" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Test Game.pdb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,19 +32,27 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/experimental/filesystem" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/vector" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/xmemory" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/Prerequisites.h" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2raFJlRPiRVGWp10QphyjPfnsrd" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2rcJWHK9YBYdlFZ5yuNXfxiGXVj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -159,7 +68,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "IdeDpaMemoryAllocationsPageId",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -191,14 +100,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9b7c4b74-50c5-4716-bfed-9434b8b7d085" name="Changes" comment="" />
+      <changelist id="e9584350-07fb-44e6-a516-c99b50369595" name="Changes" comment="" />
       <created>1711546082469</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711546082469</updated>
       <workItem from="1711546084554" duration="411000" />
-      <workItem from="1736789216535" duration="111000" />
-      <workItem from="1736789344623" duration="5069000" />
+      <workItem from="1736852465604" duration="1779000" />
     </task>
     <servers />
   </component>
