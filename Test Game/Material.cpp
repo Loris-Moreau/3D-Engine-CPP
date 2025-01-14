@@ -1,5 +1,7 @@
 #include "Material.h"
+
 #include <stdexcept>
+
 #include "ConstantBuffer.h"
 #include "Game.h"
 #include "GraphicsEngine.h"
@@ -19,7 +21,6 @@ Material::Material(const  MaterialPtr& material, ResourceManager* manager) : Res
 
 void Material::addTexture(const TexturePtr& texture)
 {
-	
 	if (texture == nullptr)
 	{
 		std::cerr << "TexturePtr Invalid | Material::addTexture" << '\n';
@@ -37,22 +38,64 @@ void Material::removeTexture(unsigned int index)
 
 void Material::setData(void* data, unsigned int size)
 {
+/*
 	auto engine = m_resManager->getGame()->getGraphicsEngine();
-
+	
 	if (!m_constant_buffer)
 		m_constant_buffer = engine->createConstantBuffer({ data, size });
 	else
 		m_constant_buffer->update(data);
+*/
+	
+	if (!data || size == 0)
+	{
+		// Log or handle invalid input
+		std::cout << "!data || size == 0" << '\n';
+		return;
+	}
+
+	if (this == nullptr)
+	{
+		std::cerr << "Material::setData | this = null" << " How, genuinely... how ? " << '\n';
+		// how the actual fck did I manage to make this = NULL, just how ?
+		// Kill me
+		return;
+	}
+	
+	auto game = m_resManager ? m_resManager->getGame() : nullptr;
+	auto engine = game ? game->getGraphicsEngine() : nullptr;
+
+	if (!engine)
+	{
+		// Log or handle missing engine
+		std::cout << "!engine" << '\n';
+		return;
+	}
+
+	if (!m_constant_buffer)
+	{
+		m_constant_buffer = engine->createConstantBuffer({ data, size });
+		if (!m_constant_buffer)
+		{
+			// Log failure to create constant buffer
+			std::cout << "!m_constant_buffer" << '\n';
+			return;
+		}
+	}
+	else
+	{
+		m_constant_buffer->update(data);
+	}
 }
 
 void Material::setUserData(void* data, unsigned int size)
 {
 	auto engine = m_resManager->getGame()->getGraphicsEngine();
-
+	
 	if (!m_userBuffer)
 		m_userBuffer = engine->createConstantBuffer({ data, size });
 	else
-		m_userBuffer->update(data);
+		m_userBuffer->update(data); 
 }
 
 void Material::setCullMode(const CullMode& mode)

@@ -5,9 +5,6 @@
 
 int main()
 {
-	
-	
-	// Shooter Game
 	try
 	{  
 		DescentGame game;
@@ -19,6 +16,6 @@ int main()
 		s += e.what();
 		MessageBoxA(nullptr, s.c_str(), "DirectX Game | Error", MB_ICONERROR | MB_OK);
 	}
-
+	
 	return 0;
 }

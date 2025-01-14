@@ -9,11 +9,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e9584350-07fb-44e6-a516-c99b50369595" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/DescentGame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/VertexMeshLayoutShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/VertexMeshLayoutShader.hlsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Material.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Material.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PixelShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PointLightPixelShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PointLightVertexShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/SkyBoxShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/VertexMeshLayoutShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/VertexShader.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
@@ -46,12 +51,41 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://18" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/include/vector" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/MyMaterial.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/PixelShader.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/PointLightPixelShader.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/PointLightVertexShader.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/SkyBox.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/SkyBoxShader.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/TemplateMaterial.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/VertexMeshLayoutShader.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/base.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2rcJWHK9YBYdlFZ5yuNXfxiGXVj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -107,6 +141,7 @@
       <updated>1711546082469</updated>
       <workItem from="1711546084554" duration="411000" />
       <workItem from="1736852465604" duration="1779000" />
+      <workItem from="1736855086460" duration="2123000" />
     </task>
     <servers />
   </component>

@@ -28,5 +28,6 @@ private:
     ConstantBufferPtr m_userBuffer;
     std::vector<TexturePtr> m_vec_textures;
     CullMode m_cull_mode = CullMode::Back;
+    
     friend class  GraphicsEngine;
 };
