@@ -8,13 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9584350-07fb-44e6-a516-c99b50369595" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Material.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/NewFile1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Entity.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
@@ -144,7 +140,7 @@
       <workItem from="1711546084554" duration="411000" />
       <workItem from="1736852465604" duration="1779000" />
       <workItem from="1736855086460" duration="2123000" />
-      <workItem from="1736932732413" duration="5873000" />
+      <workItem from="1736932732413" duration="7416000" />
     </task>
     <servers />
   </component>

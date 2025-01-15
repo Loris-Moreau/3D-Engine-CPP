@@ -46,19 +46,19 @@ void Entity::getWorldMatrix(Matrix4x4& world)
 	world = m_world;
 }
 
-void Entity::setPosition(const  Vector3D& position)
+void Entity::setPosition(const Vector3D& position)
 {
 	m_position = position;
 	processWorldMatrix();
 }
 
-void Entity::setRotation(const  Vector3D& rotation)
+void Entity::setRotation(const Vector3D& rotation)
 {
 	m_rotation = rotation;
 	processWorldMatrix();
 }
 
-void Entity::setScale(const  Vector3D& scale)
+void Entity::setScale(const Vector3D& scale)
 {
 	m_scale = scale;
 	processWorldMatrix();

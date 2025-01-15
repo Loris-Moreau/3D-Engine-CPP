@@ -125,9 +125,14 @@ void Ship::onUpdate(float deltaTime)
 	
 	auto pos = m_position + zdir * forward * deltaTime * 100.0f * speed;
 	setPosition(pos);
-	Vector3D rollMove = {baseRot.m_x, baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed, baseRot.m_z};
-	setRotation(rollMove);
 	
+	//Vector3D rollMove = {baseRot.m_x, baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed, baseRot.m_z};
+	//setRotation(rollMove);
+	float testRoll = baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed;
+	w.setRotationY(testRoll);
+	
+	
+	// Camera
 	Matrix4x4 w2;
 	m_camera->getWorldMatrix(w2);
 	 zdir = w2.getZDirection();
