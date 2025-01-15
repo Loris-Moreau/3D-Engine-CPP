@@ -3,8 +3,8 @@
 
 void Projectile::onCreate()
 {
-    auto mesh = createMesh(L"Assets/Meshes/sphere.obj");
-    auto mat = createMaterial(L"Assets/Shaders/projectile.hlsl");
+    auto mesh = createMesh(L"../Assets/Meshes/sphere.obj");
+    auto mat = createMaterial(L"../Assets/Shaders/projectile.hlsl");
 
     setMesh(mesh);
     addMaterial(mat);

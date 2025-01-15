@@ -1,17 +1,24 @@
 # 3D Engine
- This is a *test* code for a 3D Game Engine in C++
-
-> This will create a window that will let you visualize & modify your game in 3D.
+ This is a Remake of descent in my 3D Engine in C++
 
 ![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/test-23/Assets/2024-10-24%2012-04-56.gif "Showcase")
 
 
 ### Controls : 
 
-- ZQSD for movement
-- G to unlock the mouse
-- F to fullscreen
-- O & P for the point light radius
+- ZQSD for Movement
+- Space = Slide Up
+- Ctrl/C = Slide Down
+
+- Esc to Unlock Mouse
+
+- A = roll left
+- E = roll right
+- W = Pitch Up
+- X = Pitch Down
+
+- LClick = Shoot Primary (Lasers)
+- RClick = Shoot Secondary (Missiles)
 
 
 ## How It Works  

@@ -49,14 +49,13 @@ void Material::setData(void* data, unsigned int size)
 	
 	if (!data || size == 0)
 	{
-		// Log or handle invalid input
-		std::cout << "!data || size == 0" << '\n';
+		std::cout << "Material::setData | !data || size == 0" << '\n';
 		return;
 	}
 
 	if (this == nullptr)
 	{
-		std::cerr << "Material::setData | this = null" << " How, genuinely... how ? " << '\n';
+		std::cerr << "Material::setData | this = null" << " Check Asset Path where this function is called" << '\n';
 		// how the actual fck did I manage to make this = NULL, just how ?
 		// Kill me
 		return;
@@ -67,8 +66,7 @@ void Material::setData(void* data, unsigned int size)
 
 	if (!engine)
 	{
-		// Log or handle missing engine
-		std::cout << "!engine" << '\n';
+		std::cout << "Material::setData | !engine" << '\n';
 		return;
 	}
 
@@ -77,8 +75,7 @@ void Material::setData(void* data, unsigned int size)
 		m_constant_buffer = engine->createConstantBuffer({ data, size });
 		if (!m_constant_buffer)
 		{
-			// Log failure to create constant buffer
-			std::cout << "!m_constant_buffer" << '\n';
+			std::cout << "Material::setData | !m_constant_buffer" << '\n';
 			return;
 		}
 	}

@@ -26,6 +26,9 @@ void Ship::onUpdate(float deltaTime)
 	float forward = 0.0f;
 	float rightward = 0.0f;
 
+	float roll = 0.0f;
+	float rotAngle = 45.0f;
+	
 	float speed = 1.0f;
 	bool turbo = false;
 
@@ -38,11 +41,11 @@ void Ship::onUpdate(float deltaTime)
 	{
 		forward = -1.0f;
 	}
-	if (input->isKeyDown(Key::Q))
+	if (input->isKeyDown(Key::Q)) // Strafe Left
 	{
 		rightward = -1.0f;
 	}
-	if (input->isKeyDown(Key::D))
+	if (input->isKeyDown(Key::D)) // Strafe Right 
 	{
 		rightward = 1.0f;
 	}
@@ -50,6 +53,15 @@ void Ship::onUpdate(float deltaTime)
 	{
 		speed = 3.0f;
 		turbo = true;
+	}
+	// Roll
+	if (input->isKeyDown(Key::A)) // roll left
+	{
+		roll = -1.0f;
+	}
+	if (input->isKeyDown(Key::E)) // roll right
+	{
+		roll = 1.0f;
 	}
 
 	// Handle position and rotation of spaceship and camera
@@ -73,8 +85,7 @@ void Ship::onUpdate(float deltaTime)
 		m_cam_distance = 18.0f;
 	}
 
-	auto vec = Vector3D::lerp(Vector3D(m_current_cam_distance,0,0),
-		Vector3D(m_cam_distance,0,0), 2.0f * deltaTime);
+	auto vec = Vector3D::lerp(Vector3D(m_current_cam_distance,0,0), Vector3D(m_cam_distance,0,0), 2.0f * deltaTime);
 	m_current_cam_distance = vec.m_x;
 
 
@@ -82,9 +93,13 @@ void Ship::onUpdate(float deltaTime)
 	m_pitch += input->getMouseYAxis() * 0.001f;
 
 	if (m_pitch < -1.57f)
+	{
 		m_pitch = -1.57f;
+	}
 	else if (m_pitch > 1.57f)
+	{
 		m_pitch = 1.57f;
+	}
 	
 	
 	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0), Vector3D(m_pitch, m_yaw, 0), 5.0f * deltaTime);
@@ -98,32 +113,34 @@ void Ship::onUpdate(float deltaTime)
 	m_camYaw = curr_cam.m_y;
 
 	m_camera->setRotation(Vector3D(m_camPitch, m_camYaw, 0));
-	
 
+	
 	Matrix4x4 w;
 	getWorldMatrix(w);
 	auto zdir = w.getZDirection();
 	auto xdir = w.getXDirection();
 	auto ydir = w.getYDirection();
-	
 
+	auto baseRot = getRotation(); 
+	
 	auto pos = m_position + zdir * forward * deltaTime * 100.0f * speed;
 	setPosition(pos);
-
-
+	Vector3D rollMove = {baseRot.m_x, baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed, baseRot.m_z};
+	setRotation(rollMove);
+	
 	Matrix4x4 w2;
 	m_camera->getWorldMatrix(w2);
 	 zdir = w2.getZDirection();
 	 xdir = w2.getXDirection();
 	 ydir = w2.getYDirection();
 
-
+	
 	auto camPos = Vector3D(pos + zdir * -m_current_cam_distance);
 	camPos = camPos + ydir * 6.5f;
-
+	
 	m_camera->setPosition(camPos);
-
-	//On left mouse click, spawn the projectile along the spaceship direction
+	
+	//On left mouse click, spawn the projectile along the ship direction
 	if (input->isMouseUp(MouseButton::Left))
 	{
 		auto proj = m_game->createEntity<Projectile>();
