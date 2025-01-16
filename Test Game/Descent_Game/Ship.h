@@ -14,15 +14,19 @@ public:
 private:
     float m_pitch = 0.0f;
     float m_yaw = 0.0f;
+    float m_roll = 0.0f;
 
     float m_oldPitch = 0.0f;
     float m_oldYaw = 0.0f;
+    float m_oldRoll = 0.0f;
 
     float m_camPitch = 0.0f;
     float m_camYaw = 0.0f;
+    float m_camRoll = 0.0f;
 
     float m_oldCamPitch = 0.0f;
     float m_oldCamYaw = 0.0f;
+    float m_oldCamRoll = 0.0f;
 
     
     bool m_turbo_mode = false;

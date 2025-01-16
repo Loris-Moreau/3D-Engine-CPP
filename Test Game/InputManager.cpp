@@ -19,7 +19,8 @@ bool InputManager::isKeyDown(const  Key& key)
 		keyWin = VK_ESCAPE;
 	else if (key == Key::Space)
 		keyWin = VK_SPACE;
-
+	else if (key == Key::Ctrl)
+		keyWin = VK_CONTROL;
 	return  (m_keys_state_res[keyWin] == 0);
 }
 

@@ -22,16 +22,18 @@ void Ship::onCreate()
 void Ship::onUpdate(float deltaTime)
 {
 	auto input = getGame()->getInputManager();
-
+	
 	float forward = 0.0f;
 	float rightward = 0.0f;
-
+	
+	float upward = 0.0f; 
+	
 	float roll = 0.0f;
 	float rotAngle = 45.0f;
 	
 	float speed = 1.0f;
 	bool turbo = false;
-
+	
 	//Ship controls
 	if (input->isKeyDown(Key::Z))
 	{
@@ -59,16 +61,29 @@ void Ship::onUpdate(float deltaTime)
 	{
 		roll = -1.0f;
 	}
-	if (input->isKeyDown(Key::E)) // roll right
+	else if (input->isKeyDown(Key::E)) // roll right
 	{
 		roll = 1.0f;
+	}
+	else
+	{
+		roll = 0.0f;
+	}
+	// Slide
+	if (input->isKeyDown(Key::Ctrl)) // Slide Down
+	{
+		upward = -1.0f;
+	}
+	if (input->isKeyDown(Key::Space)) // Slide Up
+	{
+		upward = 1.0f;
 	}
 
 	// Handle position and rotation of spaceship and camera
 	// With smooth movements, thanks to the lerp function
 
 	if (forward)
-	{
+	{/*
 		if (turbo)
 		{
 			if (forward > 0.0f) m_cam_distance = 25.0f;
@@ -78,10 +93,13 @@ void Ship::onUpdate(float deltaTime)
 		{
 			if (forward > 0.0f) m_cam_distance = 20.0f;
 			else m_cam_distance = 9.0f;
-		}
+		}*/
+		
+		m_cam_distance = 18.0f;
 	}
 	else
 	{
+		//m_cam_distance = 18.0f;
 		m_cam_distance = 18.0f;
 	}
 
@@ -91,7 +109,7 @@ void Ship::onUpdate(float deltaTime)
 
 	m_yaw += input->getMouseXAxis() * 0.001f;
 	m_pitch += input->getMouseYAxis() * 0.001f;
-
+	
 	if (m_pitch < -1.57f)
 	{
 		m_pitch = -1.57f;
@@ -100,13 +118,16 @@ void Ship::onUpdate(float deltaTime)
 	{
 		m_pitch = 1.57f;
 	}
+
+	auto baseRot = getRotation();
+	m_roll = baseRot.m_z + rotAngle * roll * 0.01f * speed;
 	
-	
-	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0), Vector3D(m_pitch, m_yaw, 0), 5.0f * deltaTime);
+	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll), Vector3D(m_pitch, m_yaw, m_roll), 5.0f * deltaTime);
 	m_oldPitch = curr.m_x;
 	m_oldYaw = curr.m_y;
-
-	setRotation(Vector3D(m_oldPitch, m_oldYaw, 0));
+	m_oldRoll = curr.m_z;
+	
+	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
 
 	auto curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, 0), Vector3D(m_pitch, m_yaw, 0), 3.0f * deltaTime);
 	m_camPitch = curr_cam.m_x;
@@ -120,16 +141,13 @@ void Ship::onUpdate(float deltaTime)
 	auto zdir = w.getZDirection();
 	auto xdir = w.getXDirection();
 	auto ydir = w.getYDirection();
-
-	auto baseRot = getRotation(); 
 	
 	auto pos = m_position + zdir * forward * deltaTime * 100.0f * speed;
 	setPosition(pos);
 	
+	//auto baseRot = getRotation(); 
 	//Vector3D rollMove = {baseRot.m_x, baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed, baseRot.m_z};
 	//setRotation(rollMove);
-	float testRoll = baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed;
-	w.setRotationY(testRoll);
 	
 	
 	// Camera

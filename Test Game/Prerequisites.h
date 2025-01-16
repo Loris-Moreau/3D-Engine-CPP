@@ -47,6 +47,7 @@ enum class  Key
 	Escape = 0,
 	Shift,
 	Space,
+	Ctrl,
 	A,
 	B,
 	C,

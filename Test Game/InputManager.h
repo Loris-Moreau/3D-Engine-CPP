@@ -9,18 +9,18 @@ class  InputManager
 public:
     InputManager();
     
-    virtual bool isKeyDown(const  Key& key);
-    virtual bool isKeyUp(const  Key& key);
+    virtual bool isKeyDown(const Key& key);
+    virtual bool isKeyUp(const Key& key);
     
-    virtual bool isMouseDown(const  MouseButton& button);
-    virtual bool isMouseUp(const  MouseButton& button);
+    virtual bool isMouseDown(const MouseButton& button);
+    virtual bool isMouseUp(const MouseButton& button);
     
     virtual float getMouseXAxis();
     virtual float getMouseYAxis();
     
     virtual void enablePlayMode(bool enable);
     
-    void setScreenArea(const  Rect& area);
+    void setScreenArea(const Rect& area);
     void update();
     
 private:
