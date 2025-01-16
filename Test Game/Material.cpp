@@ -56,8 +56,6 @@ void Material::setData(void* data, unsigned int size)
 	if (this == nullptr)
 	{
 		std::cerr << "Material::setData | this = null" << " Check Asset Path where this function is called" << '\n';
-		// how the actual fck did I manage to make this = NULL, just how ?
-		// Kill me
 		return;
 	}
 	
