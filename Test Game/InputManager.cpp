@@ -9,10 +9,11 @@ bool InputManager::isKeyDown(const  Key& key)
 {
 	short keyWin = 0;
 	
-	if (key >= Key::Q && key <= Key::Z)
-		keyWin = 'Q' + ((short)key - (short)Key::Q);
+	if (key >= Key::A && key <= Key::Z)
+		keyWin = 'A' + ((short)key - (short)Key::A);
 	else if (key >= Key::N0 && key <= Key::N9)
 		keyWin = '0' + ((short)key - (short)Key::N0);
+	
 	else if (key == Key::Shift)
 		keyWin = VK_SHIFT;
 	else if (key == Key::Escape)
@@ -28,8 +29,8 @@ bool InputManager::isKeyUp(const  Key& key)
 {
 	short keyWin = 0;
 
-	if (key >= Key::Q && key <= Key::Z)
-		keyWin = 'Q' + ((short)key - 2);
+	if (key >= Key::A && key <= Key::Z)
+		keyWin = 'A' + ((short)key - 2);
 	else if (key >= Key::N0 && key <= Key::N9)
 		keyWin = '0' + ((short)key - 28);
 	else if (key == Key::Shift)

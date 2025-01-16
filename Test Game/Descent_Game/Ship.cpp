@@ -61,13 +61,9 @@ void Ship::onUpdate(float deltaTime)
 	{
 		roll = -1.0f;
 	}
-	else if (input->isKeyDown(Key::E)) // roll right
+	if (input->isKeyDown(Key::E)) // roll right
 	{
 		roll = 1.0f;
-	}
-	else
-	{
-		roll = 0.0f;
 	}
 	// Slide
 	if (input->isKeyDown(Key::Ctrl)) // Slide Down
@@ -119,21 +115,28 @@ void Ship::onUpdate(float deltaTime)
 		m_pitch = 1.57f;
 	}
 
-	auto baseRot = getRotation();
-	m_roll = baseRot.m_z + rotAngle * roll * 0.01f * speed;
-	
-	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll), Vector3D(m_pitch, m_yaw, m_roll), 5.0f * deltaTime);
+	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0.0f), Vector3D(m_pitch, m_yaw, 0.0f), 5.0f * deltaTime);
 	m_oldPitch = curr.m_x;
 	m_oldYaw = curr.m_y;
-	m_oldRoll = curr.m_z;
+
+	// Roll 
+	auto baseRot = getRotation();
+	m_roll = m_oldRoll + rotAngle * roll * 0.01f * speed;
+	auto currRoll = Vector3D::lerp(Vector3D(0, 0, m_oldRoll), Vector3D(0, 0, m_roll), 5.0f * deltaTime);
+	
+	m_oldRoll = currRoll.m_z;
+	// End of Roll
 	
 	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
-
-	auto curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, 0), Vector3D(m_pitch, m_yaw, 0), 3.0f * deltaTime);
+	std::cout << rightward << '\n';
+	//m_camRoll = m_oldRoll;
+	
+	auto curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, m_camRoll), Vector3D(m_pitch, m_yaw, m_camRoll), 3.0f * deltaTime);
 	m_camPitch = curr_cam.m_x;
 	m_camYaw = curr_cam.m_y;
+	m_camRoll = curr_cam.m_z;
 
-	m_camera->setRotation(Vector3D(m_camPitch, m_camYaw, 0));
+	m_camera->setRotation(Vector3D(m_camPitch, m_camYaw, m_camRoll));
 
 	
 	Matrix4x4 w;
