@@ -1,7 +1,7 @@
 # 3D Engine
  This is a Remake of descent in my 3D Engine in C++
 
-![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/test-23/Assets/2024-10-24%2012-04-56.gif "Showcase")
+![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/test-23/Assets/Showcase.gif "Showcase")
 
 
 ### Controls : 
