@@ -8,10 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/InputManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/InputManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
@@ -35,29 +33,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C++ Project.Test Game.executor": "Run",
-    "C/C++ Project.Test Game.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Descent-Game",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C++ Project.Test Game.executor&quot;: &quot;Run&quot;,
+    &quot;C/C++ Project.Test Game.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Descent-Game&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\loris.moreau\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\loris.moreau\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test Game" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -93,6 +91,7 @@
       <workItem from="1711546084554" duration="411000" />
       <workItem from="1737026731707" duration="2428000" />
       <workItem from="1737032242126" duration="769000" />
+      <workItem from="1737034454203" duration="4489000" />
     </task>
     <servers />
   </component>

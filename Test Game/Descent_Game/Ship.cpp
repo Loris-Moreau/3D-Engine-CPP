@@ -91,7 +91,7 @@ void Ship::onUpdate(float deltaTime)
 			else m_cam_distance = 9.0f;
 		}*/
 		
-		m_cam_distance = 18.0f;
+		m_cam_distance = 20.0f;
 	}
 	else
 	{
@@ -121,14 +121,22 @@ void Ship::onUpdate(float deltaTime)
 
 	// Roll 
 	auto baseRot = getRotation();
-	m_roll = m_oldRoll + rotAngle * roll * 0.01f * speed;
-	auto currRoll = Vector3D::lerp(Vector3D(0, 0, m_oldRoll), Vector3D(0, 0, m_roll), 5.0f * deltaTime);
+	m_roll = m_oldRoll + (rotAngle/2) * roll * 0.01f * speed;
+	Vector3D currRoll = Vector3D::lerp(Vector3D(0, 0, m_oldRoll), Vector3D(0, 0, m_roll), 5.0f * deltaTime);
 	
 	m_oldRoll = currRoll.m_z;
 	// End of Roll
 	
 	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
-	std::cout << rightward << '\n';
+
+	// TODO : Current Roll issue (Switch from World rotation to Local Rotation) :
+	// 				- Ship Facing Forwad -> A Roll = Forward Roll (Pitch)
+	// 				- Ship Facing Right -> A Roll = Left Roll 
+	// 				- Ship Facing Back -> A Roll = Bacwards Roll (inverse Pitch)
+	// 				- Ship Facing Left -> A Roll = Right Roll
+	
+	std::cout << "curr : " << curr.m_x << ", " << curr.m_y << ", " << curr.m_z << '\n';
+	std::cout << "currRoll : " << currRoll.m_x << ", " << currRoll.m_y << ", " << currRoll.m_z << '\n';
 	//m_camRoll = m_oldRoll;
 	
 	auto curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, m_camRoll), Vector3D(m_pitch, m_yaw, m_camRoll), 3.0f * deltaTime);
