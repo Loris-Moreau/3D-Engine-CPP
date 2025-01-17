@@ -1,72 +1,189 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="GameEngine">
-      <UniqueIdentifier>{461fdaae-0f93-49f1-bc29-bc20a821ed7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="App">
-      <UniqueIdentifier>{f9521175-f7bc-485f-8a1b-bfa4943f6539}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\GraphicsEngine">
-      <UniqueIdentifier>{21415c29-32ab-47b3-a182-583f60254342}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\WindowingSystem">
-      <UniqueIdentifier>{dce70e5d-6f29-4880-91b0-815368f7ec51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\GraphicsEngine\SwapChain">
-      <UniqueIdentifier>{7728c5b6-df8d-4ce5-9f19-b5b2c44129c2}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Game\CameraEntity.cpp" />
-    <ClCompile Include="Game\Display.cpp" />
-    <ClCompile Include="Game\Entity.cpp" />
-    <ClCompile Include="Game\Game.cpp" />
-    <ClCompile Include="Game\LightEntity.cpp" />
-    <ClCompile Include="Game\MeshEntity.cpp" />
-    <ClCompile Include="Graphics\ConstantBuffer.cpp" />
-    <ClCompile Include="Graphics\GraphicsEngine.cpp" />
-    <ClCompile Include="Graphics\IndexBuffer.cpp" />
-    <ClCompile Include="Graphics\Shader.cpp" />
-    <ClCompile Include="Graphics\SwapChain.cpp" />
-    <ClCompile Include="Graphics\Texture2D.cpp" />
-    <ClCompile Include="Graphics\VertexBuffer.cpp" />
-    <ClCompile Include="Input\InputManager.cpp" />
-    <ClCompile Include="Resource\Material.cpp" />
-    <ClCompile Include="Resource\Mesh.cpp" />
-    <ClCompile Include="Resource\Resource.cpp" />
-    <ClCompile Include="Resource\ResourceManager.cpp" />
-    <ClCompile Include="Resource\Texture.cpp" />
-    <ClCompile Include="Window\Window.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CameraEntity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LightEntity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshEntity.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Descent_Game\DescentGame.cpp">
+      <Filter>Descent-Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Descent_Game\Projectile.cpp">
+      <Filter>Descent-Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Descent_Game\Ship.cpp">
+      <Filter>Descent-Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="All.h" />
     <ClInclude Include="Prerequisites.h" />
-    <ClInclude Include="Game\CameraEntity.h" />
-    <ClInclude Include="Game\Display.h" />
-    <ClInclude Include="Game\Entity.h" />
-    <ClInclude Include="Game\Game.h" />
-    <ClInclude Include="Game\LightEntity.h" />
-    <ClInclude Include="Game\MeshEntity.h" />
-    <ClInclude Include="Graphics\ConstantBuffer.h" />
-    <ClInclude Include="Graphics\GraphicsEngine.h" />
-    <ClInclude Include="Graphics\IndexBuffer.h" />
-    <ClInclude Include="Graphics\Shader.h" />
-    <ClInclude Include="Graphics\SwapChain.h" />
-    <ClInclude Include="Graphics\Texture2D.h" />
-    <ClInclude Include="Graphics\VertexBuffer.h" />
-    <ClInclude Include="Input\InputManager.h" />
-    <ClInclude Include="Math\Mat4.h" />
-    <ClInclude Include="Math\Rect.h" />
-    <ClInclude Include="Math\Vec2.h" />
-    <ClInclude Include="Math\Vec3.h" />
-    <ClInclude Include="Math\Vec4.h" />
-    <ClInclude Include="Math\VertexMesh.h" />
-    <ClInclude Include="Resource\Material.h" />
-    <ClInclude Include="Resource\Mesh.h" />
-    <ClInclude Include="Resource\Resource.h" />
-    <ClInclude Include="Resource\ResourceManager.h" />
-    <ClInclude Include="Resource\Texture.h" />
-    <ClInclude Include="Window\Window.h" />
+    <ClInclude Include="CameraEntity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEntity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshEntity.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexMesh.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Descent_Game\DescentGame.h">
+      <Filter>Descent-Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Descent_Game\Projectile.h">
+      <Filter>Descent-Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Descent_Game\Ship.h">
+      <Filter>Descent-Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{76fbc4d3-9db2-4410-8d12-aabda0a9a390}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{08fd7165-b22a-4277-ba13-7b4fc0c2bc67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{994efa94-2787-44dc-8318-3e6be1c42897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{41ee73cd-eb27-43e2-8355-966c219186d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{341ffa66-b458-4903-b07a-b7d7493f6f6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{7f3afc89-ba96-4283-a22d-acc8142d6cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Descent-Game">
+      <UniqueIdentifier>{de1e1364-8a3f-419e-9d19-d63eb94753ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

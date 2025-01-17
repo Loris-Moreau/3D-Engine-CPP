@@ -1,7 +1,6 @@
-#include "Descent_Game/DescentGame.h"
-
-#include <iostream>
 #include <Windows.h>
+
+#include "Descent_Game/DescentGame.h"
 
 int main()
 {

@@ -1,4 +1,6 @@
 #include "Ship.h"
+
+#include "Missile.h"
 #include "Projectile.h"
 
 void Ship::onCreate()
@@ -79,7 +81,7 @@ void Ship::onUpdate(float deltaTime)
 	// With smooth movements, thanks to the lerp function
 
 	if (forward)
-	{/*
+	{
 		if (turbo)
 		{
 			if (forward > 0.0f) m_cam_distance = 25.0f;
@@ -89,13 +91,12 @@ void Ship::onUpdate(float deltaTime)
 		{
 			if (forward > 0.0f) m_cam_distance = 20.0f;
 			else m_cam_distance = 9.0f;
-		}*/
+		}
 		
-		m_cam_distance = 20.0f;
+		//m_cam_distance = 20.0f;
 	}
 	else
 	{
-		//m_cam_distance = 18.0f;
 		m_cam_distance = 18.0f;
 	}
 
@@ -105,15 +106,16 @@ void Ship::onUpdate(float deltaTime)
 
 	m_yaw += input->getMouseXAxis() * 0.001f;
 	m_pitch += input->getMouseYAxis() * 0.001f;
-	
-	if (m_pitch < -1.57f)
+
+	// Clamp Pitch (Up/Down)
+	/*if (m_pitch < -1.57f)
 	{
 		m_pitch = -1.57f;
 	}
 	else if (m_pitch > 1.57f)
 	{
 		m_pitch = 1.57f;
-	}
+	}*/
 
 	auto curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0.0f), Vector3D(m_pitch, m_yaw, 0.0f), 5.0f * deltaTime);
 	m_oldPitch = curr.m_x;
@@ -130,14 +132,17 @@ void Ship::onUpdate(float deltaTime)
 	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
 
 	// TODO : Current Roll issue (Switch from World rotation to Local Rotation) :
-	// 				- Ship Facing Forwad -> A Roll = Forward Roll (Pitch)
+	// 				- Ship Facing Forward -> A Roll = Forward Roll (Pitch)
 	// 				- Ship Facing Right -> A Roll = Left Roll 
-	// 				- Ship Facing Back -> A Roll = Bacwards Roll (inverse Pitch)
+	// 				- Ship Facing Back -> A Roll = Backwards Roll (inverse Pitch)
 	// 				- Ship Facing Left -> A Roll = Right Roll
-	
+
+	// Debug
+	/*
 	std::cout << "curr : " << curr.m_x << ", " << curr.m_y << ", " << curr.m_z << '\n';
 	std::cout << "currRoll : " << currRoll.m_x << ", " << currRoll.m_y << ", " << currRoll.m_z << '\n';
 	//m_camRoll = m_oldRoll;
+	*/
 	
 	auto curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, m_camRoll), Vector3D(m_pitch, m_yaw, m_camRoll), 3.0f * deltaTime);
 	m_camPitch = curr_cam.m_x;
@@ -164,21 +169,98 @@ void Ship::onUpdate(float deltaTime)
 	// Camera
 	Matrix4x4 w2;
 	m_camera->getWorldMatrix(w2);
-	 zdir = w2.getZDirection();
-	 xdir = w2.getXDirection();
-	 ydir = w2.getYDirection();
+	zdir = w2.getZDirection();
+	xdir = w2.getXDirection();
+	ydir = w2.getYDirection();
 
 	
 	auto camPos = Vector3D(pos + zdir * -m_current_cam_distance);
 	camPos = camPos + ydir * 6.5f;
 	
 	m_camera->setPosition(camPos);
+
+
+	if (laserLevel != 1)
+	{
+		m_laserDamage = m_laserDamage * (1 + ((float)laserLevel / 10.0f));
+	}
+	if (missileLevel != 1)
+	{
+		m_missileDamage = m_missileDamage * (1 + ((float)missileLevel / 10.0f));
+	}
 	
-	//On left mouse click, spawn the projectile along the ship direction
+	
+	// On left mouse click, spawn the projectile along the ship direction
 	if (input->isMouseUp(MouseButton::Left))
 	{
-		auto proj = m_game->createEntity<Projectile>();
-		proj->m_dir = zdir;
-		proj->setPosition(pos);
+		auto laser = m_game->createEntity<Projectile>();
+		laser->SetDamage(m_laserDamage);
+		laser->m_dir = zdir;
+		laser->setPosition(pos);
 	}
+	// On right mouse click, spawn the missile along the ship direction
+	if (input->isMouseUp(MouseButton::Right))
+	{
+		if (missileCount < maxMissileCount)
+		{
+			missileCount++;
+			
+			auto missile = m_game->createEntity<Missile>();
+			missile->SetDamage(m_missileDamage);
+			missile->m_dir = zdir;
+			missile->setPosition(pos );
+		}
+	}
+	
+	// TODO : Dev Option (To Remove)
+	if (input->isMouseDown(MouseButton::Middle))
+	{
+		ResetMissileCount();
+	}
+	// End of Dev Option
+}
+
+void Ship::ResetMissileCount()
+{
+	missileCount = 0;
+}
+
+void Ship::SetMaxMissileCount(unsigned int InMaxCount)
+{
+	maxMissileCount = InMaxCount;
+}
+
+unsigned int Ship::GetMissileCount()
+{
+	return missileCount;
+}
+
+void Ship::SetLaserLevel(unsigned int InLevel)
+{
+	laserLevel = InLevel;
+}
+
+unsigned int Ship::GetLaserLevel()
+{
+	return laserLevel;
+}
+
+void Ship::SetMissileLevel(unsigned int InLevel)
+{
+	missileLevel = InLevel;
+}
+
+unsigned int Ship::GetMissileLevel()
+{
+	return missileLevel;
+}
+
+float Ship::GetLaserDamage()
+{
+	return m_laserDamage;
+}
+
+float Ship::GetMissileDamage()
+{
+	return m_missileDamage;
 }

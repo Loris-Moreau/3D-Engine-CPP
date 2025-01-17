@@ -1,4 +1,5 @@
 #include "Projectile.h"
+
 #include "Ship.h"
 
 void Projectile::onCreate()
@@ -25,4 +26,14 @@ void Projectile::onUpdate(float deltaTime)
     {
         release();
     }
+}
+
+void Projectile::SetDamage(float InDamage)
+{
+    m_damage = InDamage;
+}
+
+float Projectile::GetDamage() const
+{
+    return m_damage;
 }

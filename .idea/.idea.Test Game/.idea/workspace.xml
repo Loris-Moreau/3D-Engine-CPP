@@ -8,8 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Missile.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Missile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Prerequisites.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
@@ -24,11 +36,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/missile.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2ri0jov7qAIEOSnuNOnp3aagyrx" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,21 +66,13 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\loris.moreau\\AppData\\Local\\Symbols\\src&quot;
-    ]
   }
 }</component>
   <component name="RunManager">
     <configuration name="Test Game" type="CppProject" factoryName="C++ Project">
-      <configuration_1>
+      <configuration_1 setup="1">
         <option name="CONFIGURATION" value="Debug" />
         <option name="PLATFORM" value="x64" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Test Game/Test Game.vcxproj" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
         <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
@@ -69,8 +80,10 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Test Game/Test Game.vcxproj" />
       </configuration_1>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Test Game/Test Game.vcxproj" />
+      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Test Game/Test Game.vcxproj" />
       <option name="AUTO_SELECT_PRIORITY" value="0" />
       <method v="2">
         <option name="Build" />
@@ -92,6 +105,9 @@
       <workItem from="1737026731707" duration="2428000" />
       <workItem from="1737032242126" duration="769000" />
       <workItem from="1737034454203" duration="4489000" />
+      <workItem from="1737111758484" duration="1131000" />
+      <workItem from="1737115138093" duration="188000" />
+      <workItem from="1737115869822" duration="5740000" />
     </task>
     <servers />
   </component>

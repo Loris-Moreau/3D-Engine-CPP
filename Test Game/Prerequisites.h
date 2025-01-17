@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include <iostream>
 #include <memory>
 #include <sstream>
@@ -40,7 +41,6 @@ typedef std::shared_ptr<Mesh> MeshPtr;
 typedef std::shared_ptr<Material> MaterialPtr;
 typedef std::shared_ptr<Shader> ShaderPtr;
 typedef std::shared_ptr<Texture2D> Texture2DPtr;
-
 
 enum class  Key
 {
@@ -130,7 +130,6 @@ struct ConstantBufferDesc
 	void* buffer = nullptr;
 	unsigned int bufferSize = 0;
 };
-
 
 struct VertexBufferDesc
 {

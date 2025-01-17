@@ -288,6 +288,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Descent_Game\DescentGame.cpp" />
+    <ClCompile Include="Descent_Game\Missile.cpp" />
     <ClCompile Include="Descent_Game\Projectile.cpp" />
     <ClCompile Include="Descent_Game\Ship.cpp" />
     <ClCompile Include="Display.cpp">
@@ -1647,6 +1648,7 @@
     <ClInclude Include="CameraEntity.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="Descent_Game\DescentGame.h" />
+    <ClInclude Include="Descent_Game\Missile.h" />
     <ClInclude Include="Descent_Game\Projectile.h" />
     <ClInclude Include="Descent_Game\Ship.h" />
     <ClInclude Include="Display.h" />
