@@ -8,20 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Missile.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Missile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Projectile.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Prerequisites.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj.filters" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
@@ -107,7 +95,8 @@
       <workItem from="1737034454203" duration="4489000" />
       <workItem from="1737111758484" duration="1131000" />
       <workItem from="1737115138093" duration="188000" />
-      <workItem from="1737115869822" duration="5740000" />
+      <workItem from="1737115869822" duration="6062000" />
+      <workItem from="1737136426563" duration="2501000" />
     </task>
     <servers />
   </component>
