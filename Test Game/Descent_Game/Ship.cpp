@@ -27,13 +27,12 @@ void Ship::onUpdate(float deltaTime)
 	
 	float forward = 0.0f;
 	float rightward = 0.0f;
-	
 	float upward = 0.0f; 
 	
 	float roll = 0.0f;
 	float rotAngle = 45.0f;
 	
-	float speed = 1.0f;
+	float speed = 2.0f;
 	bool turbo = false;
 	
 	//Ship controls
@@ -55,7 +54,7 @@ void Ship::onUpdate(float deltaTime)
 	}
 	if (input->isKeyDown(Key::Shift))
 	{
-		speed = 3.0f;
+		speed = 3.5f;
 		turbo = true;
 	}
 	// Roll
@@ -159,7 +158,7 @@ void Ship::onUpdate(float deltaTime)
 	auto xdir = w.getXDirection();
 	auto ydir = w.getYDirection();
 	
-	auto pos = m_position + ((zdir * forward) + (xdir * rightward)) * deltaTime * 100.0f * speed;
+	auto pos = m_position + ((zdir * forward) + (xdir * rightward) + (ydir * upward)) * deltaTime * 100.0f * speed;
 	setPosition(pos);
 	
 	//auto baseRot = getRotation(); 
