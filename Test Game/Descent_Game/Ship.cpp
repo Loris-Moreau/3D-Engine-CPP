@@ -122,10 +122,12 @@ void Ship::onUpdate(float deltaTime)
 	// 				- Ship Facing Back -> A Roll = Backwards Roll (inverse Pitch)
 	// 				- Ship Facing Left -> A Roll = Right Roll
 	
-	// Speeeen
+	// Speeeen hehe
+	// hehe I think I'm going insane
+	// it's 3am and this stupid problem won't go away, AHAHAhahahHAHAa
 	m_roll = m_oldRoll + rotAngle * roll * 0.01f * (speed / 2);
 	
-	Vector3D curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0), Vector3D(m_pitch, m_yaw, 0), 5.0f * deltaTime);
+	Vector3D curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll), Vector3D(m_pitch, m_yaw, m_roll), 5.0f * deltaTime);
 	m_oldPitch = curr.m_x;
 	m_oldYaw = curr.m_y;
 	m_oldRoll = curr.m_z;
@@ -136,10 +138,9 @@ void Ship::onUpdate(float deltaTime)
 	//m_roll = baseRotZ - m_oldRoll + (rotAngle/2) * roll * 0.01f * speed;
 	//Vector3D currRoll = Vector3D::lerp(Vector3D(0, 0, m_oldRoll), Vector3D(0, 0, m_roll), 5.0f * deltaTime);
 	//m_oldRoll = currRoll.m_z;
-	
 // End of slight clamped Roll
 	
-	setRotation(Vector3D(m_oldPitch, m_oldYaw, 0));
+	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
 	
 	// Debug
 	/*
