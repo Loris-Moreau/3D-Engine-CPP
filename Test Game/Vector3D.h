@@ -21,12 +21,39 @@ public:
 		return Vector3D(m_x*num, m_y*num, m_z*num);
 	}
 
+	Vector3D operator *=(Vector3D num)
+	{
+		m_x *= num.m_x;
+		m_y *= num.m_y;
+		m_z *= num.m_z;
+		
+		return *this;
+	}
+	
+	Vector3D operator *=(float num)
+	{
+		m_x *= num;
+		m_y *= num;
+		m_z *= num;
+		
+		return *this;
+	}
+	
 	Vector3D operator +(Vector3D vec)
 	{
 		return Vector3D(m_x+vec.m_x, m_y+vec.m_y, m_z+vec.m_z);
 	}
+
+	Vector3D operator +=(Vector3D vec)
+	{
+		m_x += vec.m_x;
+		m_y += vec.m_y;
+		m_z += vec.m_z;
+
+		return *this;
+	}
 	
-	Vector3D operator -(const  Vector3D& vec) const
+	Vector3D operator -(const Vector3D& vec) const
 	{
 		return Vector3D(m_x - vec.m_x, m_y - vec.m_y, m_z - vec.m_z);
 	}
@@ -36,7 +63,7 @@ public:
 		return (float)sqrt((m_x * m_x) + (m_y * m_y) + (m_z * m_z));
 	}
 
-	static Vector3D normalize(const  Vector3D& vec)
+	static Vector3D normalize(const Vector3D& vec)
 	{
 		Vector3D res;
 		float len = (float)sqrt((float)(vec.m_x * vec.m_x) + (float)(vec.m_y * vec.m_y) + (float)(vec.m_z * vec.m_z));

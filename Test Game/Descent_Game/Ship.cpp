@@ -123,9 +123,9 @@ void Ship::onUpdate(float deltaTime)
 	// 				- Ship Facing Left -> A Roll = Right Roll
 	
 	// Speeeen
-	m_roll = m_oldRoll + rotAngle * roll * 0.01f * (speed/2-forward);
+	m_roll = m_oldRoll + rotAngle * roll * 0.01f * (speed / 2);
 	
-	Vector3D curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll), Vector3D(m_pitch, m_yaw, m_roll), 5.0f * deltaTime);
+	Vector3D curr = Vector3D::lerp(Vector3D(m_oldPitch, m_oldYaw, 0), Vector3D(m_pitch, m_yaw, 0), 5.0f * deltaTime);
 	m_oldPitch = curr.m_x;
 	m_oldYaw = curr.m_y;
 	m_oldRoll = curr.m_z;
@@ -139,22 +139,24 @@ void Ship::onUpdate(float deltaTime)
 	
 // End of slight clamped Roll
 	
-	setRotation(Vector3D(m_oldPitch, m_oldYaw, m_oldRoll));
+	setRotation(Vector3D(m_oldPitch, m_oldYaw, 0));
 	
 	// Debug
 	/*
 	std::cout << "curr : " << curr.m_x << ", " << curr.m_y << ", " << curr.m_z << '\n';
 	std::cout << "currRoll : " << currRoll.m_x << ", " << currRoll.m_y << ", " << currRoll.m_z << '\n';
 	*/
-
+	
+	m_camPitch = m_oldPitch;
+	m_camYaw = m_oldYaw;
 	// TODO : Uncomment the line below for release
 	//m_camRoll = m_oldRoll;
 	
-	Vector3D curr_cam = Vector3D::lerp(Vector3D(m_camPitch, m_camYaw, m_camRoll), Vector3D(m_pitch, m_yaw, m_camRoll), 3.0f * deltaTime);
-	m_camPitch = curr_cam.m_x;
-	m_camYaw = curr_cam.m_y;
-	m_camRoll = curr_cam.m_z;
-
+	Vector3D curr_cam = Vector3D::lerp(Vector3D(m_oldCamPitch, m_oldCamYaw, m_oldCamRoll), Vector3D(m_pitch, m_yaw, m_camRoll), 3.0f * deltaTime);
+	m_oldCamPitch = curr_cam.m_x;
+	m_oldCamYaw = curr_cam.m_y;
+	m_oldCamRoll = curr_cam.m_z;
+	
 	m_camera->setRotation(Vector3D(m_camPitch, m_camYaw, m_camRoll));
 	
 	// Movement 
@@ -166,13 +168,9 @@ void Ship::onUpdate(float deltaTime)
 	
 	auto pos = m_position + ((zdir * forward) + (xdir * rightward) + (ydir * upward)) * deltaTime * 100.0f * speed;
 	setPosition(pos);
+
 	
-	//auto baseRot = getRotation(); 
-	//Vector3D rollMove = {baseRot.m_x, baseRot.m_y + rotAngle * roll * deltaTime * 100.0f * speed, baseRot.m_z};
-	//setRotation(rollMove);
-	
-	
-	// Camera
+	// Camera position
 	Matrix4x4 w2;
 	m_camera->getWorldMatrix(w2);
 	zdir = w2.getZDirection();
@@ -218,7 +216,7 @@ void Ship::onUpdate(float deltaTime)
 		}
 	}
 	
-	// TODO : Dev Option (To Remove)
+	// TODO : Dev Option (To Remove (or maybe just leave it for shits & giggles))
 	if (input->isMouseDown(MouseButton::Middle))
 	{
 		ResetMissileCount();
