@@ -3,7 +3,7 @@
 
 ![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/Descent-Game/Assets/Showcase/Descent-Game.gif "Showcase")
 
-
+It's still missing some enemies, proper level design, some UI, some pickups & I need to fix collisions & the ships' roll.
 ### Controls : 
 
 - Esc = Unlock Mouse
