@@ -1,7 +1,9 @@
 #pragma once
+
 #include <memory.h>
-#include "Vector3D.h"
+
 #include "Quaternion.h"
+#include "Vector3D.h"
 
 class Matrix4x4
 {
@@ -314,6 +316,7 @@ public:
 	{
 		float yScale = Maths::cot(fovY / 2.0f);
 		float xScale = yScale * height / width;
+		
 		float temp[4][4] =
 		{
 			{ xScale, 0.0f, 0.0f, 0.0f },
@@ -321,6 +324,7 @@ public:
 			{ 0.0f, 0.0f, far / (far - near), 1.0f },
 			{ 0.0f, 0.0f, -near * far / (far - near), 0.0f }
 		};
+		
 		return Matrix4x4(temp);
 	}
 
