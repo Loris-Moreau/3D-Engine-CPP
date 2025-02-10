@@ -163,9 +163,9 @@ void Ship::onUpdate(float deltaTime)
 	// Movement 
 	Matrix4x4 w;
 	getWorldMatrix(w);
-	Vector3D xdir = w.getXDirection();
-	Vector3D ydir = w.getYDirection();
-	Vector3D zdir = w.getZDirection();
+	Vector3D xdir = w.getXAxis();
+	Vector3D ydir = w.getYAxis();
+	Vector3D zdir = w.getZAxis();
 	
 	auto pos = m_position + ((zdir * forward) + (xdir * rightward) + (ydir * upward)) * deltaTime * 100.0f * speed;
 	setPosition(pos);
@@ -174,9 +174,9 @@ void Ship::onUpdate(float deltaTime)
 	// Camera position
 	Matrix4x4 w2;
 	m_camera->getWorldMatrix(w2);
-	zdir = w2.getZDirection();
-	xdir = w2.getXDirection();
-	ydir = w2.getYDirection();
+	zdir = w2.getZAxis();
+	xdir = w2.getXAxis();
+	ydir = w2.getYAxis();
 	
 	
 	Vector3D camPos = Vector3D(pos + zdir * -m_current_cam_distance);

@@ -8,10 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Maths.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Quaternion.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Quaternion.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test Game/Vector3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +37,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/missile.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/A_Test.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/Descent_Game/Ship.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -100,6 +108,7 @@
       <workItem from="1737115869822" duration="6062000" />
       <workItem from="1737136426563" duration="14564000" />
       <workItem from="1737661732627" duration="1804000" />
+      <workItem from="1739178522345" duration="1455000" />
     </task>
     <servers />
   </component>

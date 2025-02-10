@@ -132,7 +132,7 @@ void Game::onGraphicsUpdate(float deltaTime)
 				Matrix4x4 w;
 				auto l = dynamic_cast<LightEntity*>(light.get());
 				light->getWorldMatrix(w);
-				gdata.lights[i].lightDirection = w.getZDirection();
+				gdata.lights[i].lightDirection = w.getZAxis();
 				gdata.lights[i].lightColor = l->getColor();
 				i++;
 			}

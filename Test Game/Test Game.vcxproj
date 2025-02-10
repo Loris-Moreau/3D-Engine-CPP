@@ -892,6 +892,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="Mesh.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1042,6 +1043,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Resource.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1492,6 +1494,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="VertexBuffer.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1659,10 +1662,12 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LightEntity.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshEntity.h" />
     <ClInclude Include="Prerequisites.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />

@@ -10,28 +10,28 @@ void Entity::processWorldMatrix()
 {
 	Matrix4x4 temp;
 
-	m_world.setIdentity();
+	//m_world.setIdentity();
 
-	temp.setIdentity();
-	temp.setScale(m_scale);
+	//temp.setIdentity();
+	temp.createScale(m_scale);
 	m_world *= temp;
 
 
-	temp.setIdentity();
-	temp.setRotationX(m_rotation.m_x);
+	//temp.setIdentity();
+	temp.createRotationX(m_rotation.m_x);
 	m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationY(m_rotation.m_y);
+	//temp.setIdentity();
+	temp.createRotationY(m_rotation.m_y);
 	m_world *= temp;
 
-	temp.setIdentity();
-	temp.setRotationZ(m_rotation.m_z);
+	//temp.setIdentity();
+	temp.createRotationZ(m_rotation.m_z);
 	m_world *= temp;
 
 
-	temp.setIdentity();
-	temp.setTranslation(m_position);
+	//temp.setIdentity();
+	temp.createTranslation(m_position);
 	m_world *= temp;
 }
 
