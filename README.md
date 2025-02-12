@@ -3,23 +3,26 @@
 
 ![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/Descent-Game/Assets/Showcase/Descent-Game.gif "Showcase")
 
-It's still missing some enemies, proper level design, some UI, some pickups & I need to fix collisions & the ships' roll.
+*It's still missing some enemies, proper level design, some UI, some pickups & I need to fix collisions & the ships' roll.*
+
 ### Controls : 
 
-- Esc = Unlock Mouse
+- **Esc** = Unlock Mouse
 
-- ZQSD = Movement
-  - QD = Strafe
-- Space = Slide Up
-- Ctrl = Slide Down
+- **ZQSD** = Movement
+  - ***QD*** = Strafe
+- **Space** = Slide Up
+- **Ctrl** = Slide Down
 
-- A = roll left
-- E = roll right
+- **A** = roll left
+- **E** = roll right
 
-- Mouse = Pitch Up/Down & Yaw left/right
+- **Mouse** = Pitch Up/Down & Yaw left/right
 
-- LClick = Shoot Primary (Lasers)
-- RClick = Shoot Secondary (Missiles)
+- **LClick** = Shoot Primary *(Lasers - Infinite Shots)*
+- **RClick** = Shoot Secondary *(Missiles - Limited to 10 shots)*
+
+---
 
 ## How It Works  
 #### Game System
@@ -27,16 +30,16 @@ It's still missing some enemies, proper level design, some UI, some pickups & I 
 * Entity System
   * Object-Oriented
   * Dynamic Creation and Release of custom Entities through templating features: createEntity<MyEntity>()
-  * Event-based Logic support: onCreate(), onUpdate(f32 deltaTime), ...
-  * Default Entity classes available out-of-the-box: LightEntity,MeshEntity,CameraEntity,...
+  * Event-based Logic support : onCreate(), onUpdate(float deltaTime), ...
+  * Default Entity classes available out-of-the-box : LightEntity, MeshEntity, CameraEntity,...
 
 #### Graphics Engine
 
-* Graphics APIs: DirectX 11
+* Graphics APIs : DirectX 11
 * Forward Rendering
 * Phong-Based Lighting
-* Static Meshes Support: .obj (all formats supported by tinyobjloader)
-* Textures Support: .jpg,.png,.bmp,.tga etc. (all formats supported by DirectXTex)
+* Static Meshes Support: .obj *(all formats supported by tinyobjloader)*
+* Textures Support: .jpg,.png,.bmp,.tga etc. *(all formats supported by DirectXTex)*
 * Materials Support: HLSL Shading Language, Textures, Custom Data Passage
 
 #### Input Manager
