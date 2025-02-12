@@ -6,15 +6,15 @@ class Vector3D
 {
 
 public:
-	float m_x;
-	float m_y;
-	float m_z;
+	float m_x = 0.0f, m_y = 0.0f, m_z = 0.0f;
 
-	Vector3D(): m_x(0.0f), m_y(0.0f), m_z(0.0f) {}
-
-	explicit Vector3D(float xP, float yP, float zP)
-		:m_x(xP), m_y(yP), m_z(zP) {}
-
+	Vector3D() {}
+	
+	Vector3D(float xP, float yP, float zP) : m_x(xP), m_y(yP), m_z(zP) {}
+	Vector3D(const Vector3D& vector) : m_x(vector.m_x), m_y(vector.m_y), m_z(vector.m_z) {}
+	
+	~Vector3D() {}
+	
 	void set(float xP, float yP, float zP);
 	float lengthSq() const;
 	float length() const;
@@ -30,7 +30,7 @@ public:
 	{
 		return Vector3D(a.m_x + b.m_x, a.m_y + b.m_y, a.m_z + b.m_z);
 	}
-
+	
 	// Vector subtraction (a - b)
 	friend Vector3D operator-(const Vector3D& a, const Vector3D& b)
 	{
@@ -83,13 +83,30 @@ public:
 	}
 
 	// Normalize the provided vector
+	/*
 	static Vector3D normalize(const Vector3D& vec)
 	{
 		Vector3D temp = vec;
 		temp.normalize();
 		return temp;
 	}
-
+	*/
+	static Vector3D normalize(const Vector3D& vec)
+	{
+		Vector3D res;
+		float len = (float)sqrt((float)(vec.m_x * vec.m_x) + (float)(vec.m_y * vec.m_y) + (float)(vec.m_z * vec.m_z));
+		if (!len)
+		{
+			return Vector3D();
+		}
+		
+		res.m_x = vec.m_x / len;
+		res.m_y = vec.m_y / len;
+		res.m_z = vec.m_z / len;
+		
+		return res;
+	}
+	
 	// Dot product between two vectors (a dot b)
 	static float dot(const Vector3D& a, const Vector3D& b)
 	{
@@ -97,19 +114,29 @@ public:
 	}
 
 	// Cross product between two vectors (a cross b)
-	static Vector3D cross(const Vector3D& a, const Vector3D& b)
+	static Vector3D cross(const  Vector3D& v1, const  Vector3D& v2)
 	{
-		Vector3D temp;
-		temp.m_x = a.m_y * b.m_z - a.m_z * b.m_y;
-		temp.m_y = a.m_z * b.m_x - a.m_x * b.m_z;
-		temp.m_z = a.m_x * b.m_y - a.m_y * b.m_x;
-		return temp;
+		Vector3D res;
+		res.m_x = (v1.m_y * v2.m_z) - (v1.m_z * v2.m_y);
+		res.m_y = (v1.m_z * v2.m_x) - (v1.m_x * v2.m_z);
+		res.m_z = (v1.m_x * v2.m_y) - (v1.m_y * v2.m_x);
+		return res;
 	}
-
+	
 	// Lerp from A to B by f
+	/*
 	static Vector3D lerp(const Vector3D& a, const Vector3D& b, float f)
 	{
 		return Vector3D(a + f * (b - a));
+	}
+	*/
+	static Vector3D lerp(const Vector3D& start, const Vector3D& end, float delta)
+	{
+		Vector3D v;
+		v.m_x = start.m_x * (1.0f - delta) + end.m_x * (delta);
+		v.m_y = start.m_y * (1.0f - delta) + end.m_y * (delta);
+		v.m_z = start.m_z * (1.0f - delta) + end.m_z * (delta);
+		return v;
 	}
 
 	// Reflect V about (normalized) N

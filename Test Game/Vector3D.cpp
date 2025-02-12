@@ -27,7 +27,8 @@ float Vector3D::lengthSq() const
 
 float Vector3D::length() const
 {
-	return (Maths::sqrt(lengthSq()));
+	//return (Maths::sqrt(lengthSq()));
+	return (float)sqrt((m_x * m_x) + (m_y * m_y) + (m_z * m_z));
 }
 
 void Vector3D::normalize()

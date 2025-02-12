@@ -8,7 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +29,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/missile.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/projectile.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Github/3D-Engine-CPP/Test Game/Matrix4x4.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -97,6 +106,8 @@
       <workItem from="1737661732627" duration="1804000" />
       <workItem from="1739178522345" duration="1455000" />
       <workItem from="1739180029528" duration="690000" />
+      <workItem from="1739207250403" duration="1000" />
+      <workItem from="1739354354315" duration="6555000" />
     </task>
     <servers />
   </component>

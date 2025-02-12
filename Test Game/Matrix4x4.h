@@ -4,11 +4,12 @@
 
 #include "Quaternion.h"
 #include "Vector3D.h"
+#include "Vector4D.h"
 
 class Matrix4x4
 {
 public:
-	float mat[4][4];
+	float mat[4][4] = {};
 
 	Matrix4x4()
 	{
@@ -19,7 +20,16 @@ public:
 	{
 		memcpy(mat, inMat, 16 * sizeof(float));
 	}
-
+	
+	void setIdentity()
+	{
+		::memset(mat, 0, sizeof(mat));
+		mat[0][0] = 1;
+		mat[1][1] = 1;
+		mat[2][2] = 1;
+		mat[3][3] = 1;
+	}
+	
 	// Cast to a const float pointer
 	const float* getAsFloatPtr() const
 	{
@@ -138,10 +148,61 @@ public:
 		*this = *this * right;
 		return *this;
 	}
-
+	
+	float getDeterminant()
+	{
+		Vector4D minor, v1, v2, v3;
+		float det = 0.0f;
+		
+		v1 = Vector4D(this->mat[0][0], this->mat[1][0], this->mat[2][0], this->mat[3][0]);
+		v2 = Vector4D(this->mat[0][1], this->mat[1][1], this->mat[2][1], this->mat[3][1]);
+		v3 = Vector4D(this->mat[0][2], this->mat[1][2], this->mat[2][2], this->mat[3][2]);
+		
+		minor.cross(v1, v2, v3);
+		det = -(this->mat[0][3] * minor.m_x + this->mat[1][3] * minor.m_y + this->mat[2][3] * minor.m_z + this->mat[3][3] * minor.m_w);
+		return det;
+	}
+	
 	// Invert the matrix - super slow
 	void invert();
+	
+	void inverse()
+	{
+		int a = 0, i = 0, j = 0;
+		Matrix4x4 out = {};
+		Vector4D v = {}, vec[3] = {};
+		float det = 0.0f;
 
+		det = this->getDeterminant();
+		if (!det) return;
+		for (i = 0; i<4; i++)
+		{
+			for (j = 0; j<4; j++)
+			{
+				if (j != i)
+				{
+					a = j;
+					if (j > i) a = a - 1;
+					vec[a].m_x = (this->mat[j][0]);
+					vec[a].m_y = (this->mat[j][1]);
+					vec[a].m_z = (this->mat[j][2]);
+					vec[a].m_w = (this->mat[j][3]);
+				}
+			}
+			v.cross(vec[0], vec[1], vec[2]);
+			out.mat[0][i] = (float)pow(-1.0f, i) * v.m_x / det;
+			out.mat[1][i] = (float)pow(-1.0f, i) * v.m_y / det;
+			out.mat[2][i] = (float)pow(-1.0f, i) * v.m_z / det;
+			out.mat[3][i] = (float)pow(-1.0f, i) * v.m_w / det;
+		}
+		this->setMatrix(out);
+	}
+	
+	void setMatrix(const Matrix4x4& matrix)
+	{
+		::memcpy(mat, matrix.mat, sizeof(mat));
+	}
+	
 	Vector3D getTranslation() const
 	{
 		return Vector3D(mat[3][0], mat[3][1], mat[3][2]);
@@ -180,6 +241,7 @@ public:
 			{ 0.0f, 0.0f, zScale, 0.0f },
 			{ 0.0f, 0.0f, 0.0f, 1.0f }
 		};
+		
 		return Matrix4x4(temp);
 	}
 
@@ -299,6 +361,7 @@ public:
 		};
 		return Matrix4x4(temp);
 	}
+	
 /*
 	static Matrix4x4 createOrtho(float width, float height, float near, float far)
 	{
@@ -311,7 +374,7 @@ public:
 		};
 		return Matrix4x4(temp);
 	}
-*/
+
 	static Matrix4x4 createPerspectiveFOV(float fovY, float width, float height, float near, float far)
 	{
 		float yScale = Maths::cot(fovY / 2.0f);
@@ -327,6 +390,28 @@ public:
 		
 		return Matrix4x4(temp);
 	}
-
+*/
+	
+	void setPerspectiveFovLH(float fov, float aspect, float znear, float zfar)
+	{
+		float yscale = 1.0f / (float)tan(fov / 2.0f);
+		float xscale = yscale / aspect;
+		mat[0][0] = xscale;
+		mat[1][1] = yscale;
+		mat[2][2] = zfar / (zfar - znear);
+		mat[2][3] = 1.0f;
+		mat[3][2] = (-znear * zfar)/ (zfar - znear);
+		mat[3][3] = 0.0f;
+	}
+	
+	void setOrthoLH(float width,float height,float near_plane, float far_plane)
+	{
+		setIdentity();
+		mat[0][0] = 2.0f / width;
+		mat[1][1] = 2.0f / height;
+		mat[2][2] = 1.0f / (far_plane - near_plane);
+		mat[3][2] = -(near_plane / (far_plane - near_plane));
+	}
+	
 	static const Matrix4x4 identity;
 };

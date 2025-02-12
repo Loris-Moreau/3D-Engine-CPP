@@ -5,18 +5,18 @@
 
 void Ship::onCreate()
 {
-	//Load all the assets
+	// Load all the assets
 	auto tex = createTexture(L"../Assets/Textures/spaceship.jpg");
 	auto mesh = createMesh(L"../Assets/Meshes/spaceship.obj");
 	auto mat = createMaterial(L"../Assets/Shaders/base.hlsl");
-	//Add the texture to material
+	// Add the texture to material
 	mat->addTexture(tex);
 
-	//Set the mesh and material into the entity
+	// Set the mesh and material into the entity
 	setMesh(mesh);
 	addMaterial(mat);
 
-	//Create the camera that follows the spaceship
+	// Create the camera that follows the spaceship
 	m_camera = getGame()->createEntity<CameraEntity>();
 	m_camera->setFarPlane(40000.0f);
 }

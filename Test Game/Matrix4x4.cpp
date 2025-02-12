@@ -11,6 +11,7 @@ static float m4Ident[4][4] =
 const Matrix4x4 Matrix4x4::identity(m4Ident);
 
 void Matrix4x4::invert()
+/*
 {
 	float tmp[12];
 	float src[16];
@@ -121,4 +122,35 @@ void Matrix4x4::invert()
 			mat[i][j] = dst[i * 4 + j];
 		}
 	}
+}
+*/
+{
+	int a = 0, i = 0, j = 0;
+	Matrix4x4 out = {};
+	Vector4D v = {}, vec[3] = {};
+	float det = 0.0f;
+	
+	det = this->getDeterminant();
+	if (!det) return;
+	for (i = 0; i<4; i++)
+	{
+		for (j = 0; j<4; j++)
+		{
+			if (j != i)
+			{
+				a = j;
+				if (j > i) a = a - 1;
+				vec[a].m_x = (this->mat[j][0]);
+				vec[a].m_y = (this->mat[j][1]);
+				vec[a].m_z = (this->mat[j][2]);
+				vec[a].m_w = (this->mat[j][3]);
+			}
+		}
+		v.cross(vec[0], vec[1], vec[2]);
+		out.mat[0][i] = (float)pow(-1.0f, i) * v.m_x / det;
+		out.mat[1][i] = (float)pow(-1.0f, i) * v.m_y / det;
+		out.mat[2][i] = (float)pow(-1.0f, i) * v.m_z / det;
+		out.mat[3][i] = (float)pow(-1.0f, i) * v.m_w / det;
+	}
+	this->setMatrix(out);
 }
