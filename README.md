@@ -5,6 +5,13 @@
 
 *It's still missing some enemies, proper level design, some UI, some pickups & I need to fix collisions & the ships' roll.*
 
+> [!Warning]
+> Camera currently broken, don't ask why.
+> 
+> I messed around with the Matrix4x4 Class
+> 
+> oops
+
 ### Controls : 
 
 - **Esc** = Unlock Mouse
