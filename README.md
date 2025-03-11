@@ -1,11 +1,6 @@
 # 3D Engine
  This is a *test* code for a 3D Game Engine in C++
 
-
-
-# 3D Engine
- This is a *test* code for a 3D Game Engine in C++
-
 > This will create a window that will let you visualize & modify your game in 3D.
 
 ![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/main/Assets/2024-10-24%2012-04-56.gif "Main Render Engine Showcase")
