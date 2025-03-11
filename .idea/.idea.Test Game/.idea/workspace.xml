@@ -8,27 +8,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="868f528e-8372-4207-9e47-bcf2765b1407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Test Game/Game/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Bin/x64/Debug/TestGame.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.Build.CppClean.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.11312.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-cvtres.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-cvtres.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-rc.read.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link-rc.write.1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.3.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.read.4.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/TestGame.tlog/unsuccessfulbuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Test Game.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/AppWindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/AppWindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/AppWindow.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/ConstantBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ConstantBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/ConstantBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ConstantBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/DeviceContext.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/DeviceContext.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/DeviceContext.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/DeviceContext.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/GraphicsEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/GraphicsEngine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/IndexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/IndexBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/IndexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/IndexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/InputListener.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/InputListener.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/InputSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/InputSystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/InputSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/InputSystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Mesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Mesh.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Mesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/MeshManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/MeshManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/MeshManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/MeshManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/PixelShader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/PixelShader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/PixelShader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/PixelShader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Point.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Point.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Prerequisites.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Prerequisites.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/RenderSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/RenderSystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/RenderSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/RenderSystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Resource.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Resource.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Resource.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/ResourceManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ResourceManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/ResourceManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/ResourceManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PixelShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PixelShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PointLightPixelShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PointLightPixelShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/PointLightVertexShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/PointLightVertexShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/SkyBoxShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/SkyBoxShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/VertexMeshLayoutShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/VertexMeshLayoutShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Shaders/VertexShader.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Shaders/VertexShader.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/SwapChain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/SwapChain.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/SwapChain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Texture.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Texture.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Texture.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/TextureManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/TextureManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/TextureManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/TextureManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector2D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Vector4D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector4D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexBuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexMesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexShader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexShader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/VertexShader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/VertexShader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/x64/Debug/vc143.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +81,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -68,7 +101,7 @@
     &quot;C++ Project.Test Game.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test-23&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -149,6 +182,8 @@
       <workItem from="1717596664645" duration="1276000" />
       <workItem from="1729682266706" duration="2984000" />
       <workItem from="1729694567675" duration="301000" />
+      <workItem from="1729763860315" duration="326000" />
+      <workItem from="1729770150445" duration="4976000" />
     </task>
     <servers />
   </component>
