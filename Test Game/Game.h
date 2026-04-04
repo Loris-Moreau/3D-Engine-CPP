@@ -2,11 +2,13 @@
 
 #include "Prerequisites.h"
 #include "Rect.h"
+#include "Vector3D.h"
 
 #include <map>
 #include <chrono>
 #include <set>
 #include <string>
+#include <vector>
 
 class  Game
 {
@@ -31,6 +33,26 @@ public:
 		return nullptr;
 	}
 
+	// Returns raw pointers to all live entities of type T.
+	// Pointers are valid until the entity is released.
+	template <typename T>
+	std::vector<T*> getEntitiesOfType()
+	{
+		static_assert(std::is_base_of<Entity, T>::value, "T must derive from Entity");
+		std::vector<T*> result;
+		auto id = typeid(T).hash_code();
+		auto it = m_entities.find(id);
+		if (it != m_entities.end())
+		{
+			result.reserve(it->second.size());
+			for (auto& [key, entityPtr] : it->second)
+			{
+				result.push_back(static_cast<T*>(entityPtr.get()));
+			}
+		}
+		return result;
+	}
+
 	void setTitle(const wchar_t* title);
 	void run();
 	void quit();
@@ -43,6 +65,10 @@ public:
 	MaterialPtr createMaterial(const wchar_t* path);
 	TexturePtr createTexture(const wchar_t* path);
 	MeshPtr createMesh(const wchar_t* path);
+
+	// Override in derived Game classes to implement world-space constraints (e.g. tunnel walls).
+	// Default implementation: no constraint.
+	virtual Vector3D constrainPosition(const Vector3D& pos, float radius) const { return pos; }
 
 private:
 	void onDisplaySize(const  Rect& size);

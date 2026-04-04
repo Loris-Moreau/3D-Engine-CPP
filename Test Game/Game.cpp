@@ -161,7 +161,8 @@ void Game::onGraphicsUpdate(float deltaTime)
 			}
 			else
 			{
-				break;
+				// Non-renderable entity bucket (Camera, Light, etc.) — skip to next bucket.
+				continue;
 			}
 		}
 	}
@@ -251,6 +252,7 @@ void Game::run()
 
 void Game::quit()
 {
+	m_isRunning = false;
 }
 
 void Game::setTitle(const wchar_t* title)
@@ -264,7 +266,7 @@ void Game::onUpdateInternal()
 {
 	m_inputManager->update();
 
-	//computing delta time-------------------
+	// computing delta time-------------------
 	//// take the current time
 	auto now = std::chrono::system_clock::now();
 	// take the diff between the current time and the time taken in the previous frame in seconds (delta time)
@@ -275,21 +277,16 @@ void Game::onUpdateInternal()
 	}
 	m_oldTime = now; // store the current time in order to be used in the next frame
 
-
-
-	// computing average delta time (dt more stable)
-	// WIP To fix yet.
-	m_avgDt += (float)elapsedSeconds.count();
+	// Exponential moving average for delta time smoothing (avoids jitter spikes).
+	// Alpha = 0.08 gives ~12-frame smoothing window while still following gradual changes.
+	float dt = (float)elapsedSeconds.count();
+	if (m_avgCount == 0)
+		m_avgDt = dt;
+	else
+		m_avgDt = m_avgDt * 0.92f + dt * 0.08f;
 	m_avgCount++;
-
-	float deltaTime = m_avgDt / (float)m_avgCount;
-
-	unsigned long long max = -1;
-	if (m_avgCount == 2000)
-	{
-		m_avgCount = 0;
-		m_avgDt = (float)elapsedSeconds.count();
-	}
+	// Use raw dt for the first few frames so movement starts immediately at correct speed
+	float deltaTime = (m_avgCount < 5) ? dt : m_avgDt;
 	//---------------------------------------------
 	
 	// destroy the entities that have been released in the previous iteration

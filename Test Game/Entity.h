@@ -31,6 +31,11 @@ public:
 	TexturePtr createTexture(const wchar_t* path);
 	MeshPtr createMesh(const wchar_t* path);
 	
+	// Collision radius (sphere-based). Set > 0 to enable collision detection.
+	void setCollisionRadius(float radius) { m_collisionRadius = radius; }
+	float getCollisionRadius() const { return m_collisionRadius; }
+	bool isCollidable() const { return m_collisionRadius > 0.0f; }
+
 	virtual void onCreate() {}
 	virtual void onUpdate(float deltaTime) {}
 	virtual void release();
@@ -43,6 +48,8 @@ protected:
 	Vector3D m_position;
 	Vector3D m_rotation;
 	Vector3D m_scale = Vector3D(1, 1, 1);
+
+	float m_collisionRadius = 0.0f;
 
 	size_t m_id = 0;
 

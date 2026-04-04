@@ -8,14 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7ce239-a0ac-4ff4-a5fc-2ba34c4e8ea5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/CameraEntity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Descent_Game/Ship.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Entity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Matrix4x4.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Matrix4x4.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test Game/Vector3D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Test Game/Vector3D.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,5 +111,23 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
