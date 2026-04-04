@@ -37,10 +37,15 @@ void DescentGame::onCreate()
 
     buildMineLevel();
 
-    // Spawn player ship inside the south starting room
+    // Spawn player ship at the south entrance of the mine, facing the corridor.
+    // FIX: was Z=2700 facing +Z -- pressing forward immediately hit the back wall.
+    // Now spawns at Z=2500 facing -Z (toward the main corridor at Z<2000).
     m_ship = createEntity<Ship>();
     if (m_ship)
-        m_ship->setPosition(Vector3D(0, 0, 2700));
+    {
+        m_ship->setPosition(Vector3D(0, 0, 2500));
+        m_ship->setInitialYaw(3.14159265f); // face toward corridor (-Z direction)
+    }
 
     getInputManager()->enablePlayMode(m_input);
 }
@@ -277,7 +282,7 @@ void DescentGame::buildMineLevel()
         }
     };
 
-    spawnCluster(Vector3D(   0, 0, 2800), 6,  280, 180, 280, 2.0f, 7.0f); // south start room
+    spawnCluster(Vector3D(   0, 0, 2200), 6,  180, 100, 200, 2.0f, 7.0f); // south start room -- ahead of player
     spawnCluster(Vector3D(   0, 0,-2800), 8,  280, 180, 280, 3.0f, 8.0f); // north room
     spawnCluster(Vector3D( 2600, 0,   0), 7,  250, 180, 280, 2.0f, 6.0f); // east room
     spawnCluster(Vector3D(-2600, 0,   0), 7,  250, 180, 280, 2.0f, 6.0f); // west room

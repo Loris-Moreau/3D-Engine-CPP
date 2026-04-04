@@ -30,9 +30,9 @@ bool InputManager::isKeyUp(const  Key& key)
 	short keyWin = 0;
 
 	if (key >= Key::A && key <= Key::Z)
-		keyWin = 'A' + ((short)key - 2);
+		keyWin = 'A' + ((short)key - (short)Key::A); // FIX: was -2, correct offset is -(short)Key::A == -4
 	else if (key >= Key::N0 && key <= Key::N9)
-		keyWin = '0' + ((short)key - 28);
+		keyWin = '0' + ((short)key - (short)Key::N0); // FIX: was -28, use enum offset
 	else if (key == Key::Shift)
 		keyWin = VK_SHIFT;
 	else if (key == Key::Escape)

@@ -8,31 +8,16 @@ void Entity::release()
 
 void Entity::processWorldMatrix()
 {
-	Matrix4x4 temp;
-
-	m_world.setIdentity();
-
-	temp.setIdentity();
-	temp.createScale(m_scale);
-	m_world *= temp;
-
-
-	temp.setIdentity();
-	temp.createRotationX(m_rotation.m_x);
-	m_world *= temp;
-
-	temp.setIdentity();
-	temp.createRotationY(m_rotation.m_y);
-	m_world *= temp;
-
-	temp.setIdentity();
-	temp.createRotationZ(m_rotation.m_z);
-	m_world *= temp;
-
-
-	temp.setIdentity();
-	temp.createTranslation(m_position);
-	m_world *= temp;
+	// FIX: createScale/createRotation/createTranslation are STATIC methods that RETURN
+	// a new matrix.  The old code called them as instance methods and discarded the
+	// return value, so temp stayed identity every time and m_world was always identity.
+	// Everything rendered at the origin, getZAxis() always returned (0,0,1), and
+	// no movement or rotation was ever visible.
+	m_world = Matrix4x4::createScale(m_scale);
+	m_world *= Matrix4x4::createRotationX(m_rotation.m_x);
+	m_world *= Matrix4x4::createRotationY(m_rotation.m_y);
+	m_world *= Matrix4x4::createRotationZ(m_rotation.m_z);
+	m_world *= Matrix4x4::createTranslation(m_position);
 }
 
 

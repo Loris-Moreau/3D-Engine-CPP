@@ -38,6 +38,10 @@ public:
     // Sphere radius used for collision detection and tunnel wall clamping
     static constexpr float kShipRadius = 15.0f;
 
+    // Set starting orientation without fighting the smooth-rotation accumulator.
+    // Call this once right after createEntity<Ship>(), before the first frame.
+    void setInitialYaw(float yaw) { m_yaw = m_oldYaw = m_camYaw = m_oldCamYaw = yaw; }
+
 private:
     float m_pitch = 0.0f;
     float m_yaw   = 0.0f;
@@ -55,7 +59,7 @@ private:
     float m_oldCamYaw   = 0.0f;
     float m_oldCamRoll  = 0.0f;
 
-    float m_current_cam_distance = 0.0f;
+    float m_current_cam_distance = 18.0f; // FIX: was 0 -- camera was inside ship on spawn
     float m_cam_distance         = 18.0f;
 
     CameraEntity* m_camera = nullptr;
