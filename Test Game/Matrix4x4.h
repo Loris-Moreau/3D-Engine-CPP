@@ -261,7 +261,7 @@ public:
 		{
 			{ 1.0f, 0.0f, 0.0f , 0.0f },
 			{ 0.0f, Maths::cos(theta), Maths::sin(theta), 0.0f },
-			{ 0.0f, Maths::sin(theta), Maths::cos(theta), 0.0f },
+			{ 0.0f, -Maths::sin(theta), Maths::cos(theta), 0.0f }, // FIX: was +sin -- made Y/Z axes non-orthogonal causing pitch distortion
 			{ 0.0f, 0.0f, 0.0f, 1.0f },
 		};
 		return Matrix4x4(temp);
@@ -394,6 +394,7 @@ public:
 	
 	void setPerspectiveFovLH(float fov, float aspect, float znear, float zfar)
 	{
+		setIdentity(); // ensure no leftover values if called with bad aspect before screen is known
 		float yscale = 1.0f / (float)tan(fov / 2.0f);
 		float xscale = yscale / aspect;
 		mat[0][0] = xscale;

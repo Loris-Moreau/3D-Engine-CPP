@@ -70,6 +70,11 @@ public:
 	// Default implementation: no constraint.
 	virtual Vector3D constrainPosition(const Vector3D& pos, float radius) const { return pos; }
 
+	// Returns false if pos+radius is outside the level geometry.
+	// Projectiles/missiles call this to detect wall hits.
+	// Default (open world): always true.
+	virtual bool isInBounds(const Vector3D& pos, float radius) const { return true; }
+
 private:
 	void onDisplaySize(const  Rect& size);
 	// various internal methods of entity system
