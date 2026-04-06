@@ -257,7 +257,7 @@ void Game::quit()
 
 void Game::setTitle(const wchar_t* title)
 {
-	std::wstring t = L"3D Framework - ";
+	std::wstring t = L"3D Engine - ";
 	t += title;
 	m_display->setTitle(t.c_str());
 }

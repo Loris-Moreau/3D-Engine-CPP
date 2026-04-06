@@ -1,77 +1,65 @@
 #pragma once
-
 #include "../All.h"
 
 class Ship : public MeshEntity
 {
 public:
-    Ship() = default;
+    Ship()  = default;
     ~Ship() override = default;
 
-    void onCreate() override;
-    void onUpdate(float deltaTime) override;
+    void onCreate()              override;
+    void onUpdate(float dt)      override;
 
     void ResetMissileCount();
-    void SetMaxMissileCount(unsigned int InMaxCount);
+    void SetMaxMissileCount(unsigned int n);
     unsigned int GetMissileCount();
 
     unsigned int maxMissileCount = 10;
-    unsigned int missileCount = 0;
+    unsigned int missileCount    = 0;
 
-    void SetLaserLevel(unsigned int InLevel);
-    unsigned int GetLaserLevel();
-    void SetMissileLevel(unsigned int InLevel);
-    unsigned int GetMissileLevel();
+    void SetLaserLevel  (unsigned int n);
+    void SetMissileLevel(unsigned int n);
+    unsigned int GetLaserLevel  () { return m_laserLevel;   }
+    unsigned int GetMissileLevel() { return m_missileLevel; }
 
-    // FIX: was 0 — caused damage multiplier to fire every frame at wrong condition
-    unsigned int laserLevel   = 1;
-    unsigned int missileLevel = 1;
+    float GetLaserDamage  () const { return m_laserDamage;   }
+    float GetMissileDamage() const { return m_missileDamage; }
 
-    float GetLaserDamage()   const;
-    float GetMissileDamage() const;
-
-    // Health system
     void  TakeDamage(float dmg);
-    float GetHealth()    const { return m_health; }
+    float GetHealth   () const { return m_health;    }
     float GetMaxHealth() const { return m_maxHealth; }
 
-    // Sphere radius used for collision detection and tunnel wall clamping
-    static constexpr float kShipRadius = 15.0f;
+    // Sets initial facing without fighting the rotation accumulator.
+    void setInitialYaw(float yaw);
 
-    // Set starting orientation without fighting the smooth-rotation accumulator.
-    // Call this once right after createEntity<Ship>(), before the first frame.
-    void setInitialYaw(float yaw) { m_yaw = m_oldYaw = m_camYaw = m_oldCamYaw = yaw; }
+    static constexpr float kShipRadius = 15.f;
 
 private:
-    float m_pitch = 0.0f;
-    float m_yaw   = 0.0f;
-    float m_roll  = 0.0f;
+    // -----------------------------------------------------------------------
+    //  6-DOF orientation stored as a pure rotation 4x4 matrix.
+    //  Rotation inputs PRE-multiply this matrix which, in the engine's
+    //  row-vector convention (v' = v*M), is equivalent to a LOCAL-SPACE
+    //  rotation around the ship's own axes.  This ensures mouse left/right
+    //  always turns the ship left/right regardless of roll.
+    // -----------------------------------------------------------------------
+    Matrix4x4 m_orientMat;       // ship orientation (identity = facing +Z)
+    Matrix4x4 m_camOrientMat;    // camera orientation (lags behind ship)
+    float     m_reorthTimer = 0.f;
 
-    float m_oldPitch = 0.0f;
-    float m_oldYaw   = 0.0f;
-    float m_oldRoll  = 0.0f;
-
-    float m_camPitch = 0.0f;
-    float m_camYaw   = 0.0f;
-    float m_camRoll  = 0.0f;
-
-    float m_oldCamPitch = 0.0f;
-    float m_oldCamYaw   = 0.0f;
-    float m_oldCamRoll  = 0.0f;
-
-    float m_current_cam_distance = 18.0f; // FIX: was 0 -- camera was inside ship on spawn
-    float m_cam_distance         = 18.0f;
+    float m_current_cam_distance = 18.f;
+    float m_cam_distance         = 18.f;
 
     CameraEntity* m_camera = nullptr;
 
-    // Base damage — level multiplier is computed fresh each frame, never accumulated
-    static constexpr float kBaseLaserDamage   = 25.0f;
-    static constexpr float kBaseMissileDamage = 50.0f;
+    unsigned int m_laserLevel   = 1;
+    unsigned int m_missileLevel = 1;
 
-    float m_laserDamage   = kBaseLaserDamage;
-    float m_missileDamage = kBaseMissileDamage;
+    static constexpr float kBaseLaser   = 25.f;
+    static constexpr float kBaseMissile = 50.f;
+    float m_laserDamage   = kBaseLaser;
+    float m_missileDamage = kBaseMissile;
 
-    float m_health         = 100.0f;
-    float m_maxHealth      = 100.0f;
-    float m_invincibleTime = 0.0f; // seconds of invincibility remaining after a hit
+    float m_health         = 100.f;
+    float m_maxHealth      = 100.f;
+    float m_invincibleTime = 0.f;
 };

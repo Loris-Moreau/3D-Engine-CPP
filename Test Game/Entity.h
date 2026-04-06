@@ -39,6 +39,14 @@ public:
 	virtual void onCreate() {}
 	virtual void onUpdate(float deltaTime) {}
 	virtual void release();
+
+	// Set the world matrix directly, bypassing Euler-angle processWorldMatrix.
+	// Used by Ship to drive the camera with an orientation matrix.
+	void setWorldMatrix(const Matrix4x4& mat)
+	{
+		m_world = mat;
+		m_position = Vector3D(mat.mat[3][0], mat.mat[3][1], mat.mat[3][2]);
+	}
 	
 protected:
 	void processWorldMatrix();
