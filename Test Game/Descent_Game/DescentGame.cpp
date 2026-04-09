@@ -1,7 +1,8 @@
 #include "DescentGame.h"
-#include <ctime>
-#include <cstdlib>
+
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 static float randF(float lo, float hi)
 {
@@ -13,17 +14,17 @@ static float randF(float lo, float hi)
 // =========================================================================
 void DescentGame::onCreate()
 {
-    setTitle(L"Descent in the mines");
+    setTitle(L"Descent");
     srand((unsigned int)time(nullptr));
 
     // Skybox
     {
-        auto tex  = createTexture(L"../Assets/Textures/stars_map.jpg");
-        auto mesh = createMesh(L"../Assets/Meshes/sphere.obj");
-        auto mat  = createMaterial(L"../Assets/Shaders/SkyBox.hlsl");
+        TexturePtr tex = createTexture(L"../Assets/Textures/stars_map.jpg");
+        MeshPtr mesh = createMesh(L"../Assets/Meshes/sphere.obj");
+        MaterialPtr mat = createMaterial(L"../Assets/Shaders/SkyBox.hlsl");
         mat->addTexture(tex);
         mat->setCullMode(CullMode::Front);
-        auto sky = createEntity<MeshEntity>();
+        MeshEntity* sky = createEntity<MeshEntity>();
         sky->setMesh(mesh); sky->addMaterial(mat);
         sky->setScale(Vector3D(20000,20000,20000));
     }
@@ -139,26 +140,34 @@ void DescentGame::checkCollisions()
 void DescentGame::buildMineLevel()
 {
     // Lights
-    { auto l=createEntity<LightEntity>(); l->setColor({0.9f,0.85f,0.75f}); l->setRotation({-0.4f,0.6f,0}); }
-    { auto l=createEntity<LightEntity>(); l->setColor({0.5f,0.05f,0.05f}); l->setRotation({0.6f,-0.6f,0}); }
-
+    {
+        LightEntity* l = createEntity<LightEntity>();
+        l->setColor({0.9f,0.85f,0.75f});
+        l->setRotation({-0.4f,0.6f,0});
+    }
+    {
+        LightEntity* l = createEntity<LightEntity>();
+        l->setColor({0.5f,0.05f,0.05f});
+        l->setRotation({0.6f,-0.6f,0});
+    }
+    
     // ---- Dimensions ----
-    const float W  = 200.f;  // corridor half-width  (total 400)
-    const float H  = 130.f;  // corridor half-height (total 260)
-    const float L  = 2000.f; // arm length from center to end
-    const float SD = 400.f;  // room extra depth past arm end
-    const float SX = 1600.f; // X where east shaft begins (within east arm)
-    const float SY = 700.f;  // shaft top Y
-    const float RY = 450.f;  // upper room floor Y
-    const float RX = 2400.f; // upper room east wall X
-    const float T  = 25.f;   // wall panel thickness
-
+    const float W  = 200.0f;  // corridor half-width
+    const float H  = 130.0f;  // corridor half-height
+    const float L  = 2000.0f; // arm length from center to end
+    const float SD = 400.0f;  // room extra depth past arm end
+    const float SX = 1600.0f; // X where east shaft begins (within east arm)
+    const float SY = 700.0f;  // shaft top Y
+    const float RY = 450.0f;  // upper room floor Y
+    const float RX = 2400.0f; // upper room east wall X
+    const float T  = 25.0f;   // wall panel thickness
+    
     const wchar_t* WT = L"../Assets/Textures/wall.jpg";
     const wchar_t* FT = L"../Assets/Textures/brick.png";
-
+    
     // ---- COLLISION ZONES ----
     // Bits: 0=minX  1=maxX  2=minY(floor)  3=maxY(ceil)  4=minZ  5=maxZ
-
+    
     addZone({-W,-H,-W}, {W,H,W},     0|1|4|5);  // center junction (all sides open)
     addZone({-W,-H, W}, {W,H, L},    4|5);       // south arm
     addZone({-W,-H, L}, {W,H, L+SD}, 4);         // south room (open north)
@@ -199,7 +208,7 @@ void DescentGame::buildMineLevel()
     // East arm west part (normal)
     addSegWalls({W,-H,-W},{SX,H,W},   0|1,        T,WT,FT);
 
-    // East arm east part + shaft: generate piece by piece
+    // East arm, east part + shaft: generate piece by piece
     {
         float ex = L; // east wall X of shaft (= arm end = upper room start)
         float fy = -H, cy = H;  // arm floor/ceil Y
@@ -263,8 +272,11 @@ void DescentGame::buildMineLevel()
     auto cluster = [&](Vector3D c, int n, float sx, float sy, float sz, float sMin, float sMax)
     {
         for (int i=0;i<n;i++)
-            spawnAsteroid({c.m_x+randF(-sx,sx), c.m_y+randF(-sy,sy), c.m_z+randF(-sz,sz)},
-                          randF(sMin,sMax));
+        {
+            spawnAsteroid(
+                {c.m_x+randF(-sx,sx), c.m_y+randF(-sy,sy), c.m_z+randF(-sz,sz)},
+                randF(sMin,sMax));
+        }
     };
 
     cluster({0,0, 2300}, 4, 150, 80, 150, 2.f, 5.f);   // south room
