@@ -55,7 +55,7 @@ private:
     unsigned int m_missileLevel = 1;
 
     static constexpr float kBaseLaser   = 25.f;
-    static constexpr float kBaseMissile = 50.f;
+    static constexpr float kBaseMissile = 75.f; // one-shots asteroid (health=75)
     float m_laserDamage   = kBaseLaser;
     float m_missileDamage = kBaseMissile;
 

@@ -16,7 +16,7 @@ public:
     // Inflict damage; destroys the asteroid when health reaches zero.
     void TakeDamage(float dmg);
 
-    float m_health = 80.0f;
+    float m_health = 75.0f; // 3 laser hits or 1 missile
 
 private:
     // Slow tumble axis and speed, randomised on creation
