@@ -1,3 +1,6 @@
+/*
+ * Missile.cpp
+ */
 #include "Missile.h"
 #include "Ship.h"
 
@@ -8,16 +11,16 @@ void Missile::onCreate()
     setMesh(mesh);
     addMaterial(mat);
     setScale(Vector3D(3, 4, 3));
-    setCollisionRadius(4.0f);
+    setCollisionRadius(4.f);
 }
 
-void Missile::onUpdate(float deltaTime)
+void Missile::onUpdate(float dt)
 {
-    m_elapsed += deltaTime;
+    m_elapsed += dt;
 
-    auto pos = m_position + m_dir * deltaTime * 750.0f;
+    const Vector3D pos = m_position + m_dir * dt * 750.f;
 
-    // FIX: destroy missile on wall impact
+    // Same wall-impact logic as Projectile — destroy on leaving the level.
     if (!getGame()->isInBounds(pos, m_collisionRadius))
     {
         release();
@@ -26,9 +29,8 @@ void Missile::onUpdate(float deltaTime)
 
     setPosition(pos);
 
-    if (m_elapsed > 3.0f)
-        release();
+    if (m_elapsed > 3.f) release();
 }
 
-void Missile::SetDamage(float d) { m_damage = d; }
-float Missile::GetDamage() const { return m_damage; }
+void  Missile::SetDamage(float d) { m_damage = d; }
+float Missile::GetDamage() const  { return m_damage; }

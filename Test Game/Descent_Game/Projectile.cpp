@@ -1,3 +1,6 @@
+/*
+ * Projectile.cpp
+ */
 #include "Projectile.h"
 #include "Ship.h"
 
@@ -8,18 +11,18 @@ void Projectile::onCreate()
     setMesh(mesh);
     addMaterial(mat);
     setScale(Vector3D(2, 2, 2));
-    setCollisionRadius(2.0f);
+    setCollisionRadius(2.f);
 }
 
-void Projectile::onUpdate(float deltaTime)
+void Projectile::onUpdate(float dt)
 {
-    m_elapsed += deltaTime;
+    m_elapsed += dt;
 
-    auto pos = m_position + m_dir * deltaTime * 800.0f;
+    const Vector3D pos = m_position + m_dir * dt * 800.f;
 
-    // FIX: destroy projectile when it leaves the level geometry (hits a wall).
-    // isInBounds() returns false when pos is outside every tunnel zone.
-    // Using the projectile's own collision radius so it stops at the wall face.
+    // Destroy the projectile the moment it would move outside the level.
+    // isInBounds() checks the projectile's collision sphere against all
+    // tunnel zones; returning false means a wall has been hit.
     if (!getGame()->isInBounds(pos, m_collisionRadius))
     {
         release();
@@ -28,9 +31,9 @@ void Projectile::onUpdate(float deltaTime)
 
     setPosition(pos);
 
-    if (m_elapsed > 3.0f)
-        release();
+    // Lifetime cap — destroy after 3 s even if nothing was hit.
+    if (m_elapsed > 3.f) release();
 }
 
-void Projectile::SetDamage(float d) { m_damage = d; }
-float Projectile::GetDamage() const { return m_damage; }
+void  Projectile::SetDamage(float d) { m_damage = d; }
+float Projectile::GetDamage() const  { return m_damage; }
