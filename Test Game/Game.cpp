@@ -255,6 +255,16 @@ void Game::quit()
 	m_isRunning = false;
 }
 
+void Game::clearAllEntities()
+{
+	// Erase all entity buckets immediately so restartLevel() can call
+	// onCreate() with a clean slate.  unique_ptr destructors run here,
+	// freeing all entity memory.  m_entitiesToDestroy is cleared too
+	// because its raw pointers would dangle after m_entities.clear().
+	m_entities.clear();
+	m_entitiesToDestroy.clear();
+}
+
 void Game::setTitle(const wchar_t* title)
 {
 	std::wstring t = L"3D Engine - ";

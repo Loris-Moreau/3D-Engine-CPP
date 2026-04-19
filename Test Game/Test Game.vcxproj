@@ -292,6 +292,8 @@
     <ClCompile Include="Descent_Game\Projectile.cpp" />
     <ClCompile Include="Descent_Game\Ship.cpp" />
     <ClCompile Include="Descent_Game\Asteroid.cpp" />
+    <ClCompile Include="Descent_Game\Enemy.cpp" />
+    <ClCompile Include="Descent_Game\EnemyProjectile.cpp" />
     <ClCompile Include="Display.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1656,6 +1658,8 @@
     <ClInclude Include="Descent_Game\Projectile.h" />
     <ClInclude Include="Descent_Game\Ship.h" />
     <ClInclude Include="Descent_Game\Asteroid.h" />
+    <ClInclude Include="Descent_Game\Enemy.h" />
+    <ClInclude Include="Descent_Game\EnemyProjectile.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
