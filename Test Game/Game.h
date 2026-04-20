@@ -90,8 +90,13 @@ private:
 	bool createEntityConcrete(Entity* entity, size_t id);
 	void removeEntity(Entity* entity);
 
+
+protected:
+	// Called after onCreate() to push the display size to all cameras.
+	// Must be called again after a level restart to fix the new camera.
 	void updateCamerasViewportSize();
-	
+
+private:
 	bool m_isRunning = true;
 
 	std::unique_ptr<InputManager> m_inputManager;
