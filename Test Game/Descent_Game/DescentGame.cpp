@@ -1,59 +1,41 @@
 /*
  * DescentGame.cpp
  *
- * Implementation of the Descent mine level.
- *
- * Key design notes
- * ----------------
- * Wall panel seams:
- *   addSegWalls() extends each panel only at its CLOSED faces (the faces
- *   that have a solid wall cap).  Open-face ends are left flush with the
- *   zone boundary.  This means neighbouring zone panels touch exactly at
- *   the shared boundary — no overlap, no Z-fighting, no visible seam.
- *
- * Zone overlap at transitions:
- *   addZone() extends each open boundary by kShipRadius (15 u) so that
- *   adjacent zones always overlap.  containsSphere() insets by the same
- *   radius, so the ship is continuously accepted by at least one zone
- *   when crossing a boundary — no invisible-wall dead-gap.
- *
- * openFaces bitmask (WARNING: use the named constants, NOT bare integers):
- *   Writing "4|5" evaluates to decimal 5 (bitwise OR of integers 4 and 5),
- *   NOT to bit 4 and bit 5.  Always use F_MINX, F_MAXX, F_FLOOR etc.
+ * Restart on death:
+ *   Ship::IsDead() is checked every frame. 
+ *   restartLevel() calls Game::clearAllEntities() then onCreate() for a
+ *   clean rebuild without leaking any entity memory.
  */
 
 #include "DescentGame.h"
-#include <ctime>
-#include <cstdlib>
+
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
-// ---------------------------------------------------------------------------
-// Named face-open constants for the openFaces bitmask.
-// These replace the raw integers that caused the original "4|5 == 5" bug.
-// ---------------------------------------------------------------------------
-static constexpr int F_MINX  = (1 << 0);   // left face  (−X)
-static constexpr int F_MAXX  = (1 << 1);   // right face (+X)
-static constexpr int F_FLOOR = (1 << 2);   // floor      (−Y)
-static constexpr int F_CEIL  = (1 << 3);   // ceiling    (+Y)
-static constexpr int F_MINZ  = (1 << 4);   // near face  (−Z)
-static constexpr int F_MAXZ  = (1 << 5);   // far face   (+Z)
+// Face-open bitmask constants.
+// NEVER use bare integer literals — "4|5" equals decimal 5, NOT bit4|bit5.
+static constexpr int F_MINX  = (1 << 0);
+static constexpr int F_MAXX  = (1 << 1);
+static constexpr int F_FLOOR = (1 << 2);
+static constexpr int F_CEIL  = (1 << 3);
+static constexpr int F_MINZ  = (1 << 4);
+static constexpr int F_MAXZ  = (1 << 5);
 
-// Uniform random float in [lo, hi).
 static float randF(float lo, float hi)
 {
     return lo + (rand() % 10000) / 10000.f * (hi - lo);
 }
 
 // ============================================================================
-//  onCreate  — runs once at startup
+//  onCreate
 // ============================================================================
 void DescentGame::onCreate()
 {
     setTitle(L"Descent - Mines of Zeta Aquilae");
     srand((unsigned int)time(nullptr));
 
-    // Skybox: a large inverted sphere with the star-map texture.
-    // CullMode::Front makes the inside faces visible.
+    // Skybox
     {
         auto tex  = createTexture(L"../Assets/Textures/stars_map.jpg");
         auto mesh = createMesh(L"../Assets/Meshes/sphere.obj");
@@ -61,31 +43,61 @@ void DescentGame::onCreate()
         mat->addTexture(tex);
         mat->setCullMode(CullMode::Front);
         auto sky = createEntity<MeshEntity>();
-        sky->setMesh(mesh);
-        sky->addMaterial(mat);
+        sky->setMesh(mesh); sky->addMaterial(mat);
         sky->setScale(Vector3D(20000, 20000, 20000));
     }
 
-    buildMineLevel();   // fills m_zones and spawns all wall + asteroid entities
+    buildMineLevel();
 
-    // Spawn the player ship inside the south start room, facing −Z (toward the
-    // main corridor).  Must come AFTER buildMineLevel so m_zones is populated.
+    // Ship must be spawned AFTER buildMineLevel so m_zones is populated.
     m_ship = createEntity<Ship>();
     if (m_ship)
     {
         m_ship->setPosition(Vector3D(0, 0, 2300));
-        m_ship->setInitialYaw(3.14159265f);
+        m_ship->setInitialYaw(3.14159265f);   // face -Z toward corridor
     }
+
+    m_restartPending = false;
+    m_restartTimer   = 0.f;
 
     getInputManager()->enablePlayMode(m_input);
 }
 
 // ============================================================================
-//  onUpdate  — runs every frame
+//  restartLevel
+//  Clears every entity and re-runs onCreate() with a clean slate.
+//  Called from onUpdate() which runs before the per-entity update loop,
+//  so no iterators are active during the clear.
 // ============================================================================
-void DescentGame::onUpdate(float)
+void DescentGame::restartLevel()
 {
-    // Escape toggles cursor lock (play mode ↔ windowed mouse).
+    clearAllEntities();   // frees all entity memory (Game::clearAllEntities)
+    m_ship = nullptr;
+    m_zones.clear();
+    onCreate();
+}
+
+// ============================================================================
+//  onUpdate
+// ============================================================================
+void DescentGame::onUpdate(float dt)
+{
+    // --- Death / restart ---
+    if (m_restartPending)
+    {
+        m_restartTimer -= dt;
+        if (m_restartTimer <= 0.f) restartLevel();
+        return;   // skip all other logic while restarting
+    }
+
+    if (m_ship && m_ship->IsDead())
+    {
+        m_restartPending = true;
+        m_restartTimer   = kRestartDelay;
+        return;
+    }
+
+    // --- Escape toggles cursor lock ---
     if (getInputManager()->isKeyUp(Key::Escape))
     {
         m_input = !m_input;
@@ -96,36 +108,27 @@ void DescentGame::onUpdate(float)
 }
 
 // ============================================================================
-//  constrainPosition  (override of Game::constrainPosition)
-//
-//  Called by Ship::onUpdate with the desired new position.
-//  Returns the position unchanged if it is already inside any zone.
-//  Otherwise finds the zone whose boundary is nearest and projects the
-//  position onto that boundary so the ship slides along walls.
+//  constrainPosition
 // ============================================================================
 Vector3D DescentGame::constrainPosition(const Vector3D& p, float r) const
 {
     for (const auto& z : m_zones)
         if (z.containsSphere(p, r)) return p;
 
-    float    best = 1e30f;
-    Vector3D res  = p;
+    float best = 1e30f;
+    Vector3D res = p;
     for (const auto& z : m_zones)
     {
         Vector3D c  = z.clampSphere(p, r);
-        float dx = c.m_x - p.m_x, dy = c.m_y - p.m_y, dz = c.m_z - p.m_z;
-        float d  = dx*dx + dy*dy + dz*dz;
+        float dx=c.m_x-p.m_x, dy=c.m_y-p.m_y, dz=c.m_z-p.m_z;
+        float d = dx*dx+dy*dy+dz*dz;
         if (d < best) { best = d; res = c; }
     }
     return res;
 }
 
 // ============================================================================
-//  isInBounds  (override of Game::isInBounds)
-//
-//  Called by Projectile::onUpdate and Missile::onUpdate each frame.
-//  Returns false the moment a projectile would move outside every zone,
-//  causing it to be destroyed (simulating a wall impact).
+//  isInBounds
 // ============================================================================
 bool DescentGame::isInBounds(const Vector3D& p, float r) const
 {
@@ -135,64 +138,77 @@ bool DescentGame::isInBounds(const Vector3D& p, float r) const
 }
 
 // ============================================================================
-//  checkCollisions  — sphere-sphere hit detection, called every frame
-//
-//  Uses getEntitiesOfType<T>() each frame rather than a cached pointer list.
-//  This guarantees stale pointers are never accessed after an entity is
-//  released mid-frame (e.g. an asteroid destroyed on the same frame it is
-//  rammed by the ship).
-//
-//  Damage rules:
-//    Laser (Projectile, left-click)   : 25 hp  — 3 hits to destroy an asteroid
-//    Missile (Missile, right-click)   : 75 hp  — 1 hit  to destroy an asteroid
-//    Ramming (ship touching asteroid) : 10 hp to the ship, asteroid unharmed
+//  checkCollisions
 // ============================================================================
 void DescentGame::checkCollisions()
 {
     auto asteroids   = getEntitiesOfType<Asteroid>();
+    auto enemies     = getEntitiesOfType<Enemy>();
     auto projectiles = getEntitiesOfType<Projectile>();
     auto missiles    = getEntitiesOfType<Missile>();
+    auto enemyBolts  = getEntitiesOfType<EnemyProjectile>();
 
+    // --- Player weapons vs asteroids ---
     for (Asteroid* a : asteroids)
     {
         if (!a || a->m_health <= 0.f) continue;
-
         float ar = a->getCollisionRadius();
         auto  ap = a->getPosition();
-
-        // Laser hits
         for (Projectile* p : projectiles)
         {
             float rs = ar + p->getCollisionRadius();
-            if (distSq(p->getPosition(), ap) < rs * rs)
-            {
-                a->TakeDamage(p->GetDamage());
-                p->release();
-                if (a->m_health <= 0.f) goto next_asteroid;
-            }
+            if (distSq(p->getPosition(), ap) < rs*rs)
+            { a->TakeDamage(p->GetDamage()); p->release(); if(a->m_health<=0.f) goto na; }
         }
-
-        // Missile hits
         for (Missile* m : missiles)
         {
             float rs = ar + m->getCollisionRadius();
-            if (distSq(m->getPosition(), ap) < rs * rs)
-            {
-                a->TakeDamage(m->GetDamage());
-                m->release();
-                if (a->m_health <= 0.f) goto next_asteroid;
-            }
+            if (distSq(m->getPosition(), ap) < rs*rs)
+            { a->TakeDamage(m->GetDamage()); m->release(); if(a->m_health<=0.f) goto na; }
         }
-
-        // Ship ramming — hurts the ship, not the asteroid
         if (m_ship)
         {
             float rs = ar + Ship::kShipRadius;
-            if (distSq(m_ship->getPosition(), ap) < rs * rs)
-                m_ship->TakeDamage(10.f);
+            if (distSq(m_ship->getPosition(), ap) < rs*rs)
+                m_ship->TakeDamage(10.f);   // ramming hurts the ship
         }
+        na:;
+    }
 
-        next_asteroid:;
+    // --- Player weapons vs enemies ---
+    for (Enemy* e : enemies)
+    {
+        if (!e || e->m_health <= 0.f) continue;
+        float er = e->getCollisionRadius();
+        auto  ep = e->getPosition();
+        for (Projectile* p : projectiles)
+        {
+            float rs = er + p->getCollisionRadius();
+            if (distSq(p->getPosition(), ep) < rs*rs)
+            { e->TakeDamage(p->GetDamage()); p->release(); if(e->m_health<=0.f) goto ne; }
+        }
+        for (Missile* m : missiles)
+        {
+            float rs = er + m->getCollisionRadius();
+            if (distSq(m->getPosition(), ep) < rs*rs)
+            { e->TakeDamage(m->GetDamage()); m->release(); if(e->m_health<=0.f) goto ne; }
+        }
+        ne:;
+    }
+
+    // --- Enemy bolts vs player ship ---
+    if (m_ship)
+    {
+        for (EnemyProjectile* bolt : enemyBolts)
+        {
+            if (!bolt) continue;
+            float rs = Ship::kShipRadius + bolt->getCollisionRadius();
+            if (distSq(bolt->getPosition(), m_ship->getPosition()) < rs*rs)
+            {
+                m_ship->TakeDamage(bolt->GetDamage());
+                bolt->release();
+            }
+        }
     }
 }
 
@@ -201,239 +217,226 @@ void DescentGame::checkCollisions()
 // ============================================================================
 void DescentGame::buildMineLevel()
 {
-    // Two directional lights: a warm white main light and a dim red fill.
-    { auto l = createEntity<LightEntity>(); l->setColor({0.9f, 0.85f, 0.75f}); l->setRotation({-0.4f,  0.6f, 0}); }
-    { auto l = createEntity<LightEntity>(); l->setColor({0.5f, 0.05f, 0.05f}); l->setRotation({ 0.6f, -0.6f, 0}); }
+    { auto l=createEntity<LightEntity>(); l->setColor({0.9f,0.85f,0.75f}); l->setRotation({-0.4f, 0.6f,0}); }
+    { auto l=createEntity<LightEntity>(); l->setColor({0.5f,0.05f,0.05f}); l->setRotation({ 0.6f,-0.6f,0}); }
 
-    // ---- Shared dimensions -----------------------------------------------
-    // All corridors and rooms use the same W/H cross-section so panels join
-    // flush at every junction — no need for separate frame panels.
+    // Shared dimensions — all corridors use the same W×H cross-section
+    // so panels join perfectly at every junction without frame panels.
     const float W  = 200.f;   // corridor half-width  → total 400 u
     const float H  = 130.f;   // corridor half-height → total 260 u
-    const float L  = 2000.f;  // arm half-length from the center junction
-    const float RD = 400.f;   // extra depth of each terminal room past the arm end
-    const float SX = 1600.f;  // X coordinate where the east shaft begins (within the east arm)
-    const float SY = 700.f;   // top Y of the east shaft / bottom Y of the upper east room
-    const float RY = 450.f;   // floor Y of the upper east room
-    const float RX = 2400.f;  // east wall X of the upper east room
+    const float L  = 2000.f;  // arm half-length from center
+    const float RD = 400.f;   // room extra depth past arm end
+    const float SX = 1600.f;  // X where east shaft begins / west shaft ends
+    const float SY = 700.f;   // shaft top Y (east) / shaft bottom Y mirror (west)
+    const float RY = 450.f;   // upper east room floor Y
+    const float RX = 2400.f;  // upper east room east wall X
     const float T  = 25.f;    // wall panel thickness
+    const wchar_t* WT = L"../Assets/Textures/wall.jpg";
+    const wchar_t* FT = L"../Assets/Textures/brick.png";
 
-    const wchar_t* WT = L"../Assets/Textures/wall.jpg";    // side walls
-    const wchar_t* FT = L"../Assets/Textures/brick.png";   // floors and ceilings
+    // ---- COLLISION ZONES ------------------------------------------------
+    addZone({-W,-H,-W},{W,H,W}, F_MINX|F_MAXX|F_MINZ|F_MAXZ); // center junction
 
-    // =========================================================================
-    // COLLISION ZONES
-    //
-    // Each addZone() call registers a TunnelZone.  Open faces (marked with
-    // F_* flags) are extended by kShipRadius so adjacent zones overlap —
-    // this eliminates the dead-gap that would otherwise occur at transitions.
-    // =========================================================================
+    // N–S corridor
+    addZone({-W,-H,  W},{W,H,  L},  F_MINZ|F_MAXZ);  // south arm
+    addZone({-W,-H,  L},{W,H,L+RD}, F_MINZ);          // south start room
+    addZone({-W,-H, -L},{W,H, -W},  F_MINZ|F_MAXZ);  // north arm
+    addZone({-W,-H,-L-RD},{W,H,-L}, F_MAXZ);          // north room
 
-    // Center cross junction — floor and ceiling only; all four lateral faces open.
-    addZone({-W,-H,-W}, {W,H,W},   F_MINX|F_MAXX|F_MINZ|F_MAXZ);
+    // E–W corridor
+    addZone({-L,-H,-W},{-W, H,W},  F_MINX|F_MAXX);   // west arm (non-shaft part)
+    addZone({ W,-H,-W},{SX, H,W},  F_MINX|F_MAXX);   // east arm (non-shaft part)
+    addZone({SX,-H,-W},{ L, H,W},  F_MINX|F_MAXX|F_CEIL);  // east arm over shaft
+    addZone({SX, H,-W},{ L,SY,W},  F_MINX|F_MAXX|F_FLOOR); // east shaft vertical
+    addZone({ L,RY,-W},{RX,SY,W},  F_MINX);           // upper east room
 
-    // N–S main corridor
-    addZone({-W,-H,  W}, {W,H,  L},  F_MINZ|F_MAXZ);   // south arm
-    addZone({-W,-H,  L}, {W,H,L+RD}, F_MINZ);           // south start room (open north end)
-    addZone({-W,-H, -L}, {W,H, -W},  F_MINZ|F_MAXZ);   // north arm
-    addZone({-W,-H,-L-RD},{W,H,  -L},F_MAXZ);           // north dead-end room (open south end)
+    // West shaft (going DOWN)
+    addZone({-L,-H,-W},{-SX,H,  W}, F_MINX|F_MAXX|F_FLOOR); // west arm over shaft
+    addZone({-L,-SY,-W},{-SX,-H,W}, F_MINX|F_MAXX|F_CEIL);  // west shaft vertical
+    addZone({-RX,-SY,-W},{-L,-RY,W},F_MAXX);          // lower west room
 
-    // E–W cross corridor
-    addZone({-L,-H,-W},{-W, H, W},  F_MINX|F_MAXX);   // west arm (normal, no shaft)
-    addZone({ W,-H,-W},{SX, H, W},  F_MINX|F_MAXX);   // east arm — west of shaft (normal)
-    addZone({SX,-H,-W},{ L, H, W},  F_MINX|F_MAXX|F_CEIL);  // east arm — over shaft (ceiling open upward)
-    addZone({SX, H,-W},{ L,SY, W},  F_MINX|F_MAXX|F_FLOOR); // east shaft vertical (floor open → arm below)
-    addZone({ L,RY,-W},{RX,SY, W},  F_MINX);           // upper east room (west face open → shaft)
+    // ---- VISUAL WALLS ---------------------------------------------------
+    addSegWalls({-W,-H,-W},{W,H,W}, F_MINX|F_MAXX|F_MINZ|F_MAXZ, T,WT,FT); // center
 
-    // West shaft going DOWN (mirror of the east shaft)
-    addZone({-L,-H,-W},{-SX, H, W}, F_MINX|F_MAXX|F_FLOOR); // west arm — under shaft (floor open downward)
-    addZone({-L,-SY,-W},{-SX,-H,W}, F_MINX|F_MAXX|F_CEIL);  // west shaft vertical (ceiling open → arm above)
-    addZone({-RX,-SY,-W},{-L,-RY,W},F_MAXX);           // lower west room (east face open → shaft)
+    // N–S
+    addSegWalls({-W,-H, W},{W,H, L},  F_MINZ|F_MAXZ, T,WT,FT);
+    addSegWalls({-W,-H, L},{W,H,L+RD},F_MINZ,        T,WT,FT);
+    addSegWalls({-W,-H,-L},{W,H,-W},  F_MINZ|F_MAXZ, T,WT,FT);
+    addSegWalls({-W,-H,-L-RD},{W,H,-L},F_MAXZ,       T,WT,FT);
 
-    // =========================================================================
-    // VISUAL WALLS
-    //
-    // addSegWalls() uses the same zone bounds and openFaces as addZone() above.
-    // Panels extend by T only at CLOSED faces, keeping shared boundaries flush.
-    // =========================================================================
+    // E–W non-shaft parts
+    // BUG FIX: west arm addSegWalls only covers -SX to -W now (not -L to -W).
+    //   The shaft section (-L to -SX) is handled by manual panels below so
+    //   there are no duplicate floor/ceiling panels causing Z-fighting seams.
+    addSegWalls({-SX,-H,-W},{-W,H,W}, F_MINX|F_MAXX, T,WT,FT);  // west arm (non-shaft)
+    addSegWalls({ W,-H,-W},{SX,H, W}, F_MINX|F_MAXX, T,WT,FT);  // east arm (non-shaft)
 
-    // Center junction
-    addSegWalls({-W,-H,-W},{W,H,W}, F_MINX|F_MAXX|F_MINZ|F_MAXZ, T,WT,FT);
-
-    // N–S south
-    addSegWalls({-W,-H,  W},{W,H,  L},  F_MINZ|F_MAXZ, T,WT,FT);
-    addSegWalls({-W,-H,  L},{W,H,L+RD}, F_MINZ,        T,WT,FT);
-
-    // N–S north
-    addSegWalls({-W,-H, -L},{W,H,  -W},  F_MINZ|F_MAXZ, T,WT,FT);
-    addSegWalls({-W,-H,-L-RD},{W,H,-L},  F_MAXZ,        T,WT,FT);
-
-    // E–W west (no shaft — simple box)
-    addSegWalls({-L,-H,-W},{-W,H,W}, F_MINX|F_MAXX, T,WT,FT);
-
-    // E–W east — west-of-shaft segment (normal)
-    addSegWalls({W,-H,-W},{SX,H,W}, F_MINX|F_MAXX, T,WT,FT);
-
-    // East arm + shaft: generated panel-by-panel because the ceiling is partly
-    // open (the shaft rises through it) and the zone is split at X = SX.
+    // ---- EAST SHAFT PANELS (SX to L) ------------------------------------
+    // West face (at X=SX) is OPEN — connects to the east arm.
+    //   → x0 = SX  (flush, no T extension on west side)
+    //   → x1 = L+T (closed east face, extends by T)
+    //   → size_x = L - SX + T
+    //   → centre_x = (SX + L + T) / 2
+    // This is the key fix: previously x0 was SX-T, overlapping the arm by T.
     {
-        // Arm floor runs the full X extent from SX to L (no Y complications here)
-        addPanel({(SX+L)/2,       -H-T/2, 0}, {L-SX+2*T,    T,  2*W+2*T}, FT);
-        // Shaft ceiling at Y = SY (top of the shaft / floor of the upper room)
-        addPanel({(SX+L)/2,      SY+T/2,  0}, {L-SX+2*T,    T,  2*W+2*T}, FT);
-        // Arm ceiling patch between SX and L (solid ceiling of the arm section,
-        // placed at the same Y as the normal arm ceiling = H)
-        addPanel({(SX+L)/2,       H+T/2,  0}, {L-SX+2*T,    T,  2*W+2*T}, FT);
-        // Front wall (−Z side) spanning full shaft height from arm floor to shaft top
-        addPanel({(SX+L)/2, (-H+SY)/2,   -W-T/2}, {L-SX+2*T, SY+H, T},   WT);
-        // Back wall  (+Z side) spanning full shaft height
-        addPanel({(SX+L)/2, (-H+SY)/2,    W+T/2}, {L-SX+2*T, SY+H, T},   WT);
-        // Shaft west wall: only above the arm ceiling (from H to SY), at X = SX
-        addPanel({SX-T/2,   (H+SY)/2,         0}, {T,  SY-H,  2*W+2*T},   WT);
-        // East wall: below the upper room floor (from −H to RY), at X = L
-        addPanel({L+T/2,    (-H+RY)/2,        0}, {T,  RY+H,  2*W+2*T},   WT);
-    }
-    addSegWalls({L,RY,-W},{RX,SY,W}, F_MINX, T,WT,FT);
+        const float cx  = (SX + L + T) / 2.f;  // 1812.5
+        const float sx  = L - SX + T;           // 425
+        const float sz  = 2.f*W + 2.f*T;        // 450   (Z: both sides closed)
 
-    // West shaft + lower room (mirror geometry, shaft goes DOWN)
+        addPanel({cx,      -H - T/2,      0}, {sx, T,    sz}, FT); // arm floor
+        addPanel({cx,      SY + T/2,      0}, {sx, T,    sz}, FT); // shaft top ceiling
+        addPanel({cx,       H + T/2,      0}, {sx, T,    sz}, FT); // arm ceiling patch
+        addPanel({cx, (-H + SY) / 2, -W-T/2}, {sx, SY+H, T}, WT); // front wall (-Z)
+        addPanel({cx, (-H + SY) / 2,  W+T/2}, {sx, SY+H, T}, WT); // back wall  (+Z)
+        // Shaft west wall: above arm ceiling (Y=H to Y=SY), only T wide in X
+        addPanel({SX - T/2, (H + SY) / 2,        0}, {T, SY-H, sz}, WT);
+        // East wall: below upper room floor (Y=-H to Y=RY), at X=L
+        addPanel({L  + T/2, (-H + RY) / 2,        0}, {T, RY+H, sz}, WT);
+    }
+    addSegWalls({L,RY,-W},{RX,SY,W}, F_MINX, T,WT,FT); // upper east room
+
+    // ---- WEST SHAFT PANELS (-L to -SX) ----------------------------------
+    // East face (at X=-SX) is OPEN — connects to the west arm.
+    //   → x1 = -SX  (flush)
+    //   → x0 = -L-T (closed west face)
+    //   → size_x = L - SX + T  (same as east shaft by symmetry)
+    //   → centre_x = -(L + T + SX) / 2
     {
-        const float wx  = -L;    // west boundary of the shaft section
-        const float wsx = -SX;   // east boundary of the shaft section
-        const float wsY = -SY;   // shaft bottom Y (= lower room ceiling Y)
-        const float rY  = -RY;   // lower room ceiling Y
+        const float wsY = -SY;
+        const float rY  = -RY;
+        const float cx  = -(L + T + SX) / 2.f;  // -1812.5
+        const float sx  = L - SX + T;            // 425
+        const float sz  = 2.f*W + 2.f*T;         // 450
 
-        // Arm ceiling (at Y = H) over the shaft section
-        addPanel({(wx+wsx)/2,  H+T/2, 0}, {wsx-wx+2*T, T,  2*W+2*T}, FT);
-        // Shaft floor at Y = wsY (= −SY)
-        addPanel({(wx+wsx)/2, wsY-T/2, 0},{wsx-wx+2*T, T,  2*W+2*T}, FT);
-        // Arm floor patch between wx and wsx
-        addPanel({(wx+wsx)/2, -H-T/2,  0},{wsx-wx+2*T, T,  2*W+2*T}, FT);
-        // Front wall (−Z) spanning full shaft height
-        addPanel({(wx+wsx)/2, (-H+wsY)/2, -W-T/2}, {wsx-wx+2*T, -H-wsY, T}, WT);
-        // Back wall  (+Z) spanning full shaft height
-        addPanel({(wx+wsx)/2, (-H+wsY)/2,  W+T/2}, {wsx-wx+2*T, -H-wsY, T}, WT);
-        // Shaft east wall: only below the arm floor (from wsY to −H), at X = wsx
-        addPanel({wsx+T/2,  (wsY-H)/2,   0}, {T,   -H-wsY,  2*W+2*T}, WT);
-        // West wall: above the lower room ceiling (from wsY to rY), at X = wx
-        addPanel({wx -T/2,  (wsY+rY)/2,  0}, {T,   rY-wsY,  2*W+2*T}, WT);
+        addPanel({cx,          H + T/2,       0}, {sx, T,      sz}, FT); // arm ceiling
+        addPanel({cx,      wsY - T/2,          0}, {sx, T,      sz}, FT); // shaft floor
+        addPanel({cx,         -H - T/2,        0}, {sx, T,      sz}, FT); // arm floor patch
+        addPanel({cx, (-H + wsY) / 2, -W-T/2}, {sx, -H-wsY,  T}, WT); // front wall
+        addPanel({cx, (-H + wsY) / 2,  W+T/2}, {sx, -H-wsY,  T}, WT); // back wall
+        // Shaft east wall: below arm floor (Y=wsY to Y=-H), at X=-SX
+        addPanel({-SX + T/2, (wsY - H) / 2,       0}, {T, -H-wsY, sz}, WT);
+        // West wall: above lower room ceiling (Y=wsY to Y=rY), at X=-L
+        addPanel({-L  - T/2, (wsY + rY) / 2,       0}, {T, rY-wsY, sz}, WT);
     }
-    addSegWalls({-RX,-SY,-W},{-L,-RY,W}, F_MAXX, T,WT,FT);
+    addSegWalls({-RX,-SY,-W},{-L,-RY,W}, F_MAXX, T,WT,FT); // lower west room
 
-    // =========================================================================
-    // ASTEROIDS
-    //
-    // cluster(centre, count, spreadX, spreadY, spreadZ, scaleMin, scaleMax)
-    // Each asteroid is placed at a random offset from the cluster centre.
-    // scale * 5.5 = collision radius (empirically chosen to match asteroid.obj).
-    // =========================================================================
+    // ---- ASTEROIDS -------------------------------------------------------
     auto cluster = [&](Vector3D c, int n, float sx, float sy, float sz,
                        float sMin, float sMax)
     {
-        for (int i = 0; i < n; i++)
+        for (int i=0; i<n; i++)
             spawnAsteroid(
-                { c.m_x + randF(-sx,sx), c.m_y + randF(-sy,sy), c.m_z + randF(-sz,sz) },
+                {c.m_x+randF(-sx,sx), c.m_y+randF(-sy,sy), c.m_z+randF(-sz,sz)},
                 randF(sMin, sMax));
     };
 
-    cluster({  0,   0,  2200}, 4, 140, 80, 140, 2.f, 5.f);  // south start room
-    cluster({  0,   0, -2300}, 6, 150, 80, 150, 2.f, 6.f);  // north room
-    cluster({  0,   0,   900}, 3, 120, 70, 500, 2.f, 4.f);  // south arm
-    cluster({  0,   0,  -900}, 3, 120, 70, 500, 2.f, 4.f);  // north arm
-    cluster({ 1200, 0,     0}, 3, 500, 70, 120, 2.f, 4.f);  // east arm
-    cluster({-1200, 0,     0}, 3, 500, 70, 120, 2.f, 4.f);  // west arm
-    cluster({ 2200, 550,   0}, 5, 140, 60, 140, 2.f, 5.f);  // upper east room
-    cluster({-2200,-550,   0}, 5, 140, 60, 140, 2.f, 5.f);  // lower west room
+    cluster({   0,   0,  2200}, 3, 140, 80, 140, 2.f, 5.f); // south room
+    cluster({   0,   0, -2300}, 5, 150, 80, 150, 2.f, 6.f); // north room
+    cluster({   0,   0,   900}, 2, 120, 70, 400, 2.f, 4.f); // south arm
+    cluster({   0,   0,  -900}, 2, 120, 70, 400, 2.f, 4.f); // north arm
+    cluster({1200,   0,     0}, 2, 500, 70, 120, 2.f, 4.f); // east arm
+    cluster({-1200,  0,     0}, 2, 500, 70, 120, 2.f, 4.f); // west arm
+    cluster({2200,  550,    0}, 4, 140, 60, 140, 2.f, 5.f); // upper east room
+    cluster({-2200,-550,    0}, 4, 140, 60, 140, 2.f, 5.f); // lower west room
+
+    // ---- ENEMIES ---------------------------------------------------------
+    // The south start room is enemy-free so the player can orient.
+    // Enemies are spaced so the player encounters them steadily as they explore.
+    // Each arm and room has at least one enemy; tight spaces have one,
+    // open rooms have two so the player has to watch different angles.
+
+    // South arm — first contact as soon as the player leaves the start room
+    spawnEnemy({  0,   0,  1500});
+    spawnEnemy({  0,   0,   600});
+
+    // Center junction — guards the crossroads
+    spawnEnemy({ 150, 0,    0});
+    spawnEnemy({-150, 0,    0});
+
+    // North arm
+    spawnEnemy({  0,   0,  -700});
+    spawnEnemy({  0,   0, -1500});
+
+    // North room — two guards inside the dead-end room
+    spawnEnemy({ 120,  0, -2200});
+    spawnEnemy({-120,  0, -2400});
+
+    // East arm
+    spawnEnemy({ 700,  0,    0});
+    spawnEnemy({1400,  0,    0});
+
+    // Upper east room — hardest area, three enemies
+    spawnEnemy({2100,  550,   80});
+    spawnEnemy({2100,  550,  -80});
+    spawnEnemy({2300,  480,    0});
+
+    // West arm
+    spawnEnemy({-700,   0,    0});
+    spawnEnemy({-1400,  0,    0});
+
+    // Lower west room — three enemies to match upper east
+    spawnEnemy({-2100, -550,   80});
+    spawnEnemy({-2100, -550,  -80});
+    spawnEnemy({-2300, -480,    0});
 }
 
 // ============================================================================
 //  addZone
-//
-//  Registers a collision zone.  Open faces are extended outward by
-//  kShipRadius (15 u) so that adjacent zones always overlap at their shared
-//  boundary.  containsSphere() insets by the same radius, meaning the ship
-//  is continuously accepted by at least one zone when crossing the boundary.
 // ============================================================================
 void DescentGame::addZone(const Vector3D& mn, const Vector3D& mx, int open)
 {
     const float R = Ship::kShipRadius;
-    TunnelZone z;
-    z.min = mn;  z.max = mx;
-    if (open & F_MINX)  z.min.m_x -= R;
-    if (open & F_MAXX)  z.max.m_x += R;
-    if (open & F_FLOOR) z.min.m_y -= R;
-    if (open & F_CEIL)  z.max.m_y += R;
-    if (open & F_MINZ)  z.min.m_z -= R;
-    if (open & F_MAXZ)  z.max.m_z += R;
+    TunnelZone z; z.min=mn; z.max=mx;
+    if (open&F_MINX)  z.min.m_x-=R;
+    if (open&F_MAXX)  z.max.m_x+=R;
+    if (open&F_FLOOR) z.min.m_y-=R;
+    if (open&F_CEIL)  z.max.m_y+=R;
+    if (open&F_MINZ)  z.min.m_z-=R;
+    if (open&F_MAXZ)  z.max.m_z+=R;
     m_zones.push_back(z);
 }
 
 // ============================================================================
 //  addSegWalls
-//
-//  Generates up to 6 wall panels (one per face) for the box [mn, mx].
-//  Faces listed in openFaces are skipped entirely.
-//
-//  Panel extension rule — the critical fix for texture seams:
-//    Each panel is extended by thickness T only at CLOSED faces.
-//    At open faces the panel stops flush with the zone boundary.
-//    This ensures adjacent zone panels meet exactly — no overlap, no gap,
-//    no Z-fighting seam at corridor junctions.
-//
-//  Example — a closed-end wall cap:
-//    Near wall (F_MINZ closed):  floor/ceiling extend to mn.z − T so they
-//    cover the corner region that the near wall cap occupies.
-//
-//  Example — an open corridor-to-corridor transition (F_MINZ open):
-//    Floor stops at mn.z exactly.  Adjacent zone's floor also starts at
-//    mn.z exactly.  No overlap.
+//  Each panel extends by T only at CLOSED faces; open-face ends stop flush
+//  with the zone boundary so no adjacent panels overlap.
 // ============================================================================
 void DescentGame::addSegWalls(const Vector3D& mn, const Vector3D& mx,
                                int open, float T,
                                const wchar_t* wt, const wchar_t* ft)
 {
-    // Compute the effective extents for each axis.
-    // Open ends stop at the zone boundary; closed ends extend by T.
-    const float x0 = (open & F_MINX)  ? mn.m_x : mn.m_x - T;
-    const float x1 = (open & F_MAXX)  ? mx.m_x : mx.m_x + T;
-    const float y0 = (open & F_FLOOR) ? mn.m_y : mn.m_y - T;
-    const float y1 = (open & F_CEIL)  ? mx.m_y : mx.m_y + T;
-    const float z0 = (open & F_MINZ)  ? mn.m_z : mn.m_z - T;
-    const float z1 = (open & F_MAXZ)  ? mx.m_z : mx.m_z + T;
+    const float x0 = (open&F_MINX)  ? mn.m_x : mn.m_x - T;
+    const float x1 = (open&F_MAXX)  ? mx.m_x : mx.m_x + T;
+    const float y0 = (open&F_FLOOR) ? mn.m_y : mn.m_y - T;
+    const float y1 = (open&F_CEIL)  ? mx.m_y : mx.m_y + T;
+    const float z0 = (open&F_MINZ)  ? mn.m_z : mn.m_z - T;
+    const float z1 = (open&F_MAXZ)  ? mx.m_z : mx.m_z + T;
 
-    // Panel sizes and centres derived from those extents
-    const float fsx = x1 - x0,  fcx = (x0 + x1) * .5f;   // floor/ceil panel: X size and centre
-    const float fsz = z1 - z0,  fcz = (z0 + z1) * .5f;   // floor/ceil panel: Z size and centre
-    const float wsy = y1 - y0,  wcy = (y0 + y1) * .5f;   // wall panel:       Y size and centre
+    const float fsx=x1-x0, fcx=(x0+x1)*.5f;
+    const float fsz=z1-z0, fcz=(z0+z1)*.5f;
+    const float wsy=y1-y0, wcy=(y0+y1)*.5f;
 
-    if (!(open & F_FLOOR)) addPanel({fcx, mn.m_y - T*.5f, fcz}, {fsx, T,  fsz}, ft);  // floor
-    if (!(open & F_CEIL))  addPanel({fcx, mx.m_y + T*.5f, fcz}, {fsx, T,  fsz}, ft);  // ceiling
-    if (!(open & F_MINX))  addPanel({mn.m_x - T*.5f, wcy, fcz}, {T,  wsy, fsz}, wt);  // left  (−X)
-    if (!(open & F_MAXX))  addPanel({mx.m_x + T*.5f, wcy, fcz}, {T,  wsy, fsz}, wt);  // right (+X)
-    if (!(open & F_MINZ))  addPanel({fcx, wcy, mn.m_z - T*.5f}, {fsx, wsy, T},  wt);  // near  (−Z)
-    if (!(open & F_MAXZ))  addPanel({fcx, wcy, mx.m_z + T*.5f}, {fsx, wsy, T},  wt);  // far   (+Z)
+    if(!(open&F_FLOOR)) addPanel({fcx,mn.m_y-T*.5f,fcz},{fsx,T,  fsz},ft);
+    if(!(open&F_CEIL))  addPanel({fcx,mx.m_y+T*.5f,fcz},{fsx,T,  fsz},ft);
+    if(!(open&F_MINX))  addPanel({mn.m_x-T*.5f,wcy,fcz},{T,  wsy,fsz},wt);
+    if(!(open&F_MAXX))  addPanel({mx.m_x+T*.5f,wcy,fcz},{T,  wsy,fsz},wt);
+    if(!(open&F_MINZ))  addPanel({fcx,wcy,mn.m_z-T*.5f},{fsx,wsy,T  },wt);
+    if(!(open&F_MAXZ))  addPanel({fcx,wcy,mx.m_z+T*.5f},{fsx,wsy,T  },wt);
 }
 
 // ============================================================================
 //  addPanel
-//
-//  Places one scaled box-mesh wall panel at world position centre.
-//  CullMode::Front is required because box.obj normals point outward — from
-//  inside the corridor the visible surface is the box's back face.
 // ============================================================================
-void DescentGame::addPanel(const Vector3D& centre, const Vector3D& scale,
-                            const wchar_t* texPath)
+void DescentGame::addPanel(const Vector3D& c, const Vector3D& s, const wchar_t* tex)
 {
-    auto tex  = createTexture(texPath);
+    auto t    = createTexture(tex);
     auto mesh = createMesh(L"../Assets/Meshes/box.obj");
     auto mat  = createMaterial(L"../Assets/Shaders/base.hlsl");
-    mat->addTexture(tex);
+    mat->addTexture(t);
     mat->setCullMode(CullMode::Front);
-
     auto e = createEntity<MeshEntity>();
-    e->setMesh(mesh);
-    e->addMaterial(mat);
-    e->setPosition(centre);
-    e->setScale(scale);
+    e->setMesh(mesh); e->addMaterial(mat);
+    e->setPosition(c); e->setScale(s);
 }
 
 // ============================================================================
@@ -444,8 +447,18 @@ Asteroid* DescentGame::spawnAsteroid(const Vector3D& pos, float scale)
     auto* a = createEntity<Asteroid>();
     if (!a) return nullptr;
     a->setPosition(pos);
-    a->setScale({scale, scale, scale});
-    a->setCollisionRadius(scale * 5.5f);   // must be called after setScale
-    a->setRotation({randF(0, 6.28f), randF(0, 6.28f), randF(0, 6.28f)});
+    a->setScale({scale,scale,scale});
+    a->setCollisionRadius(scale*5.5f);
+    a->setRotation({randF(0,6.28f),randF(0,6.28f),randF(0,6.28f)});
     return a;
+}
+
+// ============================================================================
+//  spawnEnemy
+// ============================================================================
+Enemy* DescentGame::spawnEnemy(const Vector3D& pos)
+{
+    auto* e = createEntity<Enemy>();
+    if (e) e->setPosition(pos);
+    return e;
 }

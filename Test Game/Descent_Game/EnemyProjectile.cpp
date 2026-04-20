@@ -5,8 +5,7 @@
 
 void EnemyProjectile::onCreate()
 {
-    // Visually distinct from the player laser: uses missile.hlsl which
-    // gives a blue/orange glow, and is slightly larger (scale 3).
+    // Use missile.hlsl for a visually distinct colour from the player laser.
     auto mesh = createMesh(L"../Assets/Meshes/sphere.obj");
     auto mat  = createMaterial(L"../Assets/Shaders/missile.hlsl");
     setMesh(mesh);
@@ -21,7 +20,7 @@ void EnemyProjectile::onUpdate(float dt)
 
     Vector3D pos = m_position + m_dir * (kSpeed * dt);
 
-    // Destroy on wall impact (same mechanism as player projectiles).
+    // Destroy on wall impact — same mechanism as player projectiles.
     if (!getGame()->isInBounds(pos, m_collisionRadius))
     {
         release();
@@ -29,6 +28,5 @@ void EnemyProjectile::onUpdate(float dt)
     }
 
     setPosition(pos);
-
     if (m_elapsed > kLifetime) release();
 }

@@ -75,9 +75,6 @@ public:
 	// Default (open world): always true.
 	virtual bool isInBounds(const Vector3D& pos, float radius) const { return true; }
 
-	// Immediately destroys every live entity and clears pending destroys.
-	// Safe to call from DescentGame::onUpdate() because that runs before
-	// the per-entity onUpdate loop in onUpdateInternal().
 	void clearAllEntities();
 
 private:
