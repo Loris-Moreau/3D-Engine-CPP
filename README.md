@@ -7,7 +7,7 @@
 
 [Descent like Game](https://github.com/Loris-Moreau/3D-Engine-CPP/tree/Descent-Game)
 
-![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/main/Assets/Descent-Game.gif "Descent Game Showcase")
+![](https://github.com/Loris-Moreau/3D-Engine-CPP/blob/Descent-Game/Assets/Descent-Game.gif "Descent Game Showcase")
 
 
 ### Controls : 
