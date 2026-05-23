@@ -1,5 +1,5 @@
 # 3D Engine
- This is a *test* code for a 3D Game Engine in C++
+ This is code for a 3D Game Engine in C++
 
 > This will create a window that will let you visualize & modify your game in 3D.
 
